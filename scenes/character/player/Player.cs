@@ -18,17 +18,24 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		// Health
 		healthComponent = GetNode<HealthComponent>("HealthComponent");
 		healthBar = GetNode<ProgressBar>("HealthBar");
-		damageIntervalTimer = GetNode<Godot.Timer>("DamageIntervalTimer");
 		healthComponent.HealthChanged += OnHealthChanged;
+		UpdateHealthDisplay();
 
+		// Getting Damaged
+		var CollisionArea = GetNode<Area2D>("DamageArea");
+		CollisionArea.BodyEntered += OnBodyEntered;
+		CollisionArea.BodyExited += OnBodyExited;
+		damageIntervalTimer = GetNode<Godot.Timer>("DamageIntervalTimer");
+		damageIntervalTimer.Timeout += OnDamageIntervalTimerTimeout;
+
+		// Movement
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		visuals = GetNode<Node2D>("Visuals");
 		particles = visuals.GetNode<CpuParticles2D>("Particles");
 		maxRotation = Mathf.DegToRad(RotationAngle);
-
-		UpdateHealthDisplay();
 	}
 
 	
