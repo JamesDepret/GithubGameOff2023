@@ -4,20 +4,30 @@ public partial class EnemyManager : Node
 	[Signal] public delegate void WaveClearedEventHandler();
 	[Export] public Godot.Collections.Array<PackedScene> EnemyScenePool = new();
 	[Export] public Godot.Collections.Array<int> EnemiesPerWave = new();
-	[Export] public Godot.Collections.Array<int> EnemySpawnratePerWave = new();
+	[Export] public Godot.Collections.Array<float> EnemySpawnratePerWave = new();
 	[Export] public ArenaManager arenaManager;
 	private int spawnRadius = 0;
 	private Godot.Timer timer;
 	private double baseSpawnTime = 0f;
 	private int mobLevel = 0;
+	private int currentWaveKills = 0;
+	private int currentWaveSpawns = 0;
 	public override void _Ready()
 	{
 		timer = GetNode<Godot.Timer>("Timer");
-		timer.Timeout += OnTimerTimeout;
-		baseSpawnTime = timer.WaitTime;
+		timer.Timeout += OnTimerTimeoutSpawnEnemy;
+		baseSpawnTime = EnemySpawnratePerWave[0];
 		spawnRadius = (int) (GetViewport().GetVisibleRect().Size.X / 2) + 50;
+		arenaManager.enemyManager = this;
+		WaveCleared += arenaManager.OnWaveCleared;
 	}
 
+	private void EnemyDied()
+	{
+		currentWaveKills++;
+		if(currentWaveKills >= EnemiesPerWave[arenaManager.WaveNumber]) 
+			WaveIsCleared();
+	}
 	Vector2 GetSpawnPosition()
 	{
         if (GetTree().GetFirstNodeInGroup("player") is not Player player) return Vector2.Zero;
@@ -44,16 +54,29 @@ public partial class EnemyManager : Node
 		return spawnPosition;
 	}
 
-	void OnTimerTimeout() 
+
+	private void OnTimerTimeoutSpawnEnemy() 
 	{
+		if(currentWaveSpawns >= EnemiesPerWave[arenaManager.WaveNumber])
+		{
+			timer.Stop();
+			return;
+		}
 		timer.Start();
 
-		var difficulty = Mathf.Min(mobLevel, EnemyScenePool.Count - 1);
-
-		var enemy = EnemyScenePool[difficulty].Instantiate() as Node2D;
+		var enemy = EnemyScenePool[arenaManager.WaveNumber].Instantiate() as Node2D;
         if (GetTree().GetFirstNodeInGroup("entities_layer") is not Node2D entitiesLayer) throw new Exception("Could not find entities layer");
 
         entitiesLayer.AddChild(enemy);
 		enemy.GlobalPosition = GetSpawnPosition();
+		enemy.GetNode<HealthComponent>("HealthComponent").Died += EnemyDied;
+
+		currentWaveSpawns++;
+	}
+
+	private void WaveIsCleared()
+	{
+	    EmitSignal(SignalName.WaveCleared);
+		GD.Print("Wave cleared");
 	}
 }

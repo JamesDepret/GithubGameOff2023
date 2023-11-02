@@ -425,6 +425,8 @@ arenaManager = NodePath("../../Managers/ArenaManager")
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
 EnemyScenePool = [ExtResource("2_byvl0")]
+EnemiesPerWave = [10]
+EnemySpawnratePerWave = [1]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="TileMap" type="TileMap" parent="."]

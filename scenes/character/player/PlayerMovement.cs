@@ -38,6 +38,6 @@ public partial class Player : CharacterBody2D
     {
         float targetRotation = maxRotation * direction.X;
         currentRotation = (float) Mathf.Lerp(currentRotation, targetRotation, RotationSpeed * delta);
-        Rotation = currentRotation;
+        visuals.Rotation = currentRotation;
     }
 }

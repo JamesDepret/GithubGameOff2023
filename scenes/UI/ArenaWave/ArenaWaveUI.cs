@@ -15,7 +15,7 @@ public partial class ArenaWaveUI : MarginContainer
 	{
 		if (arenaManager == null) return;
 		var timeElapsed = arenaManager.GetTimeElapsed();
-		timeLabel.Text = $"Wave {arenaManager.WaveNumber} - {FormatSecondsToString(timeElapsed)}";
+		timeLabel.Text = $"Wave {arenaManager.WaveNumber + 1} - {FormatSecondsToString(timeElapsed)}";
 	}
 
 	string FormatSecondsToString(double seconds)

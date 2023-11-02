@@ -1,13 +1,13 @@
 namespace Manager;
 public partial class ArenaManager : Node
 {
+
 	[Export] PackedScene EndScreenScene;
-	public int WaveNumber  { get; set; } = 1;
+	public EnemyManager enemyManager;
+	public int WaveNumber  { get; set; } = 0;
 	private Godot.Timer timer;
 	public override void _Ready()
 	{
-		EnemyManager enemyManager = GetNode<EnemyManager>("EnemyManager");
-		enemyManager.WaveCleared += OnWaveCleared;
 		timer = GetNode<Godot.Timer>("Timer");
 		timer.Timeout += OnTimerTimeout;
 	}
@@ -17,6 +17,10 @@ public partial class ArenaManager : Node
 		return timer.WaitTime - timer.TimeLeft;
 	}
 
+	public void OnWaveCleared()
+	{
+		WaveNumber++;
+	}
 	void OnTimerTimeout(){
 		// var EndScreen = EndScreenScene.Instantiate() as VictoryScreen;
 		// AddChild(EndScreen);
@@ -25,8 +29,4 @@ public partial class ArenaManager : Node
 		GD.Print("Timer timeout");
 	}
 
-	void OnWaveCleared()
-	{
-		WaveNumber++;
-	}
 }

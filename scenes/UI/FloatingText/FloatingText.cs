@@ -17,7 +17,7 @@ public partial class FloatingText : Node2D
 		var tween = CreateTween();
 		
 		var callable = Callable.From<float>(MoveText);
-		tween.TweenMethod(callable,0f,2f,0.4f);
+		tween.TweenMethod(callable,0f,2f,0.6f);
 		
 
 		// tween.TweenProperty(this, "global_position.y", GlobalPosition.Y + 48 , .9f)
@@ -52,8 +52,8 @@ public partial class FloatingText : Node2D
 	private void MoveText(float value)
 	{				
 		//random number of 1 or -1
-		var step = 0.6f;
-		GlobalPosition = new Vector2(GlobalPosition.X + value * 1.8f *  randomDirection, GlobalPosition.Y - GetParabolicPosition(value)*step);
+		var step = 0.4f;
+		GlobalPosition = new Vector2(GlobalPosition.X + value * 1.4f *  randomDirection, GlobalPosition.Y - GetParabolicPosition(value)*step);
 	}
 
 	private float GetParabolicPosition(float x)
