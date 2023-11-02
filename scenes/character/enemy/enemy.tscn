@@ -1,8 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://daj3sf6fwvbgl"]
+[gd_scene load_steps=15 format=3 uid="uid://daj3sf6fwvbgl"]
 
 [ext_resource type="Texture2D" uid="uid://ct4jm5jfo2vfm" path="res://assets/art/kenney/monstermaker/blob.png" id="1_4bscy"]
 [ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_yttnt"]
 [ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="2_5wif8"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="2_ksdsl"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="5_j21ts"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
+radius = 14.0
 
 [sub_resource type="Curve" id="Curve_xq1dc"]
 max_value = 3.0
@@ -55,8 +60,17 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_yttnt")
 
+[node name="HealthComponent" parent="." instance=ExtResource("5_j21ts")]
+
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_5wif8")]
 visualsNode = NodePath("../Visuals")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("2_ksdsl")]
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_olxl2")
 
 [node name="Visuals" type="Node2D" parent="."]
 

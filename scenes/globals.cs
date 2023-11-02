@@ -12,3 +12,4 @@ global using System.Threading.Tasks;
 global using Character;
 global using Components;
 global using Ability;
+global using UI;
