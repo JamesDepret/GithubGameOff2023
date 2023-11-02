@@ -460,3 +460,5 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 300.0
 initial_velocity_max = 350.0
 color = Color(0.678431, 0.188235, 0, 1)
+
+[node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

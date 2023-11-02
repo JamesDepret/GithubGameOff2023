@@ -52,16 +52,17 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_yttnt")
 
-[node name="VelocityComponent" parent="." instance=ExtResource("2_5wif8")]
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_5wif8")]
+visualsNode = NodePath("../Visuals")
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Particles" type="CPUParticles2D" parent="Visuals"]
 position = Vector2(0, -7)
-amount = 7
+amount = 3
 lifetime = 0.5
 speed_scale = 1.6
 randomness = 0.9

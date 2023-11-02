@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhgf1ytkmb8vn"]
+[gd_scene load_steps=11 format=3 uid="uid://dhgf1ytkmb8vn"]
 
 [ext_resource type="Script" path="res://scenes/character/player/Player.cs" id="1_2b8bi"]
+[ext_resource type="PackedScene" uid="uid://dwtd8xthn8vlr" path="res://scenes/ability/bullet/bullet_ability_controller.tscn" id="2_35vf7"]
 [ext_resource type="Texture2D" uid="uid://bvte266gptcp3" path="res://assets/art/kenney/plane/SpaceShip.png" id="2_dkbss"]
 
 [sub_resource type="Animation" id="Animation_4r3gc"]
@@ -35,6 +36,10 @@ script = ExtResource("1_2b8bi")
 RotationSpeed = 10.0
 RotationAngle = 20.0
 
+[node name="Abilities" type="Node" parent="."]
+
+[node name="BulletAbilityController" parent="Abilities" instance=ExtResource("2_35vf7")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ub5m4")
@@ -43,11 +48,11 @@ libraries = {
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Particles" type="CPUParticles2D" parent="Visuals"]
-amount = 7
+amount = 5
 lifetime = 0.5
 speed_scale = 1.6
 randomness = 0.9
-lifetime_randomness = 0.31
+lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 3.55
 direction = Vector2(0, 1)
@@ -65,12 +70,10 @@ position = Vector2(0, -8)
 texture = ExtResource("2_dkbss")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_asedf")
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

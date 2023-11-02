@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwtd8xthn8vlr"]
+
+[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_6krwp"]
+[ext_resource type="PackedScene" uid="uid://dbbq41dtdcd0x" path="res://scenes/ability/bullet/bullet_ability.tscn" id="2_f7s1h"]
+
+[node name="BulletAbilityController" type="Node"]
+script = ExtResource("1_6krwp")
+bulletAbility = ExtResource("2_f7s1h")
+maxRange = 250.0
+baseWaitTime = 1.0
+bulletSpeed = 400.0
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true

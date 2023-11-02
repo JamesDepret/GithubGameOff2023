@@ -16,7 +16,8 @@ public partial class Enemy : CharacterBody2D
 			if(isMoving) velocityComponent.AccelerateInDirection(velocityComponent.GetDirectionToPlayer());
 			else velocityComponent.Decelerate();
 			velocityComponent.Move(this);
-			particles.Direction = -velocityComponent.Direction;
+			var dir = velocityComponent.Direction;
+			particles.Direction = new Vector2(dir.X * -(particles.GetParent() as Node2D).Scale.X, -dir.Y);
 		}
 		
 	}
