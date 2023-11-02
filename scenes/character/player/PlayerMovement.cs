@@ -1,12 +1,14 @@
+using System.Numerics;
+
 namespace Character;
 
 public partial class Player : CharacterBody2D
 {
-	Vector2 GetMovementVector()
+	Godot.Vector2 GetMovementVector()
     {
         var xMovement = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
         var yMovement = Input.GetActionStrength("move_down") - Input.GetActionStrength("move_up");
-        return new Vector2(xMovement, yMovement);
+        return new Godot.Vector2(xMovement, yMovement);
     }
 
     void Move(double delta)
@@ -20,10 +22,10 @@ public partial class Player : CharacterBody2D
 
         var movesign = Mathf.Sign(movementVector.X);
         if (movesign != 0) 
-            visuals.Scale = new Vector2(movesign, 1);
+            visuals.Scale = new Godot.Vector2(movesign, 1);
 
         Velocity = Velocity.Lerp(targetVelocity, (float)(1 - Mathf.Exp(-delta * Acceleration)));
-
+        
         MoveAndSlide();
     }
 }
