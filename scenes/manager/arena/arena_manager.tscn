@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc8iau15jn57d"]
+
+[ext_resource type="Script" path="res://scenes/manager/arena/ArenaManager.cs" id="1_egs6a"]
+
+[node name="ArenaManager" type="Node"]
+script = ExtResource("1_egs6a")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3000.0
+one_shot = true
+autostart = true

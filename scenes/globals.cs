@@ -13,3 +13,4 @@ global using Character;
 global using Components;
 global using Ability;
 global using UI;
+global using Manager;

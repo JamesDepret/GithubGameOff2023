@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://bh4kxugrwth7k"]
+[gd_scene load_steps=4 format=3 uid="uid://bh4kxugrwth7k"]
 
 [ext_resource type="Script" path="res://scenes/character/components/Health/HealthComponent.cs" id="1_xdifc"]
+[ext_resource type="Shader" path="res://resources/shaders/hit_flash.gdshader" id="2_uo4fs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4lxy"]
+shader = ExtResource("2_uo4fs")
+shader_parameter/lerp_percent = null
 
 [node name="HealthComponent" type="Node"]
 script = ExtResource("1_xdifc")
+shaderMaterial = SubResource("ShaderMaterial_q4lxy")

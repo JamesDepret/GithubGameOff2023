@@ -31,6 +31,10 @@ window/stretch/mode="viewport"
 
 project/assembly_name="GithubGameOff"
 
+[gui]
+
+theme/custom="res://assets/theme/Theme.tres"
+
 [input]
 
 move_right={

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhgf1ytkmb8vn"]
+[gd_scene load_steps=14 format=3 uid="uid://dhgf1ytkmb8vn"]
 
 [ext_resource type="Script" path="res://scenes/character/player/Player.cs" id="1_2b8bi"]
 [ext_resource type="PackedScene" uid="uid://dwtd8xthn8vlr" path="res://scenes/ability/bullet/bullet_ability_controller.tscn" id="2_35vf7"]
 [ext_resource type="Texture2D" uid="uid://bvte266gptcp3" path="res://assets/art/kenney/plane/SpaceShip.png" id="2_dkbss"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_k8vcu"]
 
 [sub_resource type="Animation" id="Animation_4r3gc"]
 resource_name = "RESET"
@@ -26,6 +27,21 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i2s6"]
+atlas = ExtResource("2_dkbss")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s4r0g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i2s6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_asedf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i3up7"]
@@ -36,9 +52,15 @@ script = ExtResource("1_2b8bi")
 RotationSpeed = 10.0
 RotationAngle = 20.0
 
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_k8vcu")]
+sprite = NodePath("../Visuals/AnimatedSprite2D")
+
 [node name="Abilities" type="Node" parent="."]
 
 [node name="BulletAbilityController" parent="Abilities" instance=ExtResource("2_35vf7")]
+maxRange = 360.0
+baseWaitTime = 0.8
+damage = 12.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -65,9 +87,9 @@ scale_amount_curve = SubResource("Curve_ikei5")
 color = Color(1, 0.32549, 0.137255, 1)
 color_ramp = SubResource("Gradient_rw04q")
 
-[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-position = Vector2(0, -8)
-texture = ExtResource("2_dkbss")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_s4r0g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)

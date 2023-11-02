@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmus44u2gxmt8"]
+
+[ext_resource type="Script" path="res://scenes/UI/ArenaWave/ArenaWaveUI.cs" id="1_bh5xf"]
+
+[node name="ArenaWaveUI" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 6
+script = ExtResource("1_bh5xf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 10
+text = "Test"

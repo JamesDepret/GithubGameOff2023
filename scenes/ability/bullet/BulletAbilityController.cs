@@ -7,8 +7,9 @@ public partial class BulletAbilityController : Node
 	[Export] float maxRange = 150.0f;
 	[Export] double baseWaitTime = 1.5f;
 	[Export] float bulletSpeed = 300.0f;
+	
+	[Export] float damage = 5f;
 	Godot.Timer cooldownTimer;
-	float damage = 5f;
 	float baseDamage = 5f;
 	
 
@@ -17,6 +18,7 @@ public partial class BulletAbilityController : Node
 		cooldownTimer = GetNode<Godot.Timer>("Timer");
 		cooldownTimer.WaitTime = baseWaitTime;
 		cooldownTimer.Timeout += OnCooldownTimerTimeout;
+		baseDamage = damage;
 		//GameEvents.Instance.AbilityUpgradeAdded += OnAbilityUpgradeAdded;
 	}
 

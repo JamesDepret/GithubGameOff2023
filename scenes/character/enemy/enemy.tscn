@@ -58,9 +58,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_yttnt")
 
-[node name="HealthComponent" parent="." instance=ExtResource("5_j21ts")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_j21ts")]
+MaxHealth = 50.0
+sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_5wif8")]
 visualsNode = NodePath("../Visuals")
