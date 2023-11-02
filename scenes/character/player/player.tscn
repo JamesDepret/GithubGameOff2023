@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dhgf1ytkmb8vn"]
 
 [ext_resource type="Script" path="res://scenes/character/player/Player.cs" id="1_2b8bi"]
-[ext_resource type="Texture2D" uid="uid://bglrrlqiweprm" path="res://icon.svg" id="1_kfe1b"]
+[ext_resource type="Texture2D" uid="uid://m80avw658nj0" path="res://assets/art/kenney/tiny/Tiles/tile_0085.png" id="2_j424c"]
 
 [sub_resource type="Animation" id="Animation_4r3gc"]
 resource_name = "RESET"
@@ -16,6 +16,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_asedf"]
+radius = 6.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2b8bi")
@@ -25,10 +26,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ub5m4")
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_asedf")
-
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Visuals"]
-texture = ExtResource("1_kfe1b")
+position = Vector2(0, -8)
+texture = ExtResource("2_j424c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_asedf")
