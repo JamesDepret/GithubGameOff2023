@@ -32,6 +32,8 @@ colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_2b8bi")
+RotationSpeed = 10.0
+RotationAngle = 20.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -40,7 +42,7 @@ libraries = {
 
 [node name="Visuals" type="Node2D" parent="."]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Visuals"]
+[node name="Particles" type="CPUParticles2D" parent="Visuals"]
 amount = 7
 lifetime = 0.5
 speed_scale = 1.6

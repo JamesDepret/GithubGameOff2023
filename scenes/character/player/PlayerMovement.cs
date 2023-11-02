@@ -17,15 +17,27 @@ public partial class Player : CharacterBody2D
         var direction = movementVector.Normalized();
         var targetVelocity = direction * MaxSpeed;
 
+        Rotate(delta, direction);
+
         if (movementVector.Length() == 0) animationPlayer.Play("RESET");
         else animationPlayer.Play("walk");
+
+        if (movementVector.Y > 0) particles.Emitting = false;
+        else particles.Emitting = true;
 
         var movesign = Mathf.Sign(movementVector.X);
         if (movesign != 0) 
             visuals.Scale = new Godot.Vector2(movesign, 1);
 
         Velocity = Velocity.Lerp(targetVelocity, (float)(1 - Mathf.Exp(-delta * Acceleration)));
-        
+
         MoveAndSlide();
+    }
+
+    void Rotate(double delta, Godot.Vector2 direction)
+    {
+        float targetRotation = maxRotation * direction.X;
+        currentRotation = (float) Mathf.Lerp(currentRotation, targetRotation, RotationSpeed * delta);
+        Rotation = currentRotation;
     }
 }

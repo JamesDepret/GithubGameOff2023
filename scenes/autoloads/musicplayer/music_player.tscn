@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c63jsjj72j3g"]
+
+[ext_resource type="AudioStream" uid="uid://dyws6itka48pn" path="res://assets/sound/ost/Intergalactic Odyssey.ogg" id="1_58b11"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_58b11")
+volume_db = -20.0
+autoplay = true
+bus = &"music"
