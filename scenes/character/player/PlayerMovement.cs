@@ -17,7 +17,7 @@ public partial class Player : CharacterBody2D
         var direction = movementVector.Normalized();
         var targetVelocity = direction * MaxSpeed;
 
-        Rotate(delta, direction);
+        RotatePlayer(delta, direction);
 
         if (movementVector.Length() == 0) animationPlayer.Play("RESET");
         else animationPlayer.Play("walk");
@@ -34,7 +34,7 @@ public partial class Player : CharacterBody2D
         MoveAndSlide();
     }
 
-    void Rotate(double delta, Godot.Vector2 direction)
+    void RotatePlayer(double delta, Godot.Vector2 direction)
     {
         float targetRotation = maxRotation * direction.X;
         currentRotation = (float) Mathf.Lerp(currentRotation, targetRotation, RotationSpeed * delta);

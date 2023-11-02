@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://daj3sf6fwvbgl"]
+
+[ext_resource type="Texture2D" uid="uid://ct4jm5jfo2vfm" path="res://assets/art/kenney/monstermaker/blob.png" id="1_4bscy"]
+[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_yttnt"]
+[ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="2_5wif8"]
+
+[sub_resource type="Curve" id="Curve_xq1dc"]
+max_value = 3.0
+_data = [Vector2(0, 0.0526315), 0.0, 0.0, 0, 0, Vector2(0.984456, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qgonr"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ep2"]
+atlas = ExtResource("1_4bscy")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifpdb"]
+atlas = ExtResource("1_4bscy")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_issxn"]
+atlas = ExtResource("1_4bscy")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8asj"]
+atlas = ExtResource("1_4bscy")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gyo1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ep2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ifpdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_issxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8asj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_yttnt")
+
+[node name="VelocityComponent" parent="." instance=ExtResource("2_5wif8")]
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Particles" type="CPUParticles2D" parent="Visuals"]
+position = Vector2(0, -7)
+amount = 7
+lifetime = 0.5
+speed_scale = 1.6
+randomness = 0.9
+lifetime_randomness = 0.31
+emission_shape = 1
+emission_sphere_radius = 3.55
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angle_max = 360.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xq1dc")
+color = Color(0, 0.666667, 0.737255, 1)
+color_ramp = SubResource("Gradient_qgonr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_gyo1f")
+autoplay = "default"
+frame_progress = 0.561151
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ix0ff")

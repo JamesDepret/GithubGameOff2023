@@ -1,13 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=6 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
+[ext_resource type="PackedScene" uid="uid://daj3sf6fwvbgl" path="res://scenes/character/enemy/enemy.tscn" id="2_byvl0"]
 [ext_resource type="Texture2D" uid="uid://ykmr7tklx17x" path="res://assets/art/kenney/tiny/Tilemap/tilemap_packed.png" id="2_uyou6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p854m"]
-size = Vector2(20, 414)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3q21"]
-size = Vector2(680, 20)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -417,37 +412,20 @@ sources/0 = SubResource("TileSetAtlasSource_a27ay")
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_dpqan")]
-position = Vector2(290, 157)
+position = Vector2(320, 320)
 MaxSpeed = 200.0
 
-[node name="Walls" type="Area2D" parent="."]
-visible = false
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
-position = Vector2(-10, 180)
-shape = SubResource("RectangleShape2D_p854m")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
-position = Vector2(650, 180)
-shape = SubResource("RectangleShape2D_p854m")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
-position = Vector2(320, -10)
-shape = SubResource("RectangleShape2D_f3q21")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
-position = Vector2(320, 370)
-shape = SubResource("RectangleShape2D_f3q21")
+[node name="Enemy" parent="." instance=ExtResource("2_byvl0")]
+position = Vector2(315, 22)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_whln5")
 format = 2
 layer_0/tile_data = PackedInt32Array(-1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, -65526, 0, 0, -65525, 0, 0, -65524, 0, 0, -65523, 0, 0, -65522, 0, 0, -65521, 0, 0, -65520, 0, 0, -65519, 0, 0, -65518, 0, 0, -65517, 0, 0, -65516, 0, 0, -65515, 0, 0, -65514, 0, 0, -65513, 0, 0, -65512, 0, 0, -65511, 0, 0, -65510, 0, 0, -65509, 0, 0, -65508, 0, 0, -65507, 0, 0, -65506, 0, 0, -65505, 0, 0, -65504, 0, 0, -65503, 0, 0, -65502, 0, 0, -65501, 0, 0, -65500, 0, 0, -65499, 0, 0, -65498, 0, 0, -65497, 0, 0, -65496, 0, 0, 40, 0, 0, 65576, 0, 0, 327720, 0, 0, 393256, 0, 0, 458792, 0, 0, 524328, 0, 0, 262184, 0, 0, 196648, 0, 0, 131112, 0, 0, 589864, 0, 0, 655400, 0, 0, 720936, 0, 0, 786472, 0, 0, 852008, 0, 0, 917544, 0, 0, 983080, 0, 0, 1048616, 0, 0, 1114152, 0, 0, 1179688, 0, 0, 1245224, 0, 0, 1310760, 0, 0, 1376296, 0, 0, 1441832, 0, 0, 1507368, 0, 0, 1507367, 0, 0, 1507366, 0, 0, 1507365, 0, 0, 1507364, 0, 0, 1507363, 0, 0, 1507362, 0, 0, 1507361, 0, 0, 1507360, 0, 0, 1507359, 0, 0, 1507358, 0, 0, 1507357, 0, 0, 1507356, 0, 0, 1507355, 0, 0, 1507354, 0, 0, 1507353, 0, 0, 1507352, 0, 0, 1507351, 0, 0, 1507350, 0, 0, 1507349, 0, 0, 1507348, 0, 0, 1507347, 0, 0, 1507346, 0, 0, 1507345, 0, 0, 1507344, 0, 0, 1507343, 0, 0, 1507342, 0, 0, 1507341, 0, 0, 1507340, 0, 0, 1507339, 0, 0, 1507338, 0, 0, 1507337, 0, 0, 1507336, 0, 0, 1507335, 0, 0, 1507334, 0, 0, 1507333, 0, 0, 1507332, 0, 0, 1507331, 0, 0, 1507330, 0, 0, 1507329, 0, 0, 1507328, 0, 0, 1572863, 0, 0, 65535, 0, 0, 131071, 0, 0, 196607, 0, 0, 983039, 0, 0, 1048575, 0, 0, 1114111, 0, 0, 1179647, 0, 0, 1245183, 0, 0, 1310719, 0, 0, 1376255, 0, 0, 1441791, 0, 0, 1507327, 0, 0, 786431, 0, 0, 851967, 0, 0, 917503, 0, 0, 327679, 0, 0, 262143, 0, 0, 393215, 0, 0, 458751, 0, 0, 524287, 0, 0, 589823, 0, 0, 655359, 0, 0, 720895, 0, 0)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="TileMap"]
+[node name="ParticlesWhite" type="CPUParticles2D" parent="TileMap"]
 position = Vector2(320, -188)
-amount = 10
+amount = 6
 lifetime = 2.0
 emission_shape = 3
 emission_rect_extents = Vector2(400, 1)
@@ -456,3 +434,29 @@ spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 300.0
 initial_velocity_max = 350.0
+
+[node name="ParticlesYellow" type="CPUParticles2D" parent="TileMap"]
+position = Vector2(320, -188)
+amount = 6
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, 50)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+color = Color(1, 0.909804, 0, 1)
+
+[node name="ParticlesRed" type="CPUParticles2D" parent="TileMap"]
+position = Vector2(320, -188)
+amount = 2
+lifetime = 2.0
+emission_shape = 3
+emission_rect_extents = Vector2(400, 1)
+direction = Vector2(0, 50)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 300.0
+initial_velocity_max = 350.0
+color = Color(0.678431, 0.188235, 0, 1)
