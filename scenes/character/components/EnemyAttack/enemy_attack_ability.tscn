@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://vv1agl4p6jcy"]
+
+[ext_resource type="PackedScene" uid="uid://cxg3prtrl3abe" path="res://scenes/character/components/Hitbox/hitbox_component.tscn" id="1_8d334"]
+[ext_resource type="Script" path="res://scenes/character/components/EnemyAttack/EnemyAttackAbility.cs" id="1_kw6nc"]
+[ext_resource type="Texture2D" uid="uid://bp65h75hyh55b" path="res://assets/art/MattWalkden/Effects/Fx_05.png" id="2_vw8hj"]
+[ext_resource type="Texture2D" uid="uid://bkgbn3a845sxm" path="res://assets/art/Own/fx/monsterSpit.png" id="4_u0ia8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w4bm4"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4nas"]
+atlas = ExtResource("2_vw8hj")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0vm8"]
+atlas = ExtResource("4_u0ia8")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkqxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4nas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0vm8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="EnemyAttackAbility" type="Node2D"]
+script = ExtResource("1_kw6nc")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_8d334")]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_w4bm4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_jkqxp")
+autoplay = "default"
+frame_progress = 0.323345

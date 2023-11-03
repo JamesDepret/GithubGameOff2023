@@ -2,7 +2,7 @@ namespace Components;
 public partial class HurtboxComponent : Area2D
 {
 	[Export] public HealthComponent HealthComponent { get; set; }
-	[Export] public PackedScene floatingTextScene { get; set; }
+	[Export] public PackedScene FloatingTextScene { get; set; }
 	public override void _Ready()
 	{
 		AreaEntered += OnBodyEntered;
@@ -13,7 +13,7 @@ public partial class HurtboxComponent : Area2D
 		if (body is not HitboxComponent hitbox || HealthComponent == null) return;
 		HealthComponent.TakeDamage(hitbox.Damage);
 
-		var floatingText = floatingTextScene.Instantiate() as FloatingText;
+		var floatingText = FloatingTextScene.Instantiate() as FloatingText;
 		GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);
 		floatingText.GlobalPosition = GlobalPosition + (Vector2.Up * 8);
 		

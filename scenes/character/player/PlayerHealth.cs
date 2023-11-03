@@ -2,33 +2,27 @@ namespace Character;
 
 public partial class Player : CharacterBody2D
 {
-    int numberCollidingBodies = 0;
-    void OnBodyEntered(Node2D body)
+    void OnAreaEntered(Node2D body)
     {
-        numberCollidingBodies++;
-        CheckDealDamage();
+        if (body.GetParent() is EnemyAttackAbility enemyAttackAbility)
+        {
+            if (enemyAttackAbility.HitboxComponent.Damage > 0)
+            {
+                DealDamage((int) enemyAttackAbility.HitboxComponent.Damage);
+                enemyAttackAbility.QueueFree();
+            }
+        }
     }
 
-    void OnBodyExited(Node2D body)
-    {
-        numberCollidingBodies--;
-    }
 
-    void CheckDealDamage()
+    public void DealDamage(int amount)
     {
-        if(numberCollidingBodies == 0 || !damageIntervalTimer.IsStopped()) return;
-        healthComponent.TakeDamage(10);
-        damageIntervalTimer.Start();
+        healthComponent.TakeDamage(amount);
     }
 
     void UpdateHealthDisplay()
     {
         healthBar.Value = healthComponent.GetHealthPercentage();
-    }
-
-    void OnDamageIntervalTimerTimeout()
-    {
-        CheckDealDamage();
     }
 
     void OnHealthChanged()

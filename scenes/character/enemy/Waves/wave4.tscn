@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqyfk3dx2qs7r"]
+[gd_scene load_steps=17 format=3 uid="uid://cqyfk3dx2qs7r"]
 
 [ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_nf0f5"]
 [ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_m66vd"]
 [ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="3_d1pob"]
+[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="4_go0fy"]
 [ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="4_v13sa"]
 [ext_resource type="Texture2D" uid="uid://kmap425vcxv7" path="res://assets/art/kenney/monstermaker/wave4/creature-sheet (5).png" id="5_vhumc"]
 [ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="6_pw5qc"]
@@ -70,6 +71,11 @@ sprite = NodePath("../Visuals/AnimatedSprite2D")
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_d1pob")]
 MaxSpeed = 50.0
 visualsNode = NodePath("../Visuals")
+
+[node name="EnemyAttackComponent" parent="." instance=ExtResource("4_go0fy")]
+Damage = 8.0
+AttackSpeed = 0.9
+AttackRange = 75.0
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_v13sa")]
 HealthComponent = NodePath("../HealthComponent")

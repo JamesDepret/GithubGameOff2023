@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5vtgfuahiiij"]
+
+[ext_resource type="Script" path="res://scenes/character/components/EnemyAttack/EnemyAttackComponent.cs" id="1_d5dtp"]
+[ext_resource type="PackedScene" uid="uid://vv1agl4p6jcy" path="res://scenes/character/components/EnemyAttack/enemy_attack_ability.tscn" id="2_mo3bw"]
+
+[node name="EnemyAttackComponent" type="Node"]
+script = ExtResource("1_d5dtp")
+EnemyAttackAbility = ExtResource("2_mo3bw")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

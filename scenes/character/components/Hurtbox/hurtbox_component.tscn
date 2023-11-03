@@ -7,4 +7,4 @@
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_lnvlw")
-floatingTextScene = ExtResource("2_woahn")
+FloatingTextScene = ExtResource("2_woahn")
