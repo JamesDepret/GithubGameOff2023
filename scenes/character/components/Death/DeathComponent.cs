@@ -1,4 +1,4 @@
-namespace Character;
+namespace Components;
 public partial class DeathComponent : Node2D
 {
 	[Export] HealthComponent healthComponent;

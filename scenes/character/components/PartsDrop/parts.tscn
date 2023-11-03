@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://7sm06p8q06vn"]
+
+[ext_resource type="Texture2D" uid="uid://daeyo8so5o4r5" path="res://assets/art/Own/parts/experience_part.png" id="1_3lotj"]
+[ext_resource type="Script" path="res://scenes/character/components/PartsDrop/Parts.cs" id="1_bkp8u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_40lpp"]
+radius = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_al23j"]
+atlas = ExtResource("1_3lotj")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tyt78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_al23j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Parts" type="Node2D"]
+script = ExtResource("1_bkp8u")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_40lpp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tyt78")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

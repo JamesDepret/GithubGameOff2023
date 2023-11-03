@@ -6,6 +6,7 @@
 [node name="EnemyAttackComponent" type="Node"]
 script = ExtResource("1_d5dtp")
 EnemyAttackAbility = ExtResource("2_mo3bw")
+AttackRange = 15.0
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

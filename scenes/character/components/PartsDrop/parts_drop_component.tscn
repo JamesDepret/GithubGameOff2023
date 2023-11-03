@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvu75mvd3601"]
+
+[ext_resource type="Script" path="res://scenes/character/components/PartsDrop/PartsDropComponent.cs" id="1_oswtc"]
+[ext_resource type="PackedScene" uid="uid://7sm06p8q06vn" path="res://scenes/character/components/PartsDrop/parts.tscn" id="2_yvjdj"]
+
+[node name="PartsDropComponent" type="Node"]
+script = ExtResource("1_oswtc")
+PartsScene = ExtResource("2_yvjdj")
+DropPercentage = 0.8

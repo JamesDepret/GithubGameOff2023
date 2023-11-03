@@ -1,4 +1,4 @@
-namespace Character;
+namespace Components;
 public partial class HealthComponent : Node
 {
 	[Signal] public delegate void DiedEventHandler();
