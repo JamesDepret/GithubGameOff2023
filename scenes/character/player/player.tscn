@@ -71,7 +71,6 @@ sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="BulletAbilityController" parent="Abilities" instance=ExtResource("2_35vf7")]
 maxRange = 360.0
-baseWaitTime = 0.8
 damage = 12.0
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]

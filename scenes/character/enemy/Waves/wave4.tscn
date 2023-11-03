@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://daj3sf6fwvbgl"]
+[gd_scene load_steps=16 format=3 uid="uid://cqyfk3dx2qs7r"]
 
-[ext_resource type="Texture2D" uid="uid://ct4jm5jfo2vfm" path="res://assets/art/kenney/monstermaker/wave1/blob.png" id="1_4bscy"]
-[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_yttnt"]
-[ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="2_5wif8"]
-[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="2_ksdsl"]
-[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="5_j21ts"]
-[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="6_gxprr"]
+[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_nf0f5"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_m66vd"]
+[ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="3_d1pob"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="4_v13sa"]
+[ext_resource type="Texture2D" uid="uid://kmap425vcxv7" path="res://assets/art/kenney/monstermaker/wave4/creature-sheet (5).png" id="5_vhumc"]
+[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="6_pw5qc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
 radius = 14.0
@@ -20,36 +20,36 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_32ep2"]
-atlas = ExtResource("1_4bscy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xparl"]
+atlas = ExtResource("5_vhumc")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ifpdb"]
-atlas = ExtResource("1_4bscy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_58qau"]
+atlas = ExtResource("5_vhumc")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_issxn"]
-atlas = ExtResource("1_4bscy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_43ui0"]
+atlas = ExtResource("5_vhumc")
 region = Rect2(48, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a8asj"]
-atlas = ExtResource("1_4bscy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p75an"]
+atlas = ExtResource("5_vhumc")
 region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyo1f"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_32ep2")
+"texture": SubResource("AtlasTexture_xparl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ifpdb")
+"texture": SubResource("AtlasTexture_58qau")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_issxn")
+"texture": SubResource("AtlasTexture_43ui0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a8asj")
+"texture": SubResource("AtlasTexture_p75an")
 }],
 "loop": true,
 "name": &"default",
@@ -61,16 +61,17 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 8
-script = ExtResource("1_yttnt")
+script = ExtResource("1_nf0f5")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("5_j21ts")]
-MaxHealth = 50.0
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_m66vd")]
+MaxHealth = 75.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 
-[node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_5wif8")]
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_d1pob")]
+MaxSpeed = 50.0
 visualsNode = NodePath("../Visuals")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("2_ksdsl")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_v13sa")]
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -108,6 +109,6 @@ frame_progress = 0.561151
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_ix0ff")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("6_gxprr")]
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("6_pw5qc")]
 healthComponent = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/AnimatedSprite2D")

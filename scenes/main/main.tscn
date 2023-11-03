@@ -1,11 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=12 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
 [ext_resource type="PackedScene" uid="uid://bc8iau15jn57d" path="res://scenes/manager/arena/arena_manager.tscn" id="2_aas5s"]
-[ext_resource type="PackedScene" uid="uid://daj3sf6fwvbgl" path="res://scenes/character/enemy/enemy.tscn" id="2_byvl0"]
 [ext_resource type="Texture2D" uid="uid://ykmr7tklx17x" path="res://assets/art/kenney/tiny/Tilemap/tilemap_packed.png" id="2_uyou6"]
 [ext_resource type="PackedScene" uid="uid://cwxo3oa7b1gmk" path="res://scenes/manager/enemy/enemy_manager.tscn" id="3_6guyt"]
+[ext_resource type="PackedScene" uid="uid://gf7fhj8tnvu" path="res://scenes/character/enemy/Waves/wave1.tscn" id="4_u61qj"]
+[ext_resource type="PackedScene" uid="uid://0c14biewxocl" path="res://scenes/character/enemy/Waves/wave2.tscn" id="5_mr7vr"]
+[ext_resource type="PackedScene" uid="uid://ctjewlg111dcn" path="res://scenes/character/enemy/Waves/wave3.tscn" id="6_hyb7s"]
+[ext_resource type="PackedScene" uid="uid://cqyfk3dx2qs7r" path="res://scenes/character/enemy/Waves/wave4.tscn" id="7_ecgxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -424,9 +427,9 @@ arenaManager = NodePath("../../Managers/ArenaManager")
 [node name="ArenaManager" parent="Managers" instance=ExtResource("2_aas5s")]
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
-EnemyScenePool = [ExtResource("2_byvl0")]
-EnemiesPerWave = [10]
-EnemySpawnratePerWave = [1]
+EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg")]
+EnemiesPerWave = [12, 15, 15, 12]
+EnemySpawnratePerWave = [2, 1.5, 2.0, 1.75]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -475,9 +478,6 @@ color = Color(0.678431, 0.188235, 0, 1)
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 320)
 MaxSpeed = 200.0
-
-[node name="Enemy" parent="." instance=ExtResource("2_byvl0")]
-position = Vector2(315, 22)
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

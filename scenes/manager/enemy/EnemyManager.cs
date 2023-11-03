@@ -16,10 +16,11 @@ public partial class EnemyManager : Node
 	{
 		timer = GetNode<Godot.Timer>("Timer");
 		timer.Timeout += OnTimerTimeoutSpawnEnemy;
-		baseSpawnTime = EnemySpawnratePerWave[0];
+		baseSpawnTime = EnemySpawnratePerWave[arenaManager.WaveNumber];
 		spawnRadius = (int) (GetViewport().GetVisibleRect().Size.X / 2) + 50;
 		arenaManager.enemyManager = this;
 		WaveCleared += arenaManager.OnWaveCleared;
+		arenaManager.StarNextLevel += OnStarNextLevel;
 	}
 
 	private void EnemyDied()
@@ -78,5 +79,13 @@ public partial class EnemyManager : Node
 	{
 	    EmitSignal(SignalName.WaveCleared);
 		GD.Print("Wave cleared");
+	}
+
+	private void OnStarNextLevel()
+	{
+		baseSpawnTime = EnemySpawnratePerWave[arenaManager.WaveNumber];
+		currentWaveKills = 0;
+		currentWaveSpawns = 0;
+		timer.Start();
 	}
 }
