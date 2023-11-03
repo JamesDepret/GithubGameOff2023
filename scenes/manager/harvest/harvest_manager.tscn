@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcwka7nrfr8r1"]
+
+[ext_resource type="Script" path="res://scenes/manager/harvest/HarvestManager.cs" id="1_u7g7w"]
+
+[node name="HarvestManager" type="Node"]
+script = ExtResource("1_u7g7w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

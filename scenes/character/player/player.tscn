@@ -65,6 +65,7 @@ collision_layer = 0
 script = ExtResource("1_2b8bi")
 RotationSpeed = 10.0
 RotationAngle = 20.0
+IsMainPlayer = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_k8vcu")]
 MaxHealth = 100.0
@@ -73,9 +74,10 @@ sprite = NodePath("../Visuals/AnimatedSprite2D")
 [node name="Abilities" type="Node" parent="."]
 
 [node name="BulletAbilityController" parent="Abilities" instance=ExtResource("2_35vf7")]
-maxRange = 360.0
-baseWaitTime = 0.3
-damage = 12.0
+maxRange = 200.0
+baseWaitTime = 0.8
+bulletSpeed = 150.0
+damage = 24.0
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

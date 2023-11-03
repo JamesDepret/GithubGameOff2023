@@ -9,6 +9,11 @@ public partial class CurrencyGainText : Control
 
 	public void Start (string text)
 	{
+		if(label == null) 
+		{
+			QueueFree();
+			return;
+		}
 		label.Text = text;
 		var tween = CreateTween();
 		tween.SetParallel();

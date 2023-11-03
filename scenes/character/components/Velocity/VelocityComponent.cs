@@ -45,4 +45,9 @@ public partial class VelocityComponent : Node
 	{
 		return AccelerateInDirection(Vector2.Zero);
 	}
+
+    public void SpeedUp()
+    {
+        MaxSpeed += 100f;
+    }
 }

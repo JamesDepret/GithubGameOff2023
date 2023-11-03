@@ -81,6 +81,10 @@ Damage = 8.0
 AttackSpeed = 0.9
 AttackRange = 75.0
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("4_v13sa")]
 HealthComponent = NodePath("../HealthComponent")
 

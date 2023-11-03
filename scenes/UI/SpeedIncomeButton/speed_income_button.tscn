@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://keujgm173fo5"]
+
+[ext_resource type="Script" path="res://scenes/UI/SpeedIncomeButton/SpeedIncomeButton.cs" id="1_gtjbr"]
+
+[node name="SpeedIncomeButton" type="Button"]
+offset_right = 193.0
+offset_bottom = 20.0
+text = "2 - Speed Up Income - 60 parts"
+script = ExtResource("1_gtjbr")

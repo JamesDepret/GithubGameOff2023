@@ -6,7 +6,8 @@ public partial class Player : CharacterBody2D
 	[Export] public float Acceleration { get; set; } = 25f;
     [Export] public float RotationSpeed { get; set; } = 2.0f; 
     [Export] public float RotationAngle { get; set; } = 45f; 
-	public int PlayerPrio { get; set; } = 1;
+	[Export] public bool IsMainPlayer { get; set; } = false;
+	[Export] public int PlayerPrio { get; set; } = 1;
 	private HealthComponent healthComponent;
 	private ProgressBar healthBar;
 	private AnimationPlayer animationPlayer;

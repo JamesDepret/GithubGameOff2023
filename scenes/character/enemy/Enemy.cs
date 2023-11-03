@@ -1,12 +1,15 @@
 namespace Character;
 public partial class Enemy : CharacterBody2D
 {
+	Godot.Timer lifeTimer;
 	VelocityComponent velocityComponent;
 	CpuParticles2D particles;
 	bool isMoving = true;
 
     public override void _Ready()
     {
+		lifeTimer = GetNode<Godot.Timer>("Lifetime");
+		lifeTimer.Timeout += OnSpeedUp;
         velocityComponent = GetNode<VelocityComponent>("VelocityComponent");
 		particles = GetNode<CpuParticles2D>("Visuals/Particles");
     }
@@ -24,5 +27,10 @@ public partial class Enemy : CharacterBody2D
 	public void SetMoving(bool moving)
 	{
 		isMoving = moving;
+	}
+
+	private void OnSpeedUp()
+	{
+		velocityComponent.SpeedUp();
 	}
 }

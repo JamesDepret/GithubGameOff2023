@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf2v7ks4yj10x"]
+
+[ext_resource type="Script" path="res://scenes/UI/AddIncomeButton/AddIncomeButton.cs" id="1_22jrt"]
+
+[node name="AddIncomeButton" type="Button"]
+offset_right = 165.0
+offset_bottom = 20.0
+text = "1 - Add Income - 50 parts "
+script = ExtResource("1_22jrt")

@@ -12,6 +12,8 @@ public partial class HurtboxComponent : Area2D
 	{
 		if (body is not HitboxComponent hitbox || HealthComponent == null) return;
 		HealthComponent.TakeDamage(hitbox.Damage);
+		hitbox.HitsBeforeDestroyed--;
+		if (hitbox.HitsBeforeDestroyed <= 0) hitbox.GetParent().QueueFree();
 
 		var floatingText = FloatingTextScene.Instantiate() as FloatingText;
 		GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);

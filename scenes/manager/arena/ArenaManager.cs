@@ -4,6 +4,7 @@ public partial class ArenaManager : Node
 
 	[Signal] public delegate void StarNextLevelEventHandler();
 	[Export] PackedScene EndScreenScene;
+	[Export] public int StartingParts { get; set; } = 100;
 	public EnemyManager enemyManager;
 	public int WaveNumber  { get; set; } = 0;
 	private Godot.Timer timer;
@@ -11,6 +12,7 @@ public partial class ArenaManager : Node
 	{
 		timer = GetNode<Godot.Timer>("Timer");
 		timer.Timeout += OnTimerTimeout;
+		GameEvents.Instance.EmitPartsCollected(StartingParts);
 	}
 
 	public double GetTimeElapsed()

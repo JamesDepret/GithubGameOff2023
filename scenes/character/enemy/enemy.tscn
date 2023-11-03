@@ -76,6 +76,10 @@ visualsNode = NodePath("../Visuals")
 
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("4_xue4m")]
 
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("2_ksdsl")]
 HealthComponent = NodePath("../HealthComponent")
 
