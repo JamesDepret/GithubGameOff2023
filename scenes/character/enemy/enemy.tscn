@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://daj3sf6fwvbgl"]
+[gd_scene load_steps=18 format=3 uid="uid://daj3sf6fwvbgl"]
 
 [ext_resource type="Texture2D" uid="uid://ct4jm5jfo2vfm" path="res://assets/art/kenney/monstermaker/wave1/blob.png" id="1_4bscy"]
 [ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_yttnt"]
 [ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="2_5wif8"]
 [ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="2_ksdsl"]
 [ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="4_xue4m"]
+[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_yjdou"]
 [ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="5_j21ts"]
 [ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="6_gxprr"]
 
@@ -70,6 +71,8 @@ sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_5wif8")]
 visualsNode = NodePath("../Visuals")
+
+[node name="PartsDropComponent" parent="." instance=ExtResource("4_yjdou")]
 
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("4_xue4m")]
 

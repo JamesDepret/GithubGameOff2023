@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=13 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
 [ext_resource type="PackedScene" uid="uid://bc8iau15jn57d" path="res://scenes/manager/arena/arena_manager.tscn" id="2_aas5s"]
 [ext_resource type="Texture2D" uid="uid://ykmr7tklx17x" path="res://assets/art/kenney/tiny/Tilemap/tilemap_packed.png" id="2_uyou6"]
+[ext_resource type="PackedScene" uid="uid://cta87hhv0snsx" path="res://scenes/UI/CurrencyIndicator/currency_indicator.tscn" id="2_x2d57"]
 [ext_resource type="PackedScene" uid="uid://cwxo3oa7b1gmk" path="res://scenes/manager/enemy/enemy_manager.tscn" id="3_6guyt"]
 [ext_resource type="PackedScene" uid="uid://gf7fhj8tnvu" path="res://scenes/character/enemy/Waves/wave1.tscn" id="4_u61qj"]
 [ext_resource type="PackedScene" uid="uid://0c14biewxocl" path="res://scenes/character/enemy/Waves/wave2.tscn" id="5_mr7vr"]
@@ -421,6 +422,8 @@ sources/0 = SubResource("TileSetAtlasSource_a27ay")
 
 [node name="ArenaWaveUI" parent="CanvasLayer" node_paths=PackedStringArray("arenaManager") instance=ExtResource("1_3hwic")]
 arenaManager = NodePath("../../Managers/ArenaManager")
+
+[node name="CurrencyIndicator" parent="CanvasLayer" instance=ExtResource("2_x2d57")]
 
 [node name="Managers" type="Node" parent="."]
 
