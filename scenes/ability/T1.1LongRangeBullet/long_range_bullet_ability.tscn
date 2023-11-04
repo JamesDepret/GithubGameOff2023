@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5mnbx5n37hoa"]
+
+[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbility.cs" id="1_mthuf"]
+[ext_resource type="PackedScene" uid="uid://cxg3prtrl3abe" path="res://scenes/character/components/Hitbox/hitbox_component.tscn" id="2_gwm7l"]
+[ext_resource type="Texture2D" uid="uid://bsya68eq3etxx" path="res://assets/art/MattWalkden/Effects/Fx_04.png" id="3_ey6f2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aweae"]
+radius = 3.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsedn"]
+atlas = ExtResource("3_ey6f2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u45bi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsedn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LongRangeBulletAbility" type="Node2D"]
+script = ExtResource("1_mthuf")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_gwm7l")]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_aweae")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.65098, 0.72549, 0, 1)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_u45bi")

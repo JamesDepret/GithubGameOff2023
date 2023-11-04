@@ -11,13 +11,14 @@ public partial class HurtboxComponent : Area2D
 	void OnBodyEntered(Node2D body)
 	{
 		if (body is not HitboxComponent hitbox || HealthComponent == null) return;
+		var parent = GetParent() as Enemy;
+		if(hitbox.EnemiesHit.Contains(parent)) return;
+		
 		HealthComponent.TakeDamage(hitbox.Damage);
 		hitbox.HitsBeforeDestroyed--;
 		if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
 		if (hitbox.HitsBeforeDestroyed < 0) return;
 
-		var parent = GetParent() as Enemy;
-		if(hitbox.EnemiesHit.Contains(parent)) return;
 		hitbox.EnemiesHit.Add(parent);
 		hitbox.EmitSignal(nameof(HitboxComponent.OnHitEffect));
 

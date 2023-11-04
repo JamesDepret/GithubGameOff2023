@@ -20,7 +20,7 @@ public partial class EnemyManager : Node
 		spawnRadius = (int) (GetViewport().GetVisibleRect().Size.X / 2) + 50;
 		arenaManager.enemyManager = this;
 		WaveCleared += arenaManager.OnWaveCleared;
-		arenaManager.StarNextLevel += OnStarNextLevel;
+		arenaManager.WaveCleared += OnStarNextLevel;
 	}
 
 	private void EnemyDied()

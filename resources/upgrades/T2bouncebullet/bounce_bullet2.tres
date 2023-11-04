@@ -1,9 +1,9 @@
 [gd_resource type="Resource" load_steps=2 format=3 uid="uid://bhougc3jrhxy7"]
 
-[ext_resource type="Script" path="res://resources/upgrades/T1bouncebullet/BounceBullet.cs" id="1_n4dgy"]
+[ext_resource type="Script" path="res://resources/upgrades/T2bouncebullet/BounceBullet.cs" id="1_qpjqg"]
 
 [resource]
-script = ExtResource("1_n4dgy")
+script = ExtResource("1_qpjqg")
 Damage = 48.0
 Bounces = 2
 Id = "BounceBullet2"
@@ -12,5 +12,4 @@ Description = "Upgrade the cannon that shoots a bouncing bullet.
 Damage: 48  - Speed: 1
 Effect: bounces to 2 nearby enemy for 50% damage "
 Price = 100
-Tier = 1
-Prerequisites = []
+Tier = 2

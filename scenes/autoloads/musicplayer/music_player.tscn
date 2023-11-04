@@ -3,6 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://dyws6itka48pn" path="res://assets/sound/ost/Intergalactic Odyssey.ogg" id="1_58b11"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D"]
+process_mode = 3
 stream = ExtResource("1_58b11")
 volume_db = -20.0
 autoplay = true

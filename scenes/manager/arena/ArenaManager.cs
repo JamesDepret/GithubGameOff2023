@@ -1,8 +1,7 @@
 namespace Manager;
 public partial class ArenaManager : Node
 {
-
-	[Signal] public delegate void StarNextLevelEventHandler();
+	[Signal] public delegate void WaveClearedEventHandler();
 	[Export] PackedScene EndScreenScene;
 	[Export] public int StartingParts { get; set; } = 100;
 	public EnemyManager enemyManager;
@@ -25,7 +24,7 @@ public partial class ArenaManager : Node
 		WaveNumber++;
 
 		// TODO: should start AFTER upgrades
-	    EmitSignal(SignalName.StarNextLevel);
+	    EmitSignal(SignalName.WaveCleared);
 	}
 	void OnTimerTimeout(){
 		// var EndScreen = EndScreenScene.Instantiate() as VictoryScreen;

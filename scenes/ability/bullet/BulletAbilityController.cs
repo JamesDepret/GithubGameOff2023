@@ -18,6 +18,7 @@ public partial class BulletAbilityController : Node
 		cooldownTimer = GetNode<Godot.Timer>("Timer");
 		cooldownTimer.WaitTime = baseWaitTime;
 		cooldownTimer.Timeout += OnCooldownTimerTimeout;
+		cooldownTimer.Start();
 		baseDamage = damage;
 		//GameEvents.Instance.AbilityUpgradeAdded += OnAbilityUpgradeAdded;
 	}

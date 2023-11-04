@@ -1,9 +1,9 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhgf1ytkmb8vn"]
 
 [ext_resource type="Script" path="res://scenes/character/player/Player.cs" id="1_2b8bi"]
-[ext_resource type="PackedScene" uid="uid://dwtd8xthn8vlr" path="res://scenes/ability/bullet/bullet_ability_controller.tscn" id="2_35vf7"]
 [ext_resource type="Texture2D" uid="uid://bvte266gptcp3" path="res://assets/art/kenney/plane/SpaceShip.png" id="2_dkbss"]
 [ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_k8vcu"]
+[ext_resource type="PackedScene" uid="uid://kcu5tg5amfch" path="res://scenes/ability/T2.1BouncingBullet/t_2_bouncing_bullet_controller.tscn" id="3_68473"]
 
 [sub_resource type="Animation" id="Animation_4r3gc"]
 resource_name = "RESET"
@@ -73,11 +73,7 @@ sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="Abilities" type="Node" parent="."]
 
-[node name="BulletAbilityController" parent="Abilities" instance=ExtResource("2_35vf7")]
-maxRange = 200.0
-baseWaitTime = 0.8
-bulletSpeed = 150.0
-damage = 24.0
+[node name="T2BouncingBulletController" parent="Abilities" instance=ExtResource("3_68473")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

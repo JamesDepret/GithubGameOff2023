@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
     [Export] public float RotationAngle { get; set; } = 45f; 
 	[Export] public bool IsMainPlayer { get; set; } = false;
 	[Export] public int PlayerPrio { get; set; } = 1;
+	private Node shipTurrets;
 	private HealthComponent healthComponent;
 	private ProgressBar healthBar;
 	private AnimationPlayer animationPlayer;
@@ -19,6 +20,9 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
+		shipTurrets = GetNode<Node>("Abilities");
+		GameEvents.Instance.ShipUpgradeAdded += OnNewShipTurretAdded;
+
 		// Health
 		healthComponent = GetNode<HealthComponent>("HealthComponent");
 		healthBar = GetNode<ProgressBar>("HealthBar");

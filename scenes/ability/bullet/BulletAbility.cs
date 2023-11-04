@@ -4,7 +4,7 @@ public partial class BulletAbility : Node2D
 {
 	public HitboxComponent HitboxComponent { get; private set; }
 	public Vector2 Velocity { get; set; } = Vector2.Zero;
-	private int hitsBeforeDestroyed = 1;
+	[Export] private int hitsBeforeDestroyed = 1;
 
 	public override void _Ready()
 	{

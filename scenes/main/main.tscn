@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=18 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjewlg111dcn" path="res://scenes/character/enemy/Waves/wave3.tscn" id="6_hyb7s"]
 [ext_resource type="PackedScene" uid="uid://cqyfk3dx2qs7r" path="res://scenes/character/enemy/Waves/wave4.tscn" id="7_ecgxg"]
 [ext_resource type="PackedScene" uid="uid://dcwka7nrfr8r1" path="res://scenes/manager/harvest/harvest_manager.tscn" id="9_0602n"]
+[ext_resource type="PackedScene" uid="uid://bbb2wvm6jxu0y" path="res://scenes/manager/upgrades/upgrade_manager.tscn" id="13_kcudf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -461,6 +462,9 @@ EnemySpawnratePerWave = [2, 1.5, 2.0, 1.75]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="HarvestManager" parent="Managers" instance=ExtResource("9_0602n")]
+
+[node name="UpgradeManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("13_kcudf")]
+arenaManager = NodePath("../ArenaManager")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_whln5")

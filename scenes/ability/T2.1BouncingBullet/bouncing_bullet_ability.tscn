@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1y72w1m1slol"]
+
+[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbility.cs" id="1_biq3f"]
+[ext_resource type="PackedScene" uid="uid://cxg3prtrl3abe" path="res://scenes/character/components/Hitbox/hitbox_component.tscn" id="1_sgtwb"]
+[ext_resource type="Texture2D" uid="uid://bsya68eq3etxx" path="res://assets/art/MattWalkden/Effects/Fx_04.png" id="2_ypj7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_13iiy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsedn"]
+atlas = ExtResource("2_ypj7x")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fn1nk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsedn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BouncingBulletAbility" type="Node2D"]
+script = ExtResource("1_biq3f")
+hitsBeforeDestroyed = 2
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_sgtwb")]
+scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_13iiy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.239216, 0.462745, 1, 1)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_fn1nk")

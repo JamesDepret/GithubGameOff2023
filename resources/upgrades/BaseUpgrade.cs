@@ -6,5 +6,6 @@ public partial class BaseUpgrade : Resource
 	[Export(PropertyHint.MultilineText)] public string Description { get; set; } = "";
 	[Export] public int Price { get; set; } = 10;
     [Export] public int Tier { get; set; } = 1;
-	[Export] public Godot.Collections.Array<Resource> Prerequisites { get; set; } = new Godot.Collections.Array<Resource>();
+	[Export] public Resource UpgradesTo { get; set; }
+	[Export] public PackedScene AbilityControllerScene { get; set; }
 }
