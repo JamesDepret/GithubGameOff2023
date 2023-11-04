@@ -78,6 +78,7 @@ visualsNode = NodePath("../Visuals")
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("4_quo6q")]
 Damage = 4.0
 AttackSpeed = 1.25
+AttackRange = 20.0
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 10.0

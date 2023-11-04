@@ -31,16 +31,15 @@ public partial class EnemyManager : Node
 	}
 	Vector2 GetSpawnPosition()
 	{
-        if (GetTree().GetFirstNodeInGroup("player") is not Player player) return Vector2.Zero;
-
+        Vector2 basePosition = GetViewport().GetVisibleRect().Size / 2;
         var spawnPosition = Vector2.Zero;
 		var randomDirection = Vector2.Right.Rotated(GD.Randf() * Mathf.Pi * 2);
 
 		for (int i = 0; i < 4; i++)
 		{
-			spawnPosition = player.GlobalPosition + randomDirection * spawnRadius;
+			spawnPosition = basePosition + randomDirection * spawnRadius;
 
-			var query_params = PhysicsRayQueryParameters2D.Create(player.GlobalPosition, spawnPosition, 1); // 1 << 0: bit at position 0
+			var query_params = PhysicsRayQueryParameters2D.Create(basePosition, spawnPosition, 1); // 1 << 0: bit at position 0
 			var result = GetTree().Root.World2D.DirectSpaceState.IntersectRay(query_params);
 			if (result.Count == 0)
 			{

@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf2v7ks4yj10x"]
+[gd_scene load_steps=3 format=3 uid="uid://bf2v7ks4yj10x"]
 
 [ext_resource type="Script" path="res://scenes/UI/AddIncomeButton/AddIncomeButton.cs" id="1_22jrt"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8xin"]
+bg_color = Color(0, 0.521569, 0.866667, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [node name="AddIncomeButton" type="Button"]
-offset_right = 165.0
+offset_right = 14.0
 offset_bottom = 20.0
-text = "1 - Add Income - 50 parts "
+theme_override_styles/normal = SubResource("StyleBoxFlat_m8xin")
+text = " 1 - 50 "
 script = ExtResource("1_22jrt")

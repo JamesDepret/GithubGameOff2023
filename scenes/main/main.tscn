@@ -437,17 +437,17 @@ offset_bottom = 32.0
 harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="AddIncomeButton" parent="CanvasLayer" node_paths=PackedStringArray("harvestManager") instance=ExtResource("4_2dfoh")]
-offset_left = 476.0
-offset_top = 320.0
-offset_right = 641.0
-offset_bottom = 340.0
+offset_left = 587.0
+offset_top = 342.0
+offset_right = 638.0
+offset_bottom = 358.0
 harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="SpeedIncomeButton" parent="CanvasLayer" node_paths=PackedStringArray("harvestManager") instance=ExtResource("5_afcau")]
-offset_left = 447.0
-offset_top = 340.0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_left = 518.0
+offset_top = 342.0
+offset_right = 579.0
+offset_bottom = 358.0
 harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="Managers" type="Node" parent="."]
@@ -507,7 +507,6 @@ color = Color(0.678431, 0.188235, 0, 1)
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 320)
-MaxSpeed = 200.0
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

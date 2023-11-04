@@ -13,7 +13,13 @@ public partial class HurtboxComponent : Area2D
 		if (body is not HitboxComponent hitbox || HealthComponent == null) return;
 		HealthComponent.TakeDamage(hitbox.Damage);
 		hitbox.HitsBeforeDestroyed--;
-		if (hitbox.HitsBeforeDestroyed <= 0) hitbox.GetParent().QueueFree();
+		if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
+		if (hitbox.HitsBeforeDestroyed < 0) return;
+
+		var parent = GetParent() as Enemy;
+		if(hitbox.EnemiesHit.Contains(parent)) return;
+		hitbox.EnemiesHit.Add(parent);
+		hitbox.EmitSignal(nameof(HitboxComponent.OnHitEffect));
 
 		var floatingText = FloatingTextScene.Instantiate() as FloatingText;
 		GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);

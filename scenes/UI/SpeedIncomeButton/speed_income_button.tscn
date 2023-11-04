@@ -1,9 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://keujgm173fo5"]
+[gd_scene load_steps=3 format=3 uid="uid://keujgm173fo5"]
 
 [ext_resource type="Script" path="res://scenes/UI/SpeedIncomeButton/SpeedIncomeButton.cs" id="1_gtjbr"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dur6"]
+bg_color = Color(0.247059, 0.14902, 0.192157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+
 [node name="SpeedIncomeButton" type="Button"]
-offset_right = 193.0
-offset_bottom = 20.0
-text = "2 - Speed Up Income - 60 parts"
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7dur6")
+text = " 2 - 060 "
 script = ExtResource("1_gtjbr")

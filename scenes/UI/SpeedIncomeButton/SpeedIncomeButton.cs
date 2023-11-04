@@ -19,6 +19,6 @@ public partial class SpeedIncomeButton : Button
 	private void OnHarvestSpeedIncomeUpgraded()
 	{
 		Visible = !harvestManager.UpgradeHarvestTime();
-		Text = $"2 - Speed Up Income - {harvestManager.HarvestSpeedUpgradeCost} parts ";
+		Text = $"2 - {harvestManager.HarvestSpeedUpgradeCost}";
 	}
 }
