@@ -1,0 +1,128 @@
+[gd_scene load_steps=18 format=3 uid="uid://uahta8l8w3r8"]
+
+[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_bcipf"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_vm6sg"]
+[ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="3_tymxi"]
+[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_hn43p"]
+[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_v6wjg"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_b017x"]
+[ext_resource type="Texture2D" uid="uid://d3sq0wsue1nml" path="res://assets/art/kenney/monstermaker/wave6/creature-sheet (6).png" id="7_d2hbe"]
+[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_slioe"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
+radius = 14.0
+
+[sub_resource type="Curve" id="Curve_xq1dc"]
+max_value = 3.0
+_data = [Vector2(0, 0.0526315), 0.0, 0.0, 0, 0, Vector2(0.984456, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qgonr"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3n7e"]
+atlas = ExtResource("7_d2hbe")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr6i6"]
+atlas = ExtResource("7_d2hbe")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cnqi"]
+atlas = ExtResource("7_d2hbe")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4whru"]
+atlas = ExtResource("7_d2hbe")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wb282"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p3n7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr6i6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cnqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4whru")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_bcipf")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_vm6sg")]
+MaxHealth = 130.0
+sprite = NodePath("../Visuals/AnimatedSprite2D")
+
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_tymxi")]
+MaxSpeed = 95.0
+visualsNode = NodePath("../Visuals")
+
+[node name="PartsDropComponent" parent="." instance=ExtResource("4_hn43p")]
+Value = 7
+
+[node name="EnemyAttackComponent" parent="." instance=ExtResource("5_v6wjg")]
+Damage = 23.0
+AttackSpeed = 1.4
+AttackRange = 20.0
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_b017x")]
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_olxl2")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Particles" type="CPUParticles2D" parent="Visuals"]
+position = Vector2(0, -7)
+amount = 3
+lifetime = 0.5
+speed_scale = 1.6
+randomness = 0.9
+lifetime_randomness = 0.31
+emission_shape = 1
+emission_sphere_radius = 3.55
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angle_max = 360.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xq1dc")
+color = Color(0, 0.666667, 0.737255, 1)
+color_ramp = SubResource("Gradient_qgonr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_wb282")
+autoplay = "default"
+frame_progress = 0.646744
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ix0ff")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("8_slioe")]
+healthComponent = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/AnimatedSprite2D")

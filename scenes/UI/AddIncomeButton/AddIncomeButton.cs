@@ -2,9 +2,11 @@ namespace UI;
 public partial class AddIncomeButton : Button
 {
 	[Export] private HarvestManager harvestManager;
+	Label label;
 	
 	public override void _Ready()
 	{
+		label = GetNode<Label>("Label");
 		Pressed += OnHarvestIncomeUpgraded;
 	}
 
@@ -19,5 +21,6 @@ public partial class AddIncomeButton : Button
 	private void OnHarvestIncomeUpgraded()
 	{
 		Visible = !harvestManager.UpgradeHarvestIncome();
+		label.Text = harvestManager.BaseIncome +"/"+ harvestManager.MaxIncome;
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=23 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -14,7 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://ctjewlg111dcn" path="res://scenes/character/enemy/Waves/wave3.tscn" id="6_hyb7s"]
 [ext_resource type="PackedScene" uid="uid://cqyfk3dx2qs7r" path="res://scenes/character/enemy/Waves/wave4.tscn" id="7_ecgxg"]
 [ext_resource type="PackedScene" uid="uid://dcwka7nrfr8r1" path="res://scenes/manager/harvest/harvest_manager.tscn" id="9_0602n"]
+[ext_resource type="PackedScene" uid="uid://cggmxdcy3r3vh" path="res://scenes/character/enemy/Waves/wave5.tscn" id="12_lwoa5"]
+[ext_resource type="PackedScene" uid="uid://uahta8l8w3r8" path="res://scenes/character/enemy/Waves/wave6.tscn" id="13_d5bbg"]
 [ext_resource type="PackedScene" uid="uid://bbb2wvm6jxu0y" path="res://scenes/manager/upgrades/upgrade_manager.tscn" id="13_kcudf"]
+[ext_resource type="PackedScene" uid="uid://dm51bf47ufrjc" path="res://scenes/character/enemy/Waves/wave7.tscn" id="14_b33bq"]
+[ext_resource type="PackedScene" uid="uid://dpsk66uysnms6" path="res://scenes/character/enemy/Waves/wave8.tscn" id="15_xop7n"]
+[ext_resource type="PackedScene" uid="uid://cgbdm4k2m33p7" path="res://scenes/character/enemy/Waves/wave9.tscn" id="16_2xgx1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -456,9 +461,9 @@ harvestManager = NodePath("../../Managers/HarvestManager")
 [node name="ArenaManager" parent="Managers" instance=ExtResource("2_aas5s")]
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
-EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg")]
-EnemiesPerWave = [12, 15, 15, 12]
-EnemySpawnratePerWave = [2, 1.5, 2.0, 1.75]
+EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1")]
+EnemiesPerWave = [15, 19, 19, 15, 15, 15, 12, 15, 19]
+EnemySpawnratePerWave = [2, 1.5, 2.0, 1.75, 1.1, 1.3, 1.1, 1.5, 1.2]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="HarvestManager" parent="Managers" instance=ExtResource("9_0602n")]

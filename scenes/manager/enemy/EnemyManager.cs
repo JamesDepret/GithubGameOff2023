@@ -26,6 +26,7 @@ public partial class EnemyManager : Node
 	private void EnemyDied()
 	{
 		currentWaveKills++;
+		GD.Print(" - currentKills " + currentWaveKills + " - Enemies this wave: " + EnemiesPerWave[arenaManager.WaveNumber]);
 		if(currentWaveKills >= EnemiesPerWave[arenaManager.WaveNumber]) 
 			WaveIsCleared();
 	}
@@ -77,7 +78,6 @@ public partial class EnemyManager : Node
 	private void WaveIsCleared()
 	{
 	    EmitSignal(SignalName.WaveCleared);
-		GD.Print("Wave cleared");
 	}
 
 	private void OnStarNextLevel()
@@ -85,6 +85,8 @@ public partial class EnemyManager : Node
 		baseSpawnTime = EnemySpawnratePerWave[arenaManager.WaveNumber] - 1;
 		currentWaveKills = 0;
 		currentWaveSpawns = 0;
+		GD.Print("Starting next wave - " + arenaManager.WaveNumber + " - spawntime " + baseSpawnTime + " - enemies per wave " + EnemiesPerWave[arenaManager.WaveNumber]
+		+ " - currentKills " + currentWaveKills + " - currentSpawns " + currentWaveSpawns);
 		timer.Start();
 	}
 }
