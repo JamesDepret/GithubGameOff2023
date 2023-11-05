@@ -12,7 +12,17 @@ public partial class UpgradeManager : Node
 		arenaManager.WaveCleared += OnWaveCleared;
 	}
 
+	public void InitFirstUpgrades()
+	{
+		SetupUpgradeScreen();
+	}
+
 	private void OnWaveCleared()
+	{
+		SetupUpgradeScreen();
+	}
+
+	private void SetupUpgradeScreen()
 	{
 		currentUpgradeScreen = upgradesScreen.Instantiate() as UpgradesScreen;
 		AddChild(currentUpgradeScreen);
@@ -20,7 +30,6 @@ public partial class UpgradeManager : Node
 		currentUpgradeScreen.SetAbilityUpgrades(chosenUpgrades.ToArray());
 		currentUpgradeScreen.UpgradeSelected += OnUpgradeSelected;
 	}
-
 
 	void OnUpgradeSelected(BaseUpgrade upgrade)
 	{

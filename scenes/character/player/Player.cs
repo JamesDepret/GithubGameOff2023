@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
     [Export] public float RotationAngle { get; set; } = 45f; 
 	[Export] public bool IsMainPlayer { get; set; } = false;
 	[Export] public int PlayerPrio { get; set; } = 1;
+	[Export] private UpgradeManager upgradeManager;
 	private Node shipTurrets;
 	private HealthComponent healthComponent;
 	private ProgressBar healthBar;
@@ -38,6 +39,8 @@ public partial class Player : CharacterBody2D
 		visuals = GetNode<Node2D>("Visuals");
 		particles = visuals.GetNode<CpuParticles2D>("Particles");
 		maxRotation = Mathf.DegToRad(RotationAngle);
+		
+		upgradeManager.InitFirstUpgrades();
 	}
 
 	

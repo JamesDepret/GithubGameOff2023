@@ -514,8 +514,9 @@ initial_velocity_min = 300.0
 initial_velocity_max = 350.0
 color = Color(0.678431, 0.188235, 0, 1)
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("1_dpqan")]
+[node name="Player" parent="." node_paths=PackedStringArray("upgradeManager") groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 320)
+upgradeManager = NodePath("../Managers/UpgradeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 

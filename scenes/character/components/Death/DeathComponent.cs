@@ -16,7 +16,7 @@ public partial class DeathComponent : Node2D
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
 
-	void OnDied()
+	void OnDied(string name)
 	{
 		if (Owner == null) return;
 

@@ -1,7 +1,7 @@
 namespace Components;
 public partial class HealthComponent : Node
 {
-	[Signal] public delegate void DiedEventHandler();
+	[Signal] public delegate void DiedEventHandler(string name);
     [Signal] public delegate void HealthChangedEventHandler();
 	[Export] public float MaxHealth { get; set; } = 10;
 	[Export] public AnimatedSprite2D sprite;
@@ -39,7 +39,7 @@ public partial class HealthComponent : Node
     {
         if (CurrentHealth <= 0)
         {
-            EmitSignal(SignalName.Died);
+            EmitSignal(SignalName.Died, GetParent().Name);
             Owner.QueueFree();
         }
     }

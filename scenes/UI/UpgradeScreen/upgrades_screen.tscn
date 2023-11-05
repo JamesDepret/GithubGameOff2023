@@ -19,3 +19,8 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+
+[node name="DoneButton" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Done"

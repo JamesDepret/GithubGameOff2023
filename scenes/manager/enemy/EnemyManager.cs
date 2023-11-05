@@ -6,6 +6,7 @@ public partial class EnemyManager : Node
 	[Export] public Godot.Collections.Array<int> EnemiesPerWave = new();
 	[Export] public Godot.Collections.Array<float> EnemySpawnratePerWave = new();
 	[Export] public ArenaManager arenaManager;
+	private List<string> currentWaveEnemies = new();
 	private int spawnRadius = 0;
 	private Godot.Timer timer;
 	private double baseSpawnTime = 0f;
@@ -23,10 +24,12 @@ public partial class EnemyManager : Node
 		arenaManager.WaveCleared += OnStarNextLevel;
 	}
 
-	private void EnemyDied()
+	private void EnemyDied(string enemyName)
 	{
+		if(!currentWaveEnemies.Contains(enemyName)) return;
+		currentWaveEnemies.Remove(enemyName);
 		currentWaveKills++;
-		GD.Print(" - currentKills " + currentWaveKills + " - Enemies this wave: " + EnemiesPerWave[arenaManager.WaveNumber]);
+		GD.Print("currentKills " + currentWaveKills + " - Enemies this wave: " + EnemiesPerWave[arenaManager.WaveNumber] + "Name: " + enemyName);
 		if(currentWaveKills >= EnemiesPerWave[arenaManager.WaveNumber]) 
 			WaveIsCleared();
 	}
@@ -71,7 +74,7 @@ public partial class EnemyManager : Node
         entitiesLayer.AddChild(enemy);
 		enemy.GlobalPosition = GetSpawnPosition();
 		enemy.GetNode<HealthComponent>("HealthComponent").Died += EnemyDied;
-
+		currentWaveEnemies.Add(enemy.Name);
 		currentWaveSpawns++;
 	}
 
