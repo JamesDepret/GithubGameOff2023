@@ -5,10 +5,10 @@ public partial class SupplyMeter : HBoxContainer
 	public override void _Ready()
 	{
 		SupplyLabel = GetNode<Label>("SupplyLabel");
-		GameEvents.Instance.ShipUpgradeAdded += OnShipUpgradeAdded;
+		GameEvents.Instance.SupplyChanged += OnSupplyChanged;
 	}
 
-	private void OnShipUpgradeAdded(BaseUpgrade upgrade, Godot.Collections.Array<BaseUpgrade> currentUpgrades)
+	private void OnSupplyChanged()
 	{
 		SupplyLabel.Text = GameEvents.Instance.Supply + "/" + GameEvents.Instance.MaxSupply;
 	}

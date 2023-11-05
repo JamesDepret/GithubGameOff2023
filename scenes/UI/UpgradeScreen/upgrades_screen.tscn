@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://un3og4gkln6e"]
+[gd_scene load_steps=6 format=3 uid="uid://un3og4gkln6e"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradesScreen.cs" id="1_wnyy3"]
 [ext_resource type="PackedScene" uid="uid://cq7hgjfrujwww" path="res://scenes/UI/UpgradeScreen/ship_upgrade_card.tscn" id="2_mkmoo"]
+[ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_dijd3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -42,3 +43,20 @@ offset_bottom = 340.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = "Done"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 127.0
+offset_top = 322.0
+offset_right = 143.0
+offset_bottom = 338.0
+texture = ExtResource("3_dijd3")
+
+[node name="BuyRoom" type="Button" parent="TextureRect"]
+offset_left = 17.0
+offset_top = -2.0
+offset_right = 136.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
+text = " Buy Room - 50 / 5 "

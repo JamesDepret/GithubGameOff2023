@@ -7,9 +7,6 @@ public partial class GameEvents : Node
 	
 	public static GameEvents Instance { get; private set; }
 	public int Parts { get; set; } = 0;
-	public int Supply { get; set; } = 0;
-	public int MaxSupply { get; set; } = 10;
-	public int MaxSupplyUpgraded { get; set; } = 50;
 	public override void _Ready()
 	{
 		Instance = this;
@@ -25,5 +22,6 @@ public partial class GameEvents : Node
 	{
 		Supply += upgrade.SupplyCost;
 		EmitSignal(SignalName.ShipUpgradeAdded, upgrade, currentUpgrades);
+		EmitSignal(SignalName.SupplyChanged);
 	}
 }

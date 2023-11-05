@@ -5,12 +5,16 @@ public partial class UpgradesScreen : CanvasLayer
 	[Export] PackedScene UpgradeCardScene;
 	private HBoxContainer CardContainer;
 	private Button DoneButton;
+	private Button AddSupplyButton;
 	private BaseUpgrade[] currentUpgrades;
+	private bool canAddSupply = true;
 	public override void _Ready()
 	{
 		CardContainer = GetNode<HBoxContainer>("MarginContainer/CardContainer");
 		DoneButton = GetNode<Button>("DoneButton");
+		AddSupplyButton = GetNode<Button>("TextureRect/BuyRoom");
 		DoneButton.Pressed += OnDoneSelected;
+		AddSupplyButton.Pressed += OnAddSupply;
 		GetTree().Paused = true;
 	}
 
@@ -26,6 +30,7 @@ public partial class UpgradesScreen : CanvasLayer
 		var parts = GameEvents.Instance.Parts;
 		var currentSupply = GameEvents.Instance.Supply;
 		var maxSupply = GameEvents.Instance.MaxSupply;
+		var maxSupplyUpgraded = GameEvents.Instance.MaxSupplyUpgraded;
 		foreach (var upgrade in currentUpgrades)
 		{
 			var upgradeCard = UpgradeCardScene.Instantiate() as ShipUpgradeCard;
@@ -34,9 +39,12 @@ public partial class UpgradesScreen : CanvasLayer
 			upgradeCard.Selected += () => OnUpgradeCardSelected(upgrade);
 			upgradeCard.SetPrice(upgrade.Price);
 			upgradeCard.SetSupply(upgrade.SupplyCost);
-			if (parts < upgrade.Price) upgradeCard.SetDisabledForPrice(true);
-			if (currentSupply + upgrade.SupplyCost > maxSupply) upgradeCard.SetDisabledForSupply(true);
 
+			upgradeCard.SetDisabledForPrice(parts < upgrade.Price);
+			upgradeCard.SetDisabledForSupply(currentSupply + upgrade.SupplyCost > maxSupply);
+			AddSupplyButton.Visible = maxSupply < maxSupplyUpgraded;
+			canAddSupply = parts < GameEvents.Instance.SupplyUpgradePrice;
+			
 		}
 	}
 
@@ -51,6 +59,12 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		GetTree().Paused = false;
 		QueueFree();
+	}
+
+	private void OnAddSupply()
+	{
+		GameEvents.Instance.BuySupply();
+		SetupCards();
 	}
 
 }
