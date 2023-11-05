@@ -24,6 +24,8 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		CardContainer.GetChildren().ToList().ForEach(child => child.QueueFree());
 		var parts = GameEvents.Instance.Parts;
+		var currentSupply = GameEvents.Instance.Supply;
+		var maxSupply = GameEvents.Instance.MaxSupply;
 		foreach (var upgrade in currentUpgrades)
 		{
 			var upgradeCard = UpgradeCardScene.Instantiate() as ShipUpgradeCard;
@@ -31,7 +33,10 @@ public partial class UpgradesScreen : CanvasLayer
 			upgradeCard.SetAbilityUpgrade(upgrade);
 			upgradeCard.Selected += () => OnUpgradeCardSelected(upgrade);
 			upgradeCard.SetPrice(upgrade.Price);
-			if (parts < upgrade.Price) upgradeCard.SetDisabled(true);
+			upgradeCard.SetSupply(upgrade.SupplyCost);
+			if (parts < upgrade.Price) upgradeCard.SetDisabledForPrice(true);
+			if (currentSupply + upgrade.SupplyCost > maxSupply) upgradeCard.SetDisabledForSupply(true);
+
 		}
 	}
 

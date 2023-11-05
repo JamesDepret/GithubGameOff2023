@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/UI/CurrencyGainText/CurrencyGainText.cs" id="1_x5tjw"]
 
 [node name="CurrencyGainText" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_x5tjw")

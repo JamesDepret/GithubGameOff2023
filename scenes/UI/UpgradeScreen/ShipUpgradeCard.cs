@@ -3,17 +3,21 @@ public partial class ShipUpgradeCard : PanelContainer
 {
 	[Signal] public delegate void SelectedEventHandler();
 	// TODO: ADD price label in the scene and make it red if price is too high
-	public bool Disabled { get; set; } = false;
+	public bool DisabledByPrice { get; set; } = false;
+	public bool DisabledBySupply { get; set; } = false;
 	Label NameLabel;
 	Label DescriptionLabel;
 	Label PriceLabel;
+	Label SupplyLabel;
 	public override void _Ready()
 	{
 		NameLabel = GetNode<Label>("MarginContainer/VBoxContainer/NameLabel");
 		DescriptionLabel = GetNode<Label>("MarginContainer/VBoxContainer/DescriptionLabel");
 		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
+		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/SupplyLabel");
 		GuiInput += OnGuiInput;
-		SetDisabled(false);
+		SetDisabledForPrice(false);
+		SetDisabledForSupply(false);
 	}
 
 	public void SetPrice(int price)
@@ -21,10 +25,21 @@ public partial class ShipUpgradeCard : PanelContainer
 		PriceLabel.Text = price.ToString();
 	}
 
-	public void SetDisabled(bool disabled)
+	public void SetDisabledForPrice(bool disabled)
 	{
-		Disabled = disabled;
+		DisabledByPrice = disabled;
 		PriceLabel.Modulate = disabled ? new Color(255, 0, 0) : new Color(0, 133, 221);
+	}
+
+	public void SetSupply(int supply)
+	{
+		SupplyLabel.Text = supply.ToString();
+	}
+
+	public void SetDisabledForSupply(bool disabled)
+	{
+		DisabledBySupply = disabled;
+		SupplyLabel.Modulate = disabled ? new Color(255, 0, 0) : new Color(0, 133, 221);
 	}
 
 	public void SetAbilityUpgrade(BaseUpgrade upgrade)
@@ -35,7 +50,7 @@ public partial class ShipUpgradeCard : PanelContainer
 
 	public void OnGuiInput(InputEvent @event)
 	{
-		if (@event.IsActionPressed("left_click") && !Disabled)
+		if (@event.IsActionPressed("left_click") && !DisabledByPrice && !DisabledBySupply)
 		{
 			EmitSignal(SignalName.Selected);
 		}

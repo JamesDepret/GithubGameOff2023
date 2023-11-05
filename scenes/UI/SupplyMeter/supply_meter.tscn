@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://pivx367kaaq2"]
+
+[ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="1_pwbhs"]
+[ext_resource type="Script" path="res://scenes/UI/SupplyMeter/SupplyMeter.cs" id="1_r7k6m"]
+
+[node name="SupplyMeter" type="HBoxContainer"]
+offset_right = 21.0
+offset_bottom = 16.0
+script = ExtResource("1_r7k6m")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_pwbhs")
+
+[node name="SupplyLabel" type="Label" parent="."]
+layout_mode = 2
+text = "0 / 10"
