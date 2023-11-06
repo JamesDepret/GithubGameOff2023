@@ -10,6 +10,7 @@ public partial class BulletAbilityController : Node
 	[Export] int bounces = 1;
 	Godot.Timer cooldownTimer;
 	float baseDamage = 5f;
+	float timerDeviation = 0.05f;
 	
 
 	public override void _Ready()
@@ -25,6 +26,10 @@ public partial class BulletAbilityController : Node
 	void OnCooldownTimerTimeout()
     {
         if (GetParent().GetParent() is not Player player) return;
+		
+		// random number between -1 and 1
+		var randomDeviation = (float) GD.RandRange(-1, 1) * timerDeviation;
+		cooldownTimer.WaitTime = baseWaitTime + randomDeviation;
 
         var enemies = GetTree().GetNodesInGroup("enemy")
                                .Where(enemy => FilterEnemyInRange(enemy, player))
