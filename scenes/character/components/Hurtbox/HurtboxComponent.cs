@@ -9,24 +9,31 @@ public partial class HurtboxComponent : Area2D
 	}
 
 	void OnBodyEntered(Node2D body)
-	{
-		if (body is not HitboxComponent hitbox || HealthComponent == null) return;
-		var parent = GetParent() as Enemy;
-		if(hitbox.EnemiesHit.Contains(parent)) return;
-		
-		HealthComponent.TakeDamage(hitbox.Damage);
-		hitbox.HitsBeforeDestroyed--;
-		if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
-		if (hitbox.HitsBeforeDestroyed < 0) return;
+    {
+        if (body is not HitboxComponent hitbox || HealthComponent == null) return;
+        var parent = GetParent() as Enemy;
+        if (hitbox.EnemiesHit.Contains(parent)) return;
 
-		hitbox.EnemiesHit.Add(parent);
-		hitbox.EmitSignal(nameof(HitboxComponent.OnHitEffect));
+        GetHit(hitbox.Damage);
 
-		var floatingText = FloatingTextScene.Instantiate() as FloatingText;
-		GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);
-		floatingText.GlobalPosition = GlobalPosition + (Vector2.Up * 8);
-		
-		if (Mathf.RoundToInt(hitbox.Damage) == hitbox.Damage) floatingText.Start(hitbox.Damage.ToString("0"));
-		else floatingText.Start(hitbox.Damage.ToString("0.0"));
-	}
+        hitbox.HitsBeforeDestroyed--;
+        if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
+        if (hitbox.HitsBeforeDestroyed < 0) return;
+
+        hitbox.EnemiesHit.Add(parent);
+        hitbox.EmitSignal(nameof(HitboxComponent.OnHitEffect));
+
+    }
+
+    public void GetHit(float damage)
+    {
+        HealthComponent.TakeDamage(damage);
+
+        var floatingText = FloatingTextScene.Instantiate() as FloatingText;
+        GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);
+        floatingText.GlobalPosition = GlobalPosition + (Vector2.Up * 8);
+
+        if (Mathf.RoundToInt(damage) == damage) floatingText.Start(damage.ToString("0"));
+        else floatingText.Start(damage.ToString("0.0"));
+    }
 }

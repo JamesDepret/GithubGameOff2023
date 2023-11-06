@@ -1,14 +1,13 @@
-using Godot;
-using System;
-
+namespace Ability;
 public partial class BulletAbilityController : Node
 {
 	[Export] PackedScene bulletAbility;
 	[Export] float maxRange = 150.0f;
 	[Export] double baseWaitTime = 1.5f;
 	[Export] float bulletSpeed = 300.0f;
-	
+	[Export] bool instantHit = false;
 	[Export] float damage = 5f;
+	[Export] int bounces = 1;
 	Godot.Timer cooldownTimer;
 	float baseDamage = 5f;
 	
@@ -24,25 +23,41 @@ public partial class BulletAbilityController : Node
 	}
 
 	void OnCooldownTimerTimeout()
-	{
+    {
         if (GetParent().GetParent() is not Player player) return;
 
         var enemies = GetTree().GetNodesInGroup("enemy")
-							   .Where(enemy => FilterEnemyInRange(enemy, player))
-							   .ToList();
-		if (enemies.Count == 0) return;
+                               .Where(enemy => FilterEnemyInRange(enemy, player))
+                               .ToList();
+        if (enemies.Count == 0) return;
 
-		enemies.Sort((a, b) => SortByDistanceTo(a as Node2D, b as Node2D, player.GlobalPosition));
+        enemies.Sort((a, b) => SortByDistanceTo(a as Node2D, b as Node2D, player.GlobalPosition));
 
-		var bulletInstance = bulletAbility.Instantiate() as BulletAbility;
+		if(instantHit) InstantHitBullet(enemies);
+		else SpawnBullet(player, enemies);
+    }
+
+    private void SpawnBullet(Player player, List<Node> enemies)
+    {
+        var bulletInstance = bulletAbility.Instantiate() as BulletAbility;
         if (GetTree().GetFirstNodeInGroup("foreground_layer") is not Node2D foregroundLayer) throw new Exception("Could not find foreground_layer");
 
         foregroundLayer.AddChild(bulletInstance);
-		bulletInstance.HitboxComponent.Damage = damage;
+        bulletInstance.HitboxComponent.Damage = damage;
+		bulletInstance.HitboxComponent.HitsBeforeDestroyed = bounces;
 
-		bulletInstance.GlobalPosition = player.GlobalPosition;
-		var enemyDirection = (enemies[0] as Node2D).GlobalPosition - bulletInstance.GlobalPosition;
-		bulletInstance.Velocity = enemyDirection.Normalized() * bulletSpeed;
+        bulletInstance.GlobalPosition = player.GlobalPosition;
+        var enemyDirection = (enemies[0] as Node2D).GlobalPosition - bulletInstance.GlobalPosition;
+        bulletInstance.Velocity = enemyDirection.Normalized() * bulletSpeed;
+    }
+
+	private void InstantHitBullet(List<Node> enemies)
+	{
+		for (int i = 0; i < bounces; i++){
+			if (i > enemies.Count) return;
+			var enemy = enemies[i] as Enemy;
+			enemy.HurtboxComponent.GetHit(damage);
+		}
 	}
 
     bool FilterEnemyInRange(Node enemy, Player player)

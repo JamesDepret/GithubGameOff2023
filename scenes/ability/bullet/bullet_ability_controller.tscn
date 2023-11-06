@@ -9,6 +9,7 @@ bulletAbility = ExtResource("2_f7s1h")
 maxRange = 250.0
 baseWaitTime = 0.2
 bulletSpeed = 400.0
+instantHit = true
 damage = 10.0
 
 [node name="Timer" type="Timer" parent="."]

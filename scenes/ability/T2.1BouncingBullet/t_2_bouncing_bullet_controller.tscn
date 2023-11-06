@@ -9,6 +9,7 @@ bulletAbility = ExtResource("2_k0827")
 baseWaitTime = 0.8
 bulletSpeed = 450.0
 damage = 24.0
+bounces = 2
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

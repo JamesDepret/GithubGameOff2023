@@ -70,7 +70,7 @@ MaxHealth = 57.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_6d727")]
-MaxSpeed = 120.0
+MaxSpeed = 150.0
 visualsNode = NodePath("../Visuals")
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_wc1oi")]

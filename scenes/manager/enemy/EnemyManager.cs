@@ -16,8 +16,9 @@ public partial class EnemyManager : Node
 	public override void _Ready()
 	{
 		timer = GetNode<Godot.Timer>("Timer");
-		timer.Timeout += OnTimerTimeoutSpawnEnemy;
 		baseSpawnTime = EnemySpawnratePerWave[arenaManager.WaveNumber] - 1;
+		timer.WaitTime = baseSpawnTime;
+		timer.Timeout += OnTimerTimeoutSpawnEnemy;
 		spawnRadius = (int) (GetViewport().GetVisibleRect().Size.X / 2) + 50;
 		arenaManager.enemyManager = this;
 		WaveCleared += arenaManager.OnWaveCleared;
@@ -85,7 +86,7 @@ public partial class EnemyManager : Node
 
 	private void OnStarNextLevel()
 	{
-		baseSpawnTime = EnemySpawnratePerWave[arenaManager.WaveNumber] - 1;
+		timer.WaitTime = EnemySpawnratePerWave[arenaManager.WaveNumber] - 1;
 		currentWaveKills = 0;
 		currentWaveSpawns = 0;
 		GD.Print("Starting next wave - " + arenaManager.WaveNumber + " - spawntime " + baseSpawnTime + " - enemies per wave " + EnemiesPerWave[arenaManager.WaveNumber]

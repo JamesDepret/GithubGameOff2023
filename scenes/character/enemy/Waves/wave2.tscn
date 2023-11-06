@@ -74,6 +74,7 @@ MaxSpeed = 70.0
 visualsNode = NodePath("../Visuals")
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_y1rt8")]
+Value = 4
 
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("4_xmbyc")]
 Damage = 6.0

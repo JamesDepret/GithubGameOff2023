@@ -1,6 +1,7 @@
 namespace Character;
 public partial class Enemy : CharacterBody2D
 {
+	public HurtboxComponent HurtboxComponent { get; set; }
 	Godot.Timer lifeTimer;
 	VelocityComponent velocityComponent;
 	CpuParticles2D particles;
@@ -11,6 +12,7 @@ public partial class Enemy : CharacterBody2D
 		lifeTimer = GetNode<Godot.Timer>("Lifetime");
 		lifeTimer.Timeout += OnSpeedUp;
         velocityComponent = GetNode<VelocityComponent>("VelocityComponent");
+		HurtboxComponent = GetNode<HurtboxComponent>("HurtboxComponent");
 		particles = GetNode<CpuParticles2D>("Visuals/Particles");
     }
 	public override void _Process(double delta)

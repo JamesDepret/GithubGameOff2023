@@ -6,9 +6,9 @@
 [node name="T1_1LongRangeBullet" type="Node"]
 script = ExtResource("1_qoubc")
 bulletAbility = ExtResource("2_4b45n")
-maxRange = 250.0
+maxRange = 200.0
 baseWaitTime = 0.33
-bulletSpeed = 200.0
+instantHit = true
 damage = 4.0
 
 [node name="Timer" type="Timer" parent="."]

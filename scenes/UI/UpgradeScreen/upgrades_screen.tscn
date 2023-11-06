@@ -52,6 +52,7 @@ offset_bottom = 338.0
 texture = ExtResource("3_dijd3")
 
 [node name="BuyRoom" type="Button" parent="TextureRect"]
+layout_mode = 0
 offset_left = 17.0
 offset_top = -2.0
 offset_right = 136.0
