@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=27 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://dm51bf47ufrjc" path="res://scenes/character/enemy/Waves/wave7.tscn" id="14_b33bq"]
 [ext_resource type="PackedScene" uid="uid://dpsk66uysnms6" path="res://scenes/character/enemy/Waves/wave8.tscn" id="15_xop7n"]
 [ext_resource type="PackedScene" uid="uid://cgbdm4k2m33p7" path="res://scenes/character/enemy/Waves/wave9.tscn" id="16_2xgx1"]
+[ext_resource type="Texture2D" uid="uid://dnmsnuqjqsi3w" path="res://assets/art/MattWalkden/Space Background/as1.png" id="21_efwbo"]
+[ext_resource type="Texture2D" uid="uid://bc4lfbw2gculb" path="res://assets/art/MattWalkden/Space Background/as2.png" id="22_7caon"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -427,6 +429,21 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_a27ay")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bkrlt"]
+lifetime_randomness = 0.2
+emission_shape = 3
+emission_box_extents = Vector3(340, 0, 0)
+particle_flag_disable_z = true
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 120.0
+initial_velocity_max = 180.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 359.0
+scale_min = 0.25
+
 [node name="Main" type="Node"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -473,7 +490,7 @@ harvestManager = NodePath("../../Managers/HarvestManager")
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
 EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1")]
 EnemiesPerWave = [20, 24, 19, 15, 15, 15, 12, 15, 19]
-EnemySpawnratePerWave = [1.01, 1.2, 2.0, 1.5, 1.75, 1.1, 1.3, 1.1, 1.5]
+EnemySpawnratePerWave = [1.5, 1.3, 1.2, 1.3, 1.4, 1.3, 1.2, 1.3, 1.5]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="HarvestManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("9_0602n")]
@@ -524,6 +541,30 @@ gravity = Vector2(0, 0)
 initial_velocity_min = 300.0
 initial_velocity_max = 350.0
 color = Color(0.678431, 0.188235, 0, 1)
+
+[node name="small asteriod1" type="GPUParticles2D" parent="TileMap"]
+modulate = Color(0.654902, 0.654902, 0.654902, 1)
+position = Vector2(322, -54)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bkrlt")
+texture = ExtResource("22_7caon")
+lifetime = 8.0
+
+[node name="Big asteriod" type="GPUParticles2D" parent="TileMap"]
+modulate = Color(0.372549, 0.372549, 0.372549, 1)
+position = Vector2(322, -113)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bkrlt")
+texture = ExtResource("21_efwbo")
+lifetime = 10.0
+
+[node name="Big asteriod2" type="GPUParticles2D" parent="TileMap"]
+modulate = Color(0.572549, 0.572549, 0.572549, 1)
+position = Vector2(322, -54)
+amount = 1
+process_material = SubResource("ParticleProcessMaterial_bkrlt")
+texture = ExtResource("21_efwbo")
+lifetime = 10.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("upgradeManager") groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 170)
