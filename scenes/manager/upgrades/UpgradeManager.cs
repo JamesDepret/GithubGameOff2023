@@ -34,6 +34,10 @@ public partial class UpgradeManager : Node
 
 	void OnUpgradeSelected(BaseUpgrade upgrade)
 	{
+		if (upgrade.PreviousUpgradePointer != null)
+		{
+			currentUpgrades.Remove(upgrade.PreviousUpgradePointer);
+		}
 		ApplyUpgrade(upgrade);
 	}
 

@@ -10,4 +10,6 @@ public partial class BaseUpgrade : Resource
     [Export] public int SupplyCost { get; set; } = 1;
 	[Export] public Resource UpgradesTo { get; set; }
 	[Export] public PackedScene AbilityControllerScene { get; set; }
+	public BaseUpgrade PreviousUpgradePointer { get; set; }
+	public BulletAbilityController ControllerPointer { get; set; }
 }

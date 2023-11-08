@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://un3og4gkln6e"]
+[gd_scene load_steps=10 format=3 uid="uid://un3og4gkln6e"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradesScreen.cs" id="1_wnyy3"]
 [ext_resource type="PackedScene" uid="uid://cgehttfnyxd5q" path="res://scenes/UI/UpgradeScreen/upgrade_icon_card.tscn" id="2_fl6q0"]
 [ext_resource type="PackedScene" uid="uid://cq7hgjfrujwww" path="res://scenes/UI/UpgradeScreen/ship_upgrade_card.tscn" id="2_mkmoo"]
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_dijd3"]
+[ext_resource type="PackedScene" uid="uid://b5533pmosi5eq" path="res://scenes/UI/UpgradeScreen/current_turrets.tscn" id="5_ar7dc"]
 [ext_resource type="Texture2D" uid="uid://4l3ssrgw2wvm" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_1.png" id="5_fy80o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
@@ -83,9 +84,8 @@ offset_top = 150.0
 offset_right = 160.0
 offset_bottom = 310.0
 
-[node name="TextureRect" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect" parent="TurretContainers" instance=ExtResource("5_ar7dc")]
 layout_mode = 2
-texture = ExtResource("5_fy80o")
 
 [node name="TextureRect7" type="TextureRect" parent="TurretContainers"]
 layout_mode = 2

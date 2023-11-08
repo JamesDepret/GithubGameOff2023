@@ -2,7 +2,7 @@ namespace UI;
 public partial class UpgradesScreen : CanvasLayer
 {
 	[Signal] public delegate void UpgradeSelectedEventHandler(BaseUpgrade upgrade);
-	public BaseUpgrade[] CurrentTurrets { get; set; }
+	public List<BaseUpgrade> CurrentTurrets { get; set; }
 	[Export] PackedScene UpgradeCardScene;
 	private ShipUpgradeCard selectedCard;
 	private BaseUpgrade selectedUpgrade;
@@ -13,6 +13,7 @@ public partial class UpgradesScreen : CanvasLayer
 	private BaseUpgrade[] availableUpgrades;
 	private HFlowContainer turretContainers;
 	private bool canAddSupply = true;
+	BaseUpgrade? previousUpgradePointer = null;
 	public override void _Ready()
 	{
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
@@ -23,7 +24,7 @@ public partial class UpgradesScreen : CanvasLayer
 		turretContainers = GetNode<HFlowContainer>("TurretContainers");
 		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
 
-		BuyButton.Pressed += OnUpgradeCardSelected;
+		BuyButton.Pressed += OnUpgradeCardBought;
 		DoneButton.Pressed += OnDoneSelected;
 		AddSupplyButton.Pressed += OnAddSupply;
 		GetTree().Paused = true;
@@ -38,8 +39,9 @@ public partial class UpgradesScreen : CanvasLayer
 		SetupCards();
 	}
 
-	public void SetSelectedUpgrade(BaseUpgrade upgrade)
+	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null)
 	{
+		if (previousUpgrade != null) upgrade.PreviousUpgradePointer = previousUpgrade;
 		selectedUpgrade = upgrade;
 		selectedCard.Visible = true;
 		SetupSelectedCard();
@@ -47,8 +49,9 @@ public partial class UpgradesScreen : CanvasLayer
 
 	public void SetTurrets(BaseUpgrade[] turrets)
 	{
-		CurrentTurrets = Array.Empty<BaseUpgrade>();
-		CurrentTurrets = turrets;
+		CurrentTurrets = new(turrets);
+		
+		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
 		foreach (var item in turrets)
 		{
 			AddTurretIcon(item);
@@ -92,19 +95,37 @@ public partial class UpgradesScreen : CanvasLayer
         BuyButton.Visible = !(parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
     }
 
-	private void OnUpgradeCardSelected()
+	private void OnUpgradeCardBought()
 	{
+		
+		CurrentTurrets.Add(selectedUpgrade);
 		AddTurretIcon(selectedUpgrade);
 		GameEvents.Instance.EmitPartsCollected(-selectedUpgrade.Price);
 		EmitSignal(SignalName.UpgradeSelected, selectedUpgrade);
 		SetupCards();
+
+		if (selectedUpgrade.PreviousUpgradePointer != null)
+		{
+			CurrentTurrets.Remove(selectedUpgrade.PreviousUpgradePointer);
+			selectedCard.Visible = false;
+			BuyButton.Visible = false;
+			SetTurrets(CurrentTurrets.ToArray());
+		}
+
 	}
 
 	private void AddTurretIcon(BaseUpgrade upgrade)
 	{
-		TextureRect turretIcon = new();
-		turretIcon.Texture = upgrade.Icon;
-		turretContainers.AddChild(turretIcon);
+        CurrentTurret turretIcon = new()
+        {
+            TextureNormal = upgrade.Icon,
+            TextureHover = upgrade.Icon,
+            TexturePressed = upgrade.Icon,
+            TextureFocused = upgrade.Icon,
+            Tower = upgrade,
+            UpgradesScreen = this
+        };
+        turretContainers.AddChild(turretIcon);
 	}
 
 	private void OnDoneSelected()
