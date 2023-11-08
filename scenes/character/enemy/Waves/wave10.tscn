@@ -1,0 +1,152 @@
+[gd_scene load_steps=21 format=3 uid="uid://no4ylw3t6jrh"]
+
+[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_eldnm"]
+[ext_resource type="PackedScene" uid="uid://bfbbnuyxnfile" path="res://scenes/character/components/BiteBoss/bite_boss_component.tscn" id="2_4aa4u"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_nhh4r"]
+[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_a4tqw"]
+[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_7txkb"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_i3nf7"]
+[ext_resource type="Texture2D" uid="uid://b0n7dd46fnmpi" path="res://assets/art/Own/boss/jamesd32 boss sheet.png" id="7_jxb18"]
+[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_h4r01"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
+radius = 14.0
+
+[sub_resource type="Curve" id="Curve_xq1dc"]
+max_value = 3.0
+_data = [Vector2(0, 0.0526315), 0.0, 0.0, 0, 0, Vector2(0.984456, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qgonr"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5u5a"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(0, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af53s"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(80, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqe63"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(160, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sadwm"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(240, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h5ta"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(320, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms744"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(400, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6f58e"]
+atlas = ExtResource("7_jxb18")
+region = Rect2(480, 0, 80, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2absl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5u5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af53s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqe63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sadwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h5ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms744")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6f58e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
+radius = 28.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+modulate = Color(1, 0.988235, 0.988235, 1)
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_eldnm")
+
+[node name="BiteBossComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_4aa4u")]
+MaxSpeed = 250.0
+visualsNode = NodePath("../Visuals")
+SpeedUpAmount = 0.0
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_nhh4r")]
+MaxHealth = 5000.0
+sprite = NodePath("../Visuals/AnimatedSprite2D")
+
+[node name="PartsDropComponent" parent="." instance=ExtResource("4_a4tqw")]
+Value = 120
+DropPercentage = 1.0
+
+[node name="EnemyAttackComponent" parent="." instance=ExtResource("5_7txkb")]
+AttackSpeed = 0.2
+AttackRange = 40.0
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 100.0
+autostart = true
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_i3nf7")]
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_olxl2")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Particles" type="CPUParticles2D" parent="Visuals"]
+position = Vector2(0, -7)
+amount = 40
+speed_scale = 1.6
+randomness = 0.5
+lifetime_randomness = 0.74
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angle_max = 360.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xq1dc")
+color = Color(0.701961, 0.2, 0.172549, 1)
+color_ramp = SubResource("Gradient_qgonr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_2absl")
+autoplay = "default"
+frame_progress = 0.226757
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ix0ff")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("8_h4r01")]
+healthComponent = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/AnimatedSprite2D")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfbbnuyxnfile"]
+
+[ext_resource type="Script" path="res://scenes/character/components/BiteBoss/BiteBossComponent.cs" id="1_sjh3k"]
+
+[node name="BiteBossComponent" type="Node"]
+script = ExtResource("1_sjh3k")

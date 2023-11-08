@@ -3,7 +3,7 @@ public partial class Enemy : CharacterBody2D
 {
 	public HurtboxComponent HurtboxComponent { get; set; }
 	Godot.Timer lifeTimer;
-	VelocityComponent velocityComponent;
+	VelocityComponent? velocityComponent;
 	CpuParticles2D particles;
 	bool isMoving = true;
 
@@ -15,6 +15,7 @@ public partial class Enemy : CharacterBody2D
 		HurtboxComponent = GetNode<HurtboxComponent>("HurtboxComponent");
 		particles = GetNode<CpuParticles2D>("Visuals/Particles");
     }
+
 	public override void _Process(double delta)
 	{
 		if(velocityComponent != null) {
