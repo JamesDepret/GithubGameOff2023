@@ -8,7 +8,8 @@ script = ExtResource("1_dxlol")
 Id = "LongRange2"
 Name = "Long Range Cannon"
 Icon = ExtResource("1_dfryb")
-Description = "Damage: [color=Firebrick]24[/color] 
+Description = "Upgrade a long range cannon
+Damage: [color=Firebrick]24[/color] 
 AttackSpeed: [color=Springgreen ]0.33[/color]
 Range: [color=Cornflowerblue ]200[/color] 
 Effects: [color=Khaki]-[/color] "

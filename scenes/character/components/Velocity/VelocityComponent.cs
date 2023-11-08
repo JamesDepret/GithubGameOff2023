@@ -4,6 +4,7 @@ public partial class VelocityComponent : Node
 	[Export] public float MaxSpeed { get; set; } = 40.0f;
     [Export] public float Acceleration { get; set; } = 5f;
     [Export] Node2D visualsNode;
+    [Export] float SpeedUpAmount = 100f;
 	public Godot.Vector2 Direction { get; set; } = new Godot.Vector2(1, 0);
 	
 	Vector2 velocity = Vector2.Zero;
@@ -48,6 +49,6 @@ public partial class VelocityComponent : Node
 
     public void SpeedUp()
     {
-        MaxSpeed += 100f;
+        MaxSpeed += SpeedUpAmount;
     }
 }

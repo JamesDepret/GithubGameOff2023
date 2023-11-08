@@ -11,7 +11,6 @@ Id = "LongRange1"
 Name = "Long Range Cannon"
 Icon = ExtResource("2_hwiv5")
 Description = "Install a long range cannon
-
 Damage: [color=Firebrick]4[/color] 
 AttackSpeed: [color=Springgreen ]0.33[/color]
 Range: [color=Cornflowerblue ]200[/color] 

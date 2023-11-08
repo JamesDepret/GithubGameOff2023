@@ -10,10 +10,9 @@ script = ExtResource("2_c5p2m")
 Damage = 24.0
 Bounces = 1
 Id = "BounceBullet1"
-Name = "Piercing Cannon"
+Name = "Piercing Bullet"
 Icon = ExtResource("2_v5t2r")
-Description = "Install a cannon that shoots a bouncing bullet.
-
+Description = "Install a cannon that shoots a piercing  bullet.
 Damage: [color=Firebrick]24[/color] 
 AttackSpeed: [color=Springgreen ]0.8[/color]
 Range: [color=Cornflowerblue ]150[/color] 

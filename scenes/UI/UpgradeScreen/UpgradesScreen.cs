@@ -11,17 +11,18 @@ public partial class UpgradesScreen : CanvasLayer
 	private Button AddSupplyButton;
 	private Button BuyButton;
 	private BaseUpgrade[] availableUpgrades;
-	private BoxContainer turretContainers;
+	private HFlowContainer turretContainers;
 	private bool canAddSupply = true;
 	public override void _Ready()
 	{
-		turretContainers = GetNode<BoxContainer>("TurretContainers");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HBoxContainer>("MarginContainer/CardContainer");
 		DoneButton = GetNode<Button>("DoneButton");
 		BuyButton = GetNode<Button>("BuyButton");
 		AddSupplyButton = GetNode<Button>("TextureRect/BuyRoom");
-		
+		turretContainers = GetNode<HFlowContainer>("TurretContainers");
+		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
+
 		BuyButton.Pressed += OnUpgradeCardSelected;
 		DoneButton.Pressed += OnDoneSelected;
 		AddSupplyButton.Pressed += OnAddSupply;

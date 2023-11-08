@@ -70,8 +70,9 @@ MaxHealth = 105.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_8k1jf")]
-MaxSpeed = 140.0
+MaxSpeed = 100.0
 visualsNode = NodePath("../Visuals")
+SpeedUpAmount = 20.0
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_10h3e")]
 Value = 7
@@ -82,7 +83,7 @@ AttackSpeed = 0.8
 AttackRange = 20.0
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 3.0
 autostart = true
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_3qj52")]
