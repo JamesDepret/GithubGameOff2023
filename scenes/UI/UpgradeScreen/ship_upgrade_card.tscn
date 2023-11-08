@@ -1,22 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq7hgjfrujwww"]
+[gd_scene load_steps=9 format=3 uid="uid://cq7hgjfrujwww"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/ShipUpgradeCard.cs" id="1_8e58e"]
 [ext_resource type="Texture2D" uid="uid://daeyo8so5o4r5" path="res://assets/art/Own/parts/experience_part.png" id="2_epxgp"]
+[ext_resource type="Texture2D" uid="uid://dli13gurwut5l" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_81.png" id="2_tsma2"]
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_1ordc"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_hpllb"]
-specular_color = Color(0.247059, 0.14902, 0.192157, 1)
+[sub_resource type="Gradient" id="Gradient_gkdmx"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y21fw"]
+gradient = SubResource("Gradient_gkdmx")
+
+[sub_resource type="Gradient" id="Gradient_rhsra"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2apu2"]
+gradient = SubResource("Gradient_rhsra")
 
 [node name="ShipUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(200, 160)
+custom_minimum_size = Vector2(300, 160)
 offset_right = 200.0
 offset_bottom = 160.0
 script = ExtResource("1_8e58e")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-modulate = Color(0.247059, 0.14902, 0.192157, 1)
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = SubResource("CanvasTexture_hpllb")
+texture = SubResource("GradientTexture1D_y21fw")
+
+[node name="Border" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Background" type="NinePatchRect" parent="Border"]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_2apu2")
+
+[node name="Icon" type="TextureRect" parent="Border/Background"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+offset_left = 268.0
+offset_top = 4.0
+offset_right = 292.0
+offset_bottom = 28.0
+texture = ExtResource("2_tsma2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -55,7 +86,10 @@ modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 text = "Price"
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "write some description"
+bbcode_enabled = true
+text = "description [color=purple]with BB code on[/color]"
+fit_content = true
+scroll_active = false
 autowrap_mode = 2

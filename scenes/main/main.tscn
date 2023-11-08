@@ -543,7 +543,7 @@ initial_velocity_max = 350.0
 color = Color(0.678431, 0.188235, 0, 1)
 
 [node name="small asteriod1" type="GPUParticles2D" parent="TileMap"]
-modulate = Color(0.654902, 0.654902, 0.654902, 1)
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
 position = Vector2(322, -54)
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_bkrlt")
@@ -551,7 +551,7 @@ texture = ExtResource("22_7caon")
 lifetime = 8.0
 
 [node name="Big asteriod" type="GPUParticles2D" parent="TileMap"]
-modulate = Color(0.372549, 0.372549, 0.372549, 1)
+modulate = Color(0.411765, 0.411765, 0.411765, 1)
 position = Vector2(322, -113)
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_bkrlt")
@@ -559,7 +559,7 @@ texture = ExtResource("21_efwbo")
 lifetime = 10.0
 
 [node name="Big asteriod2" type="GPUParticles2D" parent="TileMap"]
-modulate = Color(0.572549, 0.572549, 0.572549, 1)
+modulate = Color(0.270588, 0.270588, 0.270588, 1)
 position = Vector2(322, -54)
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_bkrlt")

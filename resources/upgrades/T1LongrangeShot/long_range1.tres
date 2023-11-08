@@ -1,17 +1,24 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c3sspgabsk31q"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://c3sspgabsk31q"]
 
 [ext_resource type="PackedScene" uid="uid://1ffdq2ysqa8p" path="res://scenes/ability/T1.1LongRangeBullet/t_1_1_long_range_bullet_controller.tscn" id="1_qot17"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="1_tkdtb"]
 [ext_resource type="Resource" uid="uid://dlco30qmi4ybp" path="res://resources/upgrades/T1LongrangeShot/long_range2.tres" id="2_3ugio"]
+[ext_resource type="Texture2D" uid="uid://yi2ac5vrok27" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_44.png" id="2_hwiv5"]
 
 [resource]
 script = ExtResource("1_tkdtb")
 Id = "LongRange1"
 Name = "Long Range Cannon"
+Icon = ExtResource("2_hwiv5")
 Description = "Install a long range cannon
 
-Damage: 4 - Speed: 0.33"
+Damage: [color=Firebrick]4[/color] 
+AttackSpeed: [color=Springgreen ]0.33[/color]
+Range: [color=Cornflowerblue ]200[/color] 
+Effects: [color=Khaki]-[/color] 
+"
 Price = 25
 Tier = 1
+SupplyCost = 1
 UpgradesTo = ExtResource("2_3ugio")
 AbilityControllerScene = ExtResource("1_qot17")

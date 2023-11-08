@@ -29,6 +29,7 @@ public partial class UpgradeManager : Node
 		var chosenUpgrades = PickRandomTurretPerTier();
 		currentUpgradeScreen.SetAbilityUpgrades(chosenUpgrades.ToArray());
 		currentUpgradeScreen.UpgradeSelected += OnUpgradeSelected;
+		currentUpgradeScreen.SetTurrets(currentUpgrades.ToArray());
 	}
 
 	void OnUpgradeSelected(BaseUpgrade upgrade)
@@ -38,6 +39,7 @@ public partial class UpgradeManager : Node
 
 	void ApplyUpgrade(BaseUpgrade upgrade)
 	{
+		currentUpgrades.Add(upgrade);
 		GameEvents.Instance.EmitShipUpgradeAdded(upgrade, currentUpgrades);
 	}
 

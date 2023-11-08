@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://xscu6ri3w5ol"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://xscu6ri3w5ol"]
 
 [ext_resource type="PackedScene" uid="uid://kcu5tg5amfch" path="res://scenes/ability/T2.1BouncingBullet/t_2_bouncing_bullet_controller.tscn" id="1_refml"]
 [ext_resource type="Script" path="res://resources/upgrades/T2bouncebullet/BounceBullet.cs" id="2_c5p2m"]
+[ext_resource type="Texture2D" uid="uid://dda0a7gyjcqxb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_17.png" id="2_v5t2r"]
 [ext_resource type="Resource" uid="uid://bhougc3jrhxy7" path="res://resources/upgrades/T2bouncebullet/bounce_bullet2.tres" id="2_vbjsq"]
 
 [resource]
@@ -9,13 +10,16 @@ script = ExtResource("2_c5p2m")
 Damage = 24.0
 Bounces = 1
 Id = "BounceBullet1"
-Name = "Bouncing Bullet"
+Name = "Piercing Cannon"
+Icon = ExtResource("2_v5t2r")
 Description = "Install a cannon that shoots a bouncing bullet.
 
-Damage: 24 - Speed: 0.8
-
-Effect: bounces to a nearby enemy for 50% damage"
+Damage: [color=Firebrick]24[/color] 
+AttackSpeed: [color=Springgreen ]0.8[/color]
+Range: [color=Cornflowerblue ]150[/color] 
+Effects: [color=Khaki]Pierces 1 time for 50% damage[/color]"
 Price = 55
 Tier = 2
+SupplyCost = 1
 UpgradesTo = ExtResource("2_vbjsq")
 AbilityControllerScene = ExtResource("1_refml")

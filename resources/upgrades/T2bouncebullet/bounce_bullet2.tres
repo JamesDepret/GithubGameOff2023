@@ -1,5 +1,6 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bhougc3jrhxy7"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bhougc3jrhxy7"]
 
+[ext_resource type="Texture2D" uid="uid://dda0a7gyjcqxb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_17.png" id="1_eklxr"]
 [ext_resource type="Script" path="res://resources/upgrades/T2bouncebullet/BounceBullet.cs" id="1_qpjqg"]
 
 [resource]
@@ -7,9 +8,13 @@ script = ExtResource("1_qpjqg")
 Damage = 48.0
 Bounces = 2
 Id = "BounceBullet2"
-Name = "Bouncing Bullet"
+Name = "Piercing Cannon"
+Icon = ExtResource("1_eklxr")
 Description = "Upgrade the cannon that shoots a bouncing bullet.
-Damage: 48  - Speed: 1
-Effect: bounces to 2 nearby enemy for 50% damage "
+Damage: [color=Firebrick]48[/color] 
+AttackSpeed: [color=Springgreen ]1[/color]
+Range: [color=Cornflowerblue ]150[/color] 
+Effects: [color=Khaki]Pierces 2 times, 50% damage reduction per hit[/color] "
 Price = 100
 Tier = 2
+SupplyCost = 1

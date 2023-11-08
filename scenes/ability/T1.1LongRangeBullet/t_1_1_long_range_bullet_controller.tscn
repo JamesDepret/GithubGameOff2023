@@ -1,11 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ffdq2ysqa8p"]
+[gd_scene load_steps=2 format=3 uid="uid://1ffdq2ysqa8p"]
 
 [ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_qoubc"]
-[ext_resource type="PackedScene" uid="uid://b5mnbx5n37hoa" path="res://scenes/ability/T1.1LongRangeBullet/long_range_bullet_ability.tscn" id="2_4b45n"]
 
 [node name="T1_1LongRangeBullet" type="Node"]
 script = ExtResource("1_qoubc")
-bulletAbility = ExtResource("2_4b45n")
 maxRange = 200.0
 baseWaitTime = 0.33
 instantHit = true

@@ -6,13 +6,13 @@ public partial class ShipUpgradeCard : PanelContainer
 	public bool DisabledByPrice { get; set; } = false;
 	public bool DisabledBySupply { get; set; } = false;
 	Label NameLabel;
-	Label DescriptionLabel;
+	RichTextLabel DescriptionLabel;
 	Label PriceLabel;
 	Label SupplyLabel;
 	public override void _Ready()
 	{
 		NameLabel = GetNode<Label>("MarginContainer/VBoxContainer/NameLabel");
-		DescriptionLabel = GetNode<Label>("MarginContainer/VBoxContainer/DescriptionLabel");
+		DescriptionLabel = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/DescriptionLabel");
 		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
 		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/SupplyLabel");
 		GuiInput += OnGuiInput;
