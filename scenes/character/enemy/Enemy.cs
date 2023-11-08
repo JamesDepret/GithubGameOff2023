@@ -1,9 +1,10 @@
 namespace Character;
 public partial class Enemy : CharacterBody2D
 {
+	[Export] public bool IsBiteBoss { get; set; } = false;
 	public HurtboxComponent HurtboxComponent { get; set; }
 	Godot.Timer lifeTimer;
-	VelocityComponent? velocityComponent;
+	VelocityComponent velocityComponent;
 	CpuParticles2D particles;
 	bool isMoving = true;
 
@@ -11,7 +12,8 @@ public partial class Enemy : CharacterBody2D
     {
 		lifeTimer = GetNode<Godot.Timer>("Lifetime");
 		lifeTimer.Timeout += OnSpeedUp;
-        velocityComponent = GetNode<VelocityComponent>("VelocityComponent");
+		if(IsBiteBoss) velocityComponent = GetNode<BiteBossComponent>("BiteBossComponent");
+		else velocityComponent = GetNode<VelocityComponent>("VelocityComponent");
 		HurtboxComponent = GetNode<HurtboxComponent>("HurtboxComponent");
 		particles = GetNode<CpuParticles2D>("Visuals/Particles");
     }
@@ -19,7 +21,7 @@ public partial class Enemy : CharacterBody2D
 	public override void _Process(double delta)
 	{
 		if(velocityComponent != null) {
-			if(isMoving) velocityComponent.AccelerateInDirection(velocityComponent.GetDirectionToPlayer());
+			if (isMoving) velocityComponent.AccelerateInDirection(velocityComponent.GetDirectionToTarget());
 			else velocityComponent.Decelerate();
 			velocityComponent.Move(this);
 			var dir = velocityComponent.Direction;

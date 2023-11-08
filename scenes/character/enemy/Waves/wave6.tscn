@@ -80,7 +80,7 @@ Value = 7
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("5_v6wjg")]
 Damage = 23.0
 AttackSpeed = 1.4
-AttackRange = 20.0
+AttackRange = 25.0
 
 [node name="Lifetime" type="Timer" parent="."]
 wait_time = 3.0
