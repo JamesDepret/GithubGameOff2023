@@ -14,8 +14,10 @@ public partial class UpgradesScreen : CanvasLayer
 	private HFlowContainer turretContainers;
 	private bool canAddSupply = true;
 	BaseUpgrade? previousUpgradePointer = null;
+	public Control HelpPanel { get; set; }
 	public override void _Ready()
 	{
+		HelpPanel = GetNode<Control>("HelpPanel");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HBoxContainer>("MarginContainer/CardContainer");
 		DoneButton = GetNode<Button>("DoneButton");
@@ -70,11 +72,7 @@ public partial class UpgradesScreen : CanvasLayer
             var upgradeCard = UpgradeCardScene.Instantiate() as UpgradeCard;
             CardContainer.AddChild(upgradeCard);
             upgradeCard.UpgradesScreen = this;
-            upgradeCard.SetAbilityUpgrade(upgrade);
-            upgradeCard.SetPrice(upgrade.Price);
-            upgradeCard.SetSupply(upgrade.SupplyCost);
-            upgradeCard.SetDisabledForPrice(parts < upgrade.Price);
-            upgradeCard.SetDisabledForSupply(currentSupply + upgrade.SupplyCost > maxSupply);
+			upgradeCard.SetupCard(upgrade.Price, upgrade.SupplyCost, upgrade, parts < upgrade.Price, currentSupply + upgrade.SupplyCost > maxSupply);
         }
 		
 		if (selectedUpgrade != null) SetupSelectedCard();
@@ -87,11 +85,7 @@ public partial class UpgradesScreen : CanvasLayer
 		var parts = GameEvents.Instance.Parts;
 		var currentSupply = GameEvents.Instance.Supply;
 		var maxSupply = GameEvents.Instance.MaxSupply;
-        selectedCard.SetAbilityUpgrade(selectedUpgrade);
-        selectedCard.SetPrice(selectedUpgrade.Price);
-        selectedCard.SetSupply(selectedUpgrade.SupplyCost);
-        selectedCard.SetDisabledForPrice(parts < selectedUpgrade.Price);
-        selectedCard.SetDisabledForSupply(currentSupply + selectedUpgrade.SupplyCost > maxSupply);
+		selectedCard.SetupCard(selectedUpgrade.Price, selectedUpgrade.SupplyCost, selectedUpgrade, parts < selectedUpgrade.Price, currentSupply + selectedUpgrade.SupplyCost > maxSupply);
         BuyButton.Visible = !(parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
     }
 

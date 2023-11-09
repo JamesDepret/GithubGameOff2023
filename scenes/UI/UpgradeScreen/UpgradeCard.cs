@@ -20,6 +20,15 @@ public partial class UpgradeCard : PanelContainer
 		SetDisabledForSupply(false);
 	}
 
+	public void SetupCard(int price, int supplyCost, BaseUpgrade upgrade, bool disabledByPrice, bool disabledBySupply)
+	{
+		SetPrice(price);
+		SetSupply(supplyCost);
+		SetAbilityUpgrade(upgrade);
+		SetDisabledForPrice(disabledByPrice);
+		SetDisabledForSupply(disabledBySupply);
+	}
+
 	public void SetPrice(int price)
 	{
 		PriceLabel.Text = price.ToString();

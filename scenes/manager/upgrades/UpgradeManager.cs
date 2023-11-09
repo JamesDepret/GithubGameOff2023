@@ -30,6 +30,7 @@ public partial class UpgradeManager : Node
 		currentUpgradeScreen.SetAbilityUpgrades(chosenUpgrades.ToArray());
 		currentUpgradeScreen.UpgradeSelected += OnUpgradeSelected;
 		currentUpgradeScreen.SetTurrets(currentUpgrades.ToArray());
+		if(arenaManager.WaveNumber>=1) currentUpgradeScreen.HelpPanel.QueueFree();
 	}
 
 	void OnUpgradeSelected(BaseUpgrade upgrade)

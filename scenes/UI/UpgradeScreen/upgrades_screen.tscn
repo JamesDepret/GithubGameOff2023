@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://un3og4gkln6e"]
+[gd_scene load_steps=14 format=3 uid="uid://un3og4gkln6e"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradesScreen.cs" id="1_wnyy3"]
 [ext_resource type="PackedScene" uid="uid://cgehttfnyxd5q" path="res://scenes/UI/UpgradeScreen/upgrade_icon_card.tscn" id="2_fl6q0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_dijd3"]
 [ext_resource type="PackedScene" uid="uid://b5533pmosi5eq" path="res://scenes/UI/UpgradeScreen/current_turrets.tscn" id="5_ar7dc"]
 [ext_resource type="Texture2D" uid="uid://4l3ssrgw2wvm" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_1.png" id="5_fy80o"]
+[ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/CloseHelp.cs" id="7_isbi8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -27,6 +28,17 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+
+[sub_resource type="Gradient" id="Gradient_v8din"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mbko0"]
+gradient = SubResource("Gradient_v8din")
+width = 80
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qah7m"]
+bg_color = Color(0.333333, 0.203922, 0.203922, 1)
 
 [node name="UpgradesScreen" type="CanvasLayer"]
 process_mode = 3
@@ -122,3 +134,111 @@ offset_right = 240.0
 offset_bottom = 340.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hw8lb")
 text = "Buy Item"
+
+[node name="HelpPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="TextureRect2" type="TextureRect" parent="HelpPanel"]
+modulate = Color(1, 1, 1, 0.266667)
+layout_mode = 2
+offset_right = 640.0
+offset_bottom = 360.0
+texture = SubResource("GradientTexture1D_mbko0")
+
+[node name="TextureRect3" type="TextureRect" parent="HelpPanel"]
+modulate = Color(1, 1, 1, 0.266667)
+layout_mode = 2
+offset_top = 151.0
+offset_right = 140.0
+offset_bottom = 311.0
+texture = SubResource("GradientTexture1D_mbko0")
+
+[node name="TextureRect4" type="TextureRect" parent="HelpPanel"]
+modulate = Color(1, 1, 1, 0.266667)
+layout_mode = 2
+offset_left = 161.0
+offset_top = 151.0
+offset_right = 459.0
+offset_bottom = 311.0
+texture = SubResource("GradientTexture1D_mbko0")
+
+[node name="Label" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_top = 151.0
+offset_right = 131.0
+offset_bottom = 204.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "When you buy turrets their icons come here.
+Turrets => can be clicked for buyable upgrades"
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_left = 174.0
+offset_top = 211.0
+offset_right = 443.0
+offset_bottom = 264.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "Details of what you're buying will come here once you click on the turret"
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_left = 252.0
+offset_top = 5.0
+offset_right = 383.0
+offset_bottom = 58.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "Turrets available:"
+autowrap_mode = 2
+
+[node name="Label4" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_left = 460.0
+offset_top = 34.0
+offset_right = 642.0
+offset_bottom = 87.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "Current money - automatic harvester time delay and room available"
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_left = 247.0
+offset_top = 293.0
+offset_right = 460.0
+offset_bottom = 346.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "When clicking done the wave starts"
+autowrap_mode = 2
+
+[node name="Label6" type="Label" parent="HelpPanel"]
+layout_mode = 2
+offset_left = 506.0
+offset_top = 273.0
+offset_right = 639.0
+offset_bottom = 333.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 9
+text = "Harvester upgrades - increase parts per tick and speed of ticks; hotkey to upgrade - 1 and 2"
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="HelpPanel"]
+layout_mode = 0
+offset_left = 467.0
+offset_top = 158.0
+offset_right = 627.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_qah7m")
+text = "Click here to 
+Start Game"
+script = ExtResource("7_isbi8")
