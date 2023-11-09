@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7cnbgmhrm0xv"]
+
+[ext_resource type="Script" path="res://scenes/ability/T3.1HealthBoost/HealthBoostController.cs" id="1_xycqc"]
+
+[node name="T3_2HealthBoostController" type="Node"]
+script = ExtResource("1_xycqc")
+healthOnWaveClear = 10
+maxHealthIncrease = 50

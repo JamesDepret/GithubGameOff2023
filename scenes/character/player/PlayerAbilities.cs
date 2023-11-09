@@ -10,8 +10,9 @@ public partial class Player : CharacterBody2D
         {
             shipTurrets.RemoveChild(upgrade.PreviousUpgradePointer.ControllerPointer);
         }
-        var controller = upgrade.AbilityControllerScene.Instantiate() as BulletAbilityController;
+        var controller = upgrade.AbilityControllerScene.Instantiate() as BaseAbilityController;
         shipTurrets.AddChild(controller);
+        controller.Init();
         upgrade.ControllerPointer = controller;
 
     }

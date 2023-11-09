@@ -35,6 +35,13 @@ public partial class HealthComponent : Node
         return Mathf.Min(CurrentHealth / MaxHealth,1);
     }
 
+	public void IncreaseMaxHealth(int amount)
+	{
+		MaxHealth += amount;
+		CurrentHealth += amount;
+		EmitSignal(SignalName.HealthChanged);
+	}
+
     private void CheckDeath()
     {
         if (CurrentHealth <= 0)

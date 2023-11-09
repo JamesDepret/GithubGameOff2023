@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dqsekfa35s2o7"]
+
+[ext_resource type="PackedScene" uid="uid://bdmysnd457fsg" path="res://scenes/ability/T2.2CritBullet/t_2_2_crit_bullet_controller.tscn" id="1_lfr48"]
+[ext_resource type="Texture2D" uid="uid://c8kb6sqkgnwb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_28.png" id="2_373gd"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="2_i4djj"]
+
+[resource]
+script = ExtResource("2_i4djj")
+Id = "CritBullet2"
+Name = "Crit Bullet"
+Icon = ExtResource("2_373gd")
+Description = "Upgrade the cannon with critical precision.
+Damage: [color=Firebrick]50[/color] 
+AttackSpeed: [color=Springgreen ]0.65[/color]
+Range: [color=Cornflowerblue ]250[/color] 
+Effects: [color=Khaki]Has a 33% crit chance[/color]"
+Price = 115
+Tier = 2
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_lfr48")

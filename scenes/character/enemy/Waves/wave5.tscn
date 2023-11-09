@@ -75,7 +75,6 @@ visualsNode = NodePath("../Visuals")
 SpeedUpAmount = 20.0
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_10h3e")]
-Value = 7
 
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("5_gh1t0")]
 Damage = 12.0

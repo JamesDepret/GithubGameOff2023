@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cke0kjddeo1js"]
+
+[ext_resource type="Script" path="res://scenes/ability/T3.2LootBoost/LootBoostController.cs" id="1_dpsdy"]
+
+[node name="T3_2LootBoost" type="Node"]
+script = ExtResource("1_dpsdy")
+doublePartsChance = 0.1

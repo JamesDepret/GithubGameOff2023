@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8hewibur0im"]
+
+[ext_resource type="Script" path="res://scenes/ability/T3.1HealthBoost/HealthBoostController.cs" id="1_setbi"]
+
+[node name="T3_1HealthBoostController" type="Node"]
+script = ExtResource("1_setbi")

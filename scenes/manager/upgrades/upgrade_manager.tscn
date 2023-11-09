@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbb2wvm6jxu0y"]
+[gd_scene load_steps=8 format=3 uid="uid://bbb2wvm6jxu0y"]
 
 [ext_resource type="Script" path="res://scenes/manager/upgrades/UpgradeManager.cs" id="1_drota"]
 [ext_resource type="Resource" uid="uid://xscu6ri3w5ol" path="res://resources/upgrades/T2bouncebullet/bounce_bullet1.tres" id="2_2gwc8"]
 [ext_resource type="PackedScene" uid="uid://un3og4gkln6e" path="res://scenes/UI/UpgradeScreen/upgrades_screen.tscn" id="2_sqe2i"]
 [ext_resource type="Resource" uid="uid://c3sspgabsk31q" path="res://resources/upgrades/T1LongrangeShot/long_range1.tres" id="3_iqayh"]
+[ext_resource type="Resource" uid="uid://doggled5vuwjd" path="res://resources/upgrades/T2CritBullet/crit_bullet1.tres" id="4_4mkjd"]
+[ext_resource type="Resource" uid="uid://3k3e5jmprq7b" path="res://resources/upgrades/T3HealthBoost/health_boost1.tres" id="5_nrhc3"]
+[ext_resource type="Resource" uid="uid://b0px3lgh53e6i" path="res://resources/upgrades/T3LootBoost/loot_boost1.tres" id="6_w1gce"]
 
 [node name="UpgradeManager" type="Node"]
 script = ExtResource("1_drota")
-upgradePool = [ExtResource("3_iqayh"), ExtResource("2_2gwc8")]
+upgradePool = [ExtResource("3_iqayh"), ExtResource("2_2gwc8"), ExtResource("4_4mkjd"), ExtResource("5_nrhc3"), ExtResource("6_w1gce")]
 upgradesScreen = ExtResource("2_sqe2i")

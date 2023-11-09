@@ -1,5 +1,5 @@
 namespace Ability;
-public partial class BulletAbilityController : Node
+public partial class BulletAbilityController : BaseAbilityController
 {
 	[Export] PackedScene bulletAbility;
 	[Export] float maxRange = 150.0f;
@@ -9,6 +9,7 @@ public partial class BulletAbilityController : Node
 	[Export] float damage = 5f;
 	[Export] int bounces = 1;
 	[Export] float damageReductionOnBounce = 0f;
+	[Export] float critChance = 0f;
 	Godot.Timer cooldownTimer;
 	float baseDamage = 5f;
 	float timerDeviation = 0.05f;
@@ -49,9 +50,7 @@ public partial class BulletAbilityController : Node
         if (GetTree().GetFirstNodeInGroup("foreground_layer") is not Node2D foregroundLayer) throw new Exception("Could not find foreground_layer");
 
         foregroundLayer.AddChild(bulletInstance);
-        bulletInstance.HitboxComponent.Damage = damage;
-		bulletInstance.HitboxComponent.HitsBeforeDestroyed = bounces;
-		bulletInstance.HitboxComponent.DamageReductionOnPierce = damageReductionOnBounce;
+		bulletInstance.HitboxComponent.SetupHitboxComponent(damage, bounces, damageReductionOnBounce, critChance);
         bulletInstance.GlobalPosition = player.GlobalPosition;
         var enemyDirection = (enemies[0] as Node2D).GlobalPosition - bulletInstance.GlobalPosition;
         bulletInstance.Velocity = enemyDirection.Normalized() * bulletSpeed;
@@ -62,7 +61,7 @@ public partial class BulletAbilityController : Node
 		for (int i = 0; i < bounces; i++){
 			if (i > enemies.Count) return;
 			var enemy = enemies[i] as Enemy;
-			enemy.HurtboxComponent.GetHit(damage);
+			enemy.HurtboxComponent.GetHit(damage, critChance);
 		}
 	}
 

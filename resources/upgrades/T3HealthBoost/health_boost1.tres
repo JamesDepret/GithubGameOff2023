@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://3k3e5jmprq7b"]
+
+[ext_resource type="PackedScene" uid="uid://de8hewibur0im" path="res://scenes/ability/T3.1HealthBoost/t_3_1_health_boost_controller.tscn" id="1_kak5l"]
+[ext_resource type="Resource" uid="uid://d3cqdeatlrrsq" path="res://resources/upgrades/T3HealthBoost/health_boost2.tres" id="2_0ybwt"]
+[ext_resource type="Texture2D" uid="uid://bxfujkqd3adiq" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_38-Alternative.png" id="2_fiy1w"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_o24vd"]
+
+[resource]
+script = ExtResource("4_o24vd")
+Id = "HealthBoost1"
+Name = "Health Boost"
+Icon = ExtResource("2_fiy1w")
+Description = "Install a health armor
+HealthIncrease: [color=Firebrick]25[/color] 
+Effects: [color=Khaki]-[/color]"
+Price = 25
+Tier = 3
+SupplyCost = 1
+UpgradesTo = ExtResource("2_0ybwt")
+AbilityControllerScene = ExtResource("1_kak5l")

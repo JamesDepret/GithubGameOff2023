@@ -11,5 +11,5 @@ public partial class BaseUpgrade : Resource
 	[Export] public Resource UpgradesTo { get; set; }
 	[Export] public PackedScene AbilityControllerScene { get; set; }
 	public BaseUpgrade PreviousUpgradePointer { get; set; }
-	public BulletAbilityController ControllerPointer { get; set; }
+	public Node ControllerPointer { get; set; }
 }

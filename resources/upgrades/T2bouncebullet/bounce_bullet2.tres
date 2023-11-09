@@ -2,14 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://w2cv3d0owugs" path="res://scenes/ability/T2.1BouncingBullet/t_2_2_bouncing_bullet_controller.tscn" id="1_afat7"]
 [ext_resource type="Texture2D" uid="uid://i3r1blsool8m" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_59.png" id="1_kekbn"]
-[ext_resource type="Script" path="res://resources/upgrades/T2bouncebullet/BounceBullet.cs" id="1_qpjqg"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="1_rgiti"]
 
 [resource]
-script = ExtResource("1_qpjqg")
-Damage = 48.0
-Bounces = 2
+script = ExtResource("1_rgiti")
 Id = "BounceBullet2"
-Name = "Bouncing Bullet"
+Name = "Piercing Bullet"
 Icon = ExtResource("1_kekbn")
 Description = "Upgrade the cannon that shoots a piercing bullet.
 Damage: [color=Firebrick]48[/color] 

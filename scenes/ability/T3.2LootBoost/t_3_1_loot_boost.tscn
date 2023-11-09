@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm1l0xmxknmna"]
+
+[ext_resource type="Script" path="res://scenes/ability/T3.2LootBoost/LootBoostController.cs" id="1_qamrr"]
+
+[node name="T3_1LootBoost" type="Node"]
+script = ExtResource("1_qamrr")

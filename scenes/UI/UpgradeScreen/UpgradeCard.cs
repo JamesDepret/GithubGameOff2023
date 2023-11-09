@@ -11,7 +11,7 @@ public partial class UpgradeCard : PanelContainer
 	Label SupplyLabel;
 	public override void _Ready()
 	{
-		Icon = GetNode<TextureRect>("Border/Background/Icon");
+		Icon = GetNode<TextureRect>("Border/Background/VBoxContainer/Icon");
 		NameLabel = GetNode<Label>("MarginContainer/VBoxContainer/NameLabel");
 		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
 		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/SupplyLabel");
@@ -42,7 +42,7 @@ public partial class UpgradeCard : PanelContainer
 
 	public void SetSupply(int supply)
 	{
-		SupplyLabel.Text = supply.ToString();
+		SupplyLabel.Text = supply.ToString() + " ";
 	}
 
 	public void SetDisabledForSupply(bool disabled)

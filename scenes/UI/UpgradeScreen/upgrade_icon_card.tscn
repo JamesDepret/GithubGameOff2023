@@ -44,13 +44,16 @@ theme_override_constants/margin_bottom = 1
 layout_mode = 2
 texture = SubResource("GradientTexture1D_6li6w")
 
-[node name="Icon" type="TextureRect" parent="Border/Background"]
+[node name="VBoxContainer" type="CenterContainer" parent="Border/Background"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+
+[node name="Icon" type="TextureRect" parent="Border/Background/VBoxContainer"]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
-offset_left = 45.0
-offset_top = 4.0
-offset_right = 69.0
-offset_bottom = 28.0
 texture = ExtResource("1_8m4u3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://blnu16ei38jon"]
+
+[ext_resource type="PackedScene" uid="uid://cke0kjddeo1js" path="res://scenes/ability/T3.2LootBoost/t_3_2_loot_boost.tscn" id="1_5rr8s"]
+[ext_resource type="Texture2D" uid="uid://crsqq6m6fumdg" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_96.png" id="2_mejwk"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_q4p48"]
+
+[resource]
+script = ExtResource("4_q4p48")
+Id = "LootBoost2"
+Name = "Magnet Boost"
+Icon = ExtResource("2_mejwk")
+Description = "Install an even better parts magnet
+Effects: [color=Khaki]Increases loot range by 50% and has a 10% chance to double  parts found[/color]"
+Price = 30
+Tier = 3
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_5rr8s")

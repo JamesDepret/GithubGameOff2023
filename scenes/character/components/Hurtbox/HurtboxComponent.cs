@@ -14,10 +14,12 @@ public partial class HurtboxComponent : Area2D
         var parent = GetParent() as Enemy;
         if (hitbox.EnemiesHit.Contains(parent)) return;
 
-        GetHit(hitbox.Damage);
+        GetHit(hitbox.Damage, hitbox.CritChance);
 
         hitbox.HitsBeforeDestroyed--;
         hitbox.Damage *= 1 - hitbox.DamageReductionOnPierce;
+
+
         if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
         if (hitbox.HitsBeforeDestroyed < 0) return;
 
@@ -26,8 +28,11 @@ public partial class HurtboxComponent : Area2D
 
     }
 
-    public void GetHit(float damage)
+    public void GetHit(float damage, float CritChance = 0f)
     {
+        var critroll = (float) GD.RandRange(0, 100)/100;
+        if (critroll < CritChance) damage *= 2;
+
         HealthComponent.TakeDamage(damage);
 
         var floatingText = FloatingTextScene.Instantiate() as FloatingText;
