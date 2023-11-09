@@ -17,6 +17,7 @@ public partial class HurtboxComponent : Area2D
         GetHit(hitbox.Damage);
 
         hitbox.HitsBeforeDestroyed--;
+        hitbox.Damage *= 1 - hitbox.DamageReductionOnPierce;
         if (hitbox.HitsBeforeDestroyed == 0) hitbox.GetParent().QueueFree();
         if (hitbox.HitsBeforeDestroyed < 0) return;
 

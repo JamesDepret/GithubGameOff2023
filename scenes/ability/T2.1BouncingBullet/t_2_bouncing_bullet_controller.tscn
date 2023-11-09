@@ -10,6 +10,7 @@ baseWaitTime = 0.8
 bulletSpeed = 450.0
 damage = 24.0
 bounces = 2
+damageReductionOnBounce = 0.5
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

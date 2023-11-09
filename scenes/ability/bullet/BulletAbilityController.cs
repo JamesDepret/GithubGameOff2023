@@ -8,6 +8,7 @@ public partial class BulletAbilityController : Node
 	[Export] bool instantHit = false;
 	[Export] float damage = 5f;
 	[Export] int bounces = 1;
+	[Export] float damageReductionOnBounce = 0f;
 	Godot.Timer cooldownTimer;
 	float baseDamage = 5f;
 	float timerDeviation = 0.05f;
@@ -50,7 +51,7 @@ public partial class BulletAbilityController : Node
         foregroundLayer.AddChild(bulletInstance);
         bulletInstance.HitboxComponent.Damage = damage;
 		bulletInstance.HitboxComponent.HitsBeforeDestroyed = bounces;
-
+		bulletInstance.HitboxComponent.DamageReductionOnPierce = damageReductionOnBounce;
         bulletInstance.GlobalPosition = player.GlobalPosition;
         var enemyDirection = (enemies[0] as Node2D).GlobalPosition - bulletInstance.GlobalPosition;
         bulletInstance.Velocity = enemyDirection.Normalized() * bulletSpeed;

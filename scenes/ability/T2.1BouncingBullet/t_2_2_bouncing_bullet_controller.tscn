@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://w2cv3d0owugs"]
+
+[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_nej1u"]
+[ext_resource type="PackedScene" uid="uid://c1y72w1m1slol" path="res://scenes/ability/T2.1BouncingBullet/bouncing_bullet_ability.tscn" id="2_gjecp"]
+
+[node name="T2BouncingBulletController" type="Node"]
+script = ExtResource("1_nej1u")
+bulletAbility = ExtResource("2_gjecp")
+baseWaitTime = 1.0
+bulletSpeed = 450.0
+damage = 48.0
+bounces = 3
+damageReductionOnBounce = 0.5
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

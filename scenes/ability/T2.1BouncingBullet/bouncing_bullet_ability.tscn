@@ -23,7 +23,6 @@ animations = [{
 
 [node name="BouncingBulletAbility" type="Node2D"]
 script = ExtResource("1_biq3f")
-hitsBeforeDestroyed = 2
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_sgtwb")]
 scale = Vector2(0.3, 0.3)
