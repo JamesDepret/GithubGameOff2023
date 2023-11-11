@@ -89,8 +89,8 @@ public partial class EnemyManager : Node
 		timer.WaitTime = EnemySpawnratePerWave[arenaManager.WaveNumber] - 1;
 		currentWaveKills = 0;
 		currentWaveSpawns = 0;
-		GD.Print("Starting next wave - " + arenaManager.WaveNumber + " - spawntime " + baseSpawnTime + " - enemies per wave " + EnemiesPerWave[arenaManager.WaveNumber]
-		+ " - currentKills " + currentWaveKills + " - currentSpawns " + currentWaveSpawns);
+		// GD.Print("Starting next wave - " + arenaManager.WaveNumber + " - spawntime " + baseSpawnTime + " - enemies per wave " + EnemiesPerWave[arenaManager.WaveNumber]
+		// + " - currentKills " + currentWaveKills + " - currentSpawns " + currentWaveSpawns);
 		timer.Start();
 	}
 }

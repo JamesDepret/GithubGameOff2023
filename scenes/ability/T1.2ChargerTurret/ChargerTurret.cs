@@ -17,8 +17,6 @@ public partial class ChargerTurret : BulletAbilityController
 
 		ChargeDownTime.WaitTime = chargeDownTime;
 		ChargeDuration.WaitTime = chargeDuration;
-		GD.Print("ChargerTurret downtime: " + chargeDownTime + " duration: " + chargeDuration);
-		GD.Print("ChargerTurret normaltime: " + normalBulletWaitTime );
 		ChargeDownTime.Stop();
 		ChargeDuration.Start();
 

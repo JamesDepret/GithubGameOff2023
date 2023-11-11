@@ -14,18 +14,20 @@ public partial class BulletAbilityController : BaseAbilityController
 	float baseDamage = 5f;
 	float timerDeviation = 0.05f;
 	int damageDone = 0;
-	float startLifeTime = 0f;
+	double startLifeTime = 0f;
+	ArenaManager arenaManager;
 	
 
 	public override void _Ready()
 	{
-		GD.Print("BulletAbilityController");
 		cooldownTimer = GetNode<Godot.Timer>("Timer");
 		cooldownTimer.WaitTime = baseWaitTime;
 		cooldownTimer.Timeout += OnCooldownTimerTimeout;
 		cooldownTimer.Start();
 		baseDamage = damage;
-		//GameEvents.Instance.AbilityUpgradeAdded += OnAbilityUpgradeAdded;
+		arenaManager = GetNode<ArenaManager>("/root/Main/Managers/ArenaManager");
+		startLifeTime = arenaManager.GetTimeElapsed();
+		arenaManager.WaveCleared += OnWaveCleared;
 	}
 
 	void OnCooldownTimerTimeout()
@@ -35,7 +37,6 @@ public partial class BulletAbilityController : BaseAbilityController
 		// random number between -1 and 1
 		var randomDeviation = (float) GD.RandRange(-1, 1) * timerDeviation;
 		cooldownTimer.WaitTime = baseWaitTime + randomDeviation;
-		GD.Print("cooldownTimer.WaitTime", cooldownTimer.WaitTime);
 
         var enemies = GetTree().GetNodesInGroup("enemy")
                                .Where(enemy => FilterEnemyInRange(enemy, player))
@@ -66,6 +67,7 @@ public partial class BulletAbilityController : BaseAbilityController
 			if (i > enemies.Count) return;
 			var enemy = enemies[i] as Enemy;
 			enemy.HurtboxComponent.GetHit(damage, critChance);
+			damageDone += (int) damage;
 		}
 	}
 
@@ -81,5 +83,12 @@ public partial class BulletAbilityController : BaseAbilityController
 		var aDistance = a.GlobalPosition.DistanceSquaredTo(positionToCompare);
 		var bDistance = b.GlobalPosition.DistanceSquaredTo(positionToCompare);
 		return aDistance.CompareTo(bDistance);
+	}
+
+	void OnWaveCleared()
+	{
+		double endLife = arenaManager.GetTimeElapsed();
+		double lifeTime = endLife - startLifeTime;
+		GD.Print($"BulletAbilityController ${Name} - damageDone: {damageDone} lifeTime: {lifeTime} DPS: {damageDone / lifeTime}");
 	}
 }
