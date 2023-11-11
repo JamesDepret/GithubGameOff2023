@@ -3,20 +3,21 @@ public partial class BulletAbilityController : BaseAbilityController
 {
 	[Export] PackedScene bulletAbility;
 	[Export] float maxRange = 150.0f;
-	[Export] double baseWaitTime = 1.5f;
+	[Export] protected double baseWaitTime = 1.5f;
 	[Export] float bulletSpeed = 300.0f;
 	[Export] bool instantHit = false;
 	[Export] float damage = 5f;
 	[Export] int bounces = 1;
 	[Export] float damageReductionOnBounce = 0f;
 	[Export] float critChance = 0f;
-	Godot.Timer cooldownTimer;
+	protected Godot.Timer cooldownTimer;
 	float baseDamage = 5f;
 	float timerDeviation = 0.05f;
 	
 
 	public override void _Ready()
 	{
+		GD.Print("BulletAbilityController");
 		cooldownTimer = GetNode<Godot.Timer>("Timer");
 		cooldownTimer.WaitTime = baseWaitTime;
 		cooldownTimer.Timeout += OnCooldownTimerTimeout;

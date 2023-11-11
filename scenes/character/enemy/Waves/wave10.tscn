@@ -99,10 +99,11 @@ MaxHealth = 2500.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_a4tqw")]
-Value = 120
+Value = 65
 DropPercentage = 1.0
 
 [node name="EnemyAttackComponent" parent="." instance=ExtResource("5_7txkb")]
+Damage = 25.0
 AttackSpeed = 0.2
 AttackRange = 40.0
 

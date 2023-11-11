@@ -8,7 +8,15 @@ public partial class Player : CharacterBody2D
         if (upgrade.AbilityControllerScene == null) return;
         if (upgrade.PreviousUpgradePointer != null) 
         {
-            shipTurrets.RemoveChild(upgrade.PreviousUpgradePointer.ControllerPointer);
+            try
+            {
+                shipTurrets.RemoveChild(upgrade.PreviousUpgradePointer.ControllerPointer);
+            } 
+            catch (Exception e)
+            {
+                GD.PrintErr(e, "Error removing child of " + shipTurrets.Name + " - child - " + upgrade.PreviousUpgradePointer.ControllerPointer.Name);
+            }
+            
         }
         var controller = upgrade.AbilityControllerScene.Instantiate() as BaseAbilityController;
         shipTurrets.AddChild(controller);

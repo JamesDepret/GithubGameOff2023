@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3w44ejuvvteu"]
+
+[ext_resource type="Script" path="res://scenes/ability/T1.2ChargerTurret/ChargerTurret.cs" id="1_rgmds"]
+[ext_resource type="PackedScene" uid="uid://wjqdniu2hqv" path="res://scenes/ability/bullet/bullet_ability.tscn" id="2_yxghx"]
+
+[node name="T1_1_ChargerTurret" type="Node"]
+script = ExtResource("1_rgmds")
+chargeDownTime = 5.0
+attackSpeedIncrease = 7.0
+bulletAbility = ExtResource("2_yxghx")
+baseWaitTime = 1.4
+bulletSpeed = 100.0
+instantHit = true
+damage = 11.0
+damageReductionOnBounce = null
+critChance = null
+
+[node name="ChargeDownTime" type="Timer" parent="."]
+
+[node name="ChargeDuration" type="Timer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]

@@ -13,12 +13,15 @@ public partial class HealthComponent : Node
 	public override void _Ready()
 	{
 		CurrentHealth = MaxHealth;
+		EmitSignal(SignalName.HealthChanged);
+		
 		ShaderMaterial shaderMat = new ShaderMaterial();
 		if(shaderMaterial != null && sprite != null) {
 			shaderMat.Shader = shaderMaterial.Shader;
 			sprite.Material = shaderMat;
 		}
 		hitFlashObjectsSet = shaderMat != null && sprite != null;
+		
 	}
 
 	public void TakeDamage(float amount)

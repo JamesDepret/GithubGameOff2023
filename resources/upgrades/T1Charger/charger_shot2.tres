@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cvlasnondie13"]
+
+[ext_resource type="PackedScene" uid="uid://ch3m0kpgktpc4" path="res://scenes/ability/T1.2ChargerTurret/t_1_2_charger_turret_controller.tscn" id="1_hctkc"]
+[ext_resource type="Texture2D" uid="uid://c6n53qjp2h6mn" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_8.png" id="2_gsqxr"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="3_ab8ho"]
+
+[resource]
+script = ExtResource("3_ab8ho")
+Id = "ChargerCannon2"
+Name = "Charger Cannon"
+Icon = ExtResource("2_gsqxr")
+Description = "Install a charger cannon.
+Damage: [color=Firebrick]44[/color] 
+AttackSpeed: [color=Springgreen ]1,40[/color]
+Range: [color=Cornflowerblue ]150[/color] 
+Effects: [color=Khaki]Increases attackspeed by 10x every 10 seconds for 1 second.[/color] 
+"
+Price = 90
+Tier = 1
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_hctkc")

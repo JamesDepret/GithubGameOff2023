@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://canu23wetjigg"]
+
+[ext_resource type="Script" path="res://scenes/UI/HpBarTopScreen/MainHealthBar.cs" id="1_5p6wj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xil1k"]
+bg_color = Color(0.140625, 0.148438, 0.148438, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y45ml"]
+bg_color = Color(1, 0.262745, 0.294118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.140625, 0.148438, 0.148438, 1)
+
+[node name="MainHealthBar" type="ProgressBar"]
+custom_minimum_size = Vector2(100, 25)
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 105.0
+offset_bottom = 18.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xil1k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_y45ml")
+max_value = 1.0
+value = 0.5
+show_percentage = false
+script = ExtResource("1_5p6wj")
+
+[node name="HpLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "50/100"
+horizontal_alignment = 1
+vertical_alignment = 1

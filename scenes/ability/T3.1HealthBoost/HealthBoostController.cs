@@ -7,13 +7,22 @@ public partial class HealthBoostController : BaseAbilityController
 	public override void Init()
 	{
 		healthComponent = GetNode<HealthComponent>("../../HealthComponent");
-		healthComponent.IncreaseMaxHealth(25);
-		var WaveManager = GetNode<ArenaManager>("/root/Main/Managers/ArenaManager");
-		WaveManager.WaveCleared += OnWaveCleared;
+		DoEffect();
 	}
 
 	private void OnWaveCleared()
 	{
 		healthComponent.IncreaseMaxHealth(healthOnWaveClear);
+	}
+
+	public override void DoEffect()
+	{
+		if(healthOnWaveClear>0)
+		{
+			var WaveManager = GetNode<ArenaManager>("/root/Main/Managers/ArenaManager");
+			WaveManager.WaveCleared += OnWaveCleared;
+		}
+		
+		healthComponent.IncreaseMaxHealth(maxHealthIncrease);
 	}
 }

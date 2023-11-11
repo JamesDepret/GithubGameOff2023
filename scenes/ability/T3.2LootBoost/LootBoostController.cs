@@ -7,6 +7,11 @@ public partial class LootBoostController : BaseAbilityController
 	{
 		CircleShape2D pickupArea = GetNode<CollisionShape2D>("../../PickupArea/CollisionShape2D").Shape as CircleShape2D;
 		pickupArea.Radius *= (1 + lootBoost);
-		GameEvents.Instance.LootCritChance += doublePartsChance;
+		DoEffect();
+	}
+
+	public override void DoEffect()
+	{
+		GameEvents.Instance.LootCritChance -= doublePartsChance;
 	}
 }

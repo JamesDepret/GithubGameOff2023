@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=4 format=3 uid="uid://xscu6ri3w5ol"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://xscu6ri3w5ol"]
 
 [ext_resource type="PackedScene" uid="uid://kcu5tg5amfch" path="res://scenes/ability/T2.1BouncingBullet/t_2_bouncing_bullet_controller.tscn" id="1_refml"]
 [ext_resource type="Texture2D" uid="uid://bqq8h3q4y07u4" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_17-alternative2.png" id="2_y4d2y"]
+[ext_resource type="Resource" uid="uid://bhougc3jrhxy7" path="res://resources/upgrades/T2bouncebullet/bounce_bullet2.tres" id="3_g41aa"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="3_hm2hu"]
 
 [resource]
@@ -17,4 +18,5 @@ Effects: [color=Khaki]Pierces 1 time for 50% damage[/color]"
 Price = 55
 Tier = 2
 SupplyCost = 1
+UpgradesTo = ExtResource("3_g41aa")
 AbilityControllerScene = ExtResource("1_refml")
