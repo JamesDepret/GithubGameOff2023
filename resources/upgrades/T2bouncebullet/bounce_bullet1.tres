@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://xscu6ri3w5ol"]
 
 [ext_resource type="PackedScene" uid="uid://kcu5tg5amfch" path="res://scenes/ability/T2.1BouncingBullet/t_2_bouncing_bullet_controller.tscn" id="1_refml"]
-[ext_resource type="Texture2D" uid="uid://dda0a7gyjcqxb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_17.png" id="2_v5t2r"]
+[ext_resource type="Texture2D" uid="uid://bqq8h3q4y07u4" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_17-alternative2.png" id="2_y4d2y"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="3_hm2hu"]
 
 [resource]
 script = ExtResource("3_hm2hu")
 Id = "BounceBullet1"
 Name = "Piercing Bullet"
-Icon = ExtResource("2_v5t2r")
+Icon = ExtResource("2_y4d2y")
 Description = "Install a cannon that shoots a piercing  bullet.
 Damage: [color=Firebrick]24[/color] 
 AttackSpeed: [color=Springgreen ]0.8[/color]

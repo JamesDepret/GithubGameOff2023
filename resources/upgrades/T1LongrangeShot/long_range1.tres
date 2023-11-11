@@ -3,13 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://1ffdq2ysqa8p" path="res://scenes/ability/T1.1LongRangeBullet/t_1_1_long_range_bullet_controller.tscn" id="1_qot17"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="1_tkdtb"]
 [ext_resource type="Resource" uid="uid://dlco30qmi4ybp" path="res://resources/upgrades/T1LongrangeShot/long_range2.tres" id="2_3ugio"]
-[ext_resource type="Texture2D" uid="uid://yi2ac5vrok27" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_44.png" id="2_hwiv5"]
+[ext_resource type="Texture2D" uid="uid://t6a56gyf7fvb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_44-alternative.png" id="2_x6kdp"]
 
 [resource]
 script = ExtResource("1_tkdtb")
 Id = "LongRange1"
 Name = "Long Range Cannon"
-Icon = ExtResource("2_hwiv5")
+Icon = ExtResource("2_x6kdp")
 Description = "Install a long range cannon
 Damage: [color=Firebrick]4[/color] 
 AttackSpeed: [color=Springgreen ]0.33[/color]

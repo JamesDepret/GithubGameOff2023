@@ -1,14 +1,14 @@
 [gd_resource type="Resource" load_steps=4 format=3 uid="uid://dlco30qmi4ybp"]
 
-[ext_resource type="Texture2D" uid="uid://dli13gurwut5l" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_81.png" id="1_dfryb"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="1_dxlol"]
 [ext_resource type="PackedScene" uid="uid://l2ii24bnbtia" path="res://scenes/ability/T1.1LongRangeBullet/t_1_2_long_range_bullet_controller.tscn" id="1_hk1jd"]
+[ext_resource type="Texture2D" uid="uid://yi2ac5vrok27" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_44.png" id="2_tkue0"]
 
 [resource]
 script = ExtResource("1_dxlol")
 Id = "LongRange2"
 Name = "Long Range Cannon"
-Icon = ExtResource("1_dfryb")
+Icon = ExtResource("2_tkue0")
 Description = "Upgrade a long range cannon
 Damage: [color=Firebrick]24[/color] 
 AttackSpeed: [color=Springgreen ]0.33[/color]
