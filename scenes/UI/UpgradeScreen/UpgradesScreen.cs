@@ -85,7 +85,12 @@ public partial class UpgradesScreen : CanvasLayer
 		var parts = GameEvents.Instance.Parts;
 		var currentSupply = GameEvents.Instance.Supply;
 		var maxSupply = GameEvents.Instance.MaxSupply;
-		selectedCard.SetupCard(selectedUpgrade.Price, selectedUpgrade.SupplyCost, selectedUpgrade, parts < selectedUpgrade.Price, currentSupply + selectedUpgrade.SupplyCost > maxSupply);
+		selectedCard.SetupCard(selectedUpgrade.Price, 
+							   selectedUpgrade.SupplyCost, 
+							   selectedUpgrade, 
+							   parts < selectedUpgrade.Price, 
+							   currentSupply + selectedUpgrade.SupplyCost > maxSupply, 
+							   selectedUpgrade.Icon);
         BuyButton.Visible = !(parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
     }
 

@@ -5,15 +5,13 @@
 
 [node name="T1_1_ChargerTurret" type="Node"]
 script = ExtResource("1_rgmds")
-chargeDownTime = 5.0
 attackSpeedIncrease = 7.0
 bulletAbility = ExtResource("2_yxghx")
+maxRange = 120.0
 baseWaitTime = 1.4
 bulletSpeed = 100.0
 instantHit = true
 damage = 11.0
-damageReductionOnBounce = null
-critChance = null
 
 [node name="ChargeDownTime" type="Timer" parent="."]
 

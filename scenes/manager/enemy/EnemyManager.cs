@@ -30,7 +30,7 @@ public partial class EnemyManager : Node
 		if(!currentWaveEnemies.Contains(enemyName)) return;
 		currentWaveEnemies.Remove(enemyName);
 		currentWaveKills++;
-		GD.Print("currentKills " + currentWaveKills + " - Enemies this wave: " + EnemiesPerWave[arenaManager.WaveNumber] + "Name: " + enemyName);
+		//GD.Print("currentKills " + currentWaveKills + " - Enemies this wave: " + EnemiesPerWave[arenaManager.WaveNumber] + "Name: " + enemyName);
 		if(currentWaveKills >= EnemiesPerWave[arenaManager.WaveNumber]) 
 			WaveIsCleared();
 	}

@@ -5,8 +5,8 @@
 
 [node name="T1_1_ChargerTurret" type="Node"]
 script = ExtResource("1_1h1nn")
-chargeDownTime = 5.0
 bulletAbility = ExtResource("2_fw05j")
+maxRange = 120.0
 baseWaitTime = 1.4
 bulletSpeed = 100.0
 instantHit = true

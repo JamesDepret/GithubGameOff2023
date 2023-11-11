@@ -14,6 +14,7 @@ public partial class Player : CharacterBody2D
             } 
             catch (Exception e)
             {
+                GD.Print(e, "Error removing child of " + shipTurrets.Name + " - child - " + upgrade.PreviousUpgradePointer.ControllerPointer.Name);
                 GD.PrintErr(e, "Error removing child of " + shipTurrets.Name + " - child - " + upgrade.PreviousUpgradePointer.ControllerPointer.Name);
             }
             

@@ -141,6 +141,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_hw8lb")
 text = "Buy Item"
 
 [node name="HelpPanel" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
