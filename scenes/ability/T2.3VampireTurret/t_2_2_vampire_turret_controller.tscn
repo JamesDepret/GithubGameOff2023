@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkfu3tsr6f7rw"]
+
+[ext_resource type="Script" path="res://scenes/ability/T2.3VampireTurret/VampireTurretController.cs" id="1_qekbg"]
+[ext_resource type="PackedScene" uid="uid://wjqdniu2hqv" path="res://scenes/ability/bullet/bullet_ability.tscn" id="2_qqa8v"]
+
+[node name="T2_1_VampireTurretController" type="Node"]
+script = ExtResource("1_qekbg")
+HealthGainedPerHit = 2
+bulletAbility = ExtResource("2_qqa8v")
+maxRange = 80.0
+baseWaitTime = 0.66
+instantHit = true
+damage = 100.0
+
+[node name="Timer" type="Timer" parent="."]

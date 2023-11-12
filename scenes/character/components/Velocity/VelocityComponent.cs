@@ -51,4 +51,9 @@ public partial class VelocityComponent : Node
     {
         MaxSpeed += SpeedUpAmount;
     }
+
+    public void AdjustSpeed(int speedIncrease)
+    {
+        MaxSpeed += speedIncrease;
+    }
 }

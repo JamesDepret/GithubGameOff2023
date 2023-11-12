@@ -97,9 +97,9 @@ offset_right = 460.0
 offset_bottom = 310.0
 
 [node name="TurretContainers" type="HFlowContainer" parent="."]
-offset_top = 150.0
+offset_top = 45.0
 offset_right = 160.0
-offset_bottom = 310.0
+offset_bottom = 325.0
 
 [node name="TextureRect" parent="TurretContainers" instance=ExtResource("5_ar7dc")]
 layout_mode = 2
@@ -156,9 +156,9 @@ texture = SubResource("GradientTexture1D_mbko0")
 [node name="TextureRect3" type="TextureRect" parent="HelpPanel"]
 modulate = Color(1, 1, 1, 0.266667)
 layout_mode = 2
-offset_top = 151.0
+offset_top = 45.0
 offset_right = 140.0
-offset_bottom = 311.0
+offset_bottom = 325.0
 texture = SubResource("GradientTexture1D_mbko0")
 
 [node name="TextureRect4" type="TextureRect" parent="HelpPanel"]
@@ -172,13 +172,16 @@ texture = SubResource("GradientTexture1D_mbko0")
 
 [node name="Label" type="Label" parent="HelpPanel"]
 layout_mode = 2
-offset_top = 151.0
+offset_top = 47.0
 offset_right = 131.0
-offset_bottom = 204.0
+offset_bottom = 133.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 text = "When you buy turrets their icons come here.
-Turrets => can be clicked for buyable upgrades"
+
+Turrets => can be clicked for buyable upgrades
+
+Red turrets are rank 1, blue turrets are rank 2"
 autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="HelpPanel"]

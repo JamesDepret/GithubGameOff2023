@@ -7,7 +7,7 @@ public partial class BulletAbilityController : BaseAbilityController
 	[Export] float bulletSpeed = 300.0f;
 	[Export] bool instantHit = false;
 	[Export] float damage = 5f;
-	[Export] int bounces = 1;
+	[Export] protected int bounces = 1;
 	[Export] float damageReductionOnBounce = 0f;
 	[Export] float critChance = 0f;
 	protected Godot.Timer cooldownTimer;
@@ -61,7 +61,7 @@ public partial class BulletAbilityController : BaseAbilityController
         bulletInstance.Velocity = enemyDirection.Normalized() * bulletSpeed;
     }
 
-	private void InstantHitBullet(List<Node> enemies)
+	protected virtual void InstantHitBullet(List<Node> enemies)
 	{
 		for (int i = 0; i < bounces; i++){
 			if (i > enemies.Count) return;

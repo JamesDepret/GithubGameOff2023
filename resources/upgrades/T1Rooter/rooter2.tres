@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bhktrcj6wswek"]
+
+[ext_resource type="PackedScene" uid="uid://dyqp0m1mgs13" path="res://scenes/ability/T1.3RooterTurret/t_1_2_rooter_turret_controller.tscn" id="1_s2o53"]
+[ext_resource type="Texture2D" uid="uid://bkb32yh10te5v" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_29-alt1.png" id="2_ainus"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_fnh3f"]
+
+[resource]
+script = ExtResource("4_fnh3f")
+Id = "Rooter2"
+Name = "Rooter Turret"
+Icon = ExtResource("2_ainus")
+Description = "Upgrade the melee turret adding a slowing unit.
+Damage: [color=Firebrick]105[/color] 
+AttackSpeed: [color=Springgreen ]1,3[/color]
+Range: [color=Cornflowerblue ]30[/color] 
+Effects: [color=Khaki]Slows the movement of the target by 20 per hit[/color] 
+"
+Price = 105
+Tier = 1
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_s2o53")

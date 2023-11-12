@@ -10,6 +10,6 @@ public partial class high_score : Control
 
 	private void OnPartsCollected(int number)
 	{
-		scoreLabel.Text = $"high score: {GameEvents.Instance.TotalScore}";
+		scoreLabel.Text = $"Score: {GameEvents.Instance.TotalScore}";
 	}
 }

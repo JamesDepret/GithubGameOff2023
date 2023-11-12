@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1tumo470taxs"]
+
+[ext_resource type="Script" path="res://scenes/ability/T1.3RooterTurret/RooterTurretController.cs" id="1_dlxgg"]
+[ext_resource type="PackedScene" uid="uid://wjqdniu2hqv" path="res://scenes/ability/bullet/bullet_ability.tscn" id="2_5mq8l"]
+
+[node name="RooterTurretController" type="Node"]
+script = ExtResource("1_dlxgg")
+bulletAbility = ExtResource("2_5mq8l")
+maxRange = 30.0
+baseWaitTime = 0.6
+instantHit = true
+damage = 8.0
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://co1r0imi0gidn"]
+
+[ext_resource type="PackedScene" uid="uid://bq2kecbktdo86" path="res://scenes/ability/T2.3VampireTurret/t_2_1_vampire_turret_controller.tscn" id="1_btnkr"]
+[ext_resource type="Texture2D" uid="uid://befxxj2n2kjfl" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_92-alt1.png" id="2_p0mkk"]
+[ext_resource type="Resource" uid="uid://bhgd82pja14u1" path="res://resources/upgrades/T2VampireMelee/VampireTurret2.tres" id="3_8ymi6"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_knye3"]
+
+[resource]
+script = ExtResource("4_knye3")
+Id = "VampireTurret1"
+Name = "Vampire Turret"
+Icon = ExtResource("2_p0mkk")
+Description = "Install a cannon that absorbs parts to repair the ship.
+Damage: [color=Firebrick]23[/color] 
+AttackSpeed: [color=Springgreen ]1[/color]
+Range: [color=Cornflowerblue ]80[/color] 
+Effects: [color=Khaki]Heals 1 HP each hit[/color]"
+Price = 50
+Tier = 2
+SupplyCost = 1
+UpgradesTo = ExtResource("3_8ymi6")
+AbilityControllerScene = ExtResource("1_btnkr")

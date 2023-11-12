@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=34 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -28,13 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmsnuqjqsi3w" path="res://assets/art/MattWalkden/Space Background/as1.png" id="21_efwbo"]
 [ext_resource type="Texture2D" uid="uid://bc4lfbw2gculb" path="res://assets/art/MattWalkden/Space Background/as2.png" id="22_7caon"]
 [ext_resource type="PackedScene" uid="uid://cf3pn882jd28w" path="res://scenes/character/enemy/Waves/wave13.tscn" id="22_71kfr"]
-[ext_resource type="Resource" uid="uid://xscu6ri3w5ol" path="res://resources/upgrades/T2bouncebullet/bounce_bullet1.tres" id="22_kit01"]
 [ext_resource type="PackedScene" uid="uid://b4fp2segjnfc7" path="res://scenes/character/enemy/Waves/wave14.tscn" id="23_e0rlf"]
-[ext_resource type="Resource" uid="uid://doggled5vuwjd" path="res://resources/upgrades/T2CritBullet/crit_bullet1.tres" id="23_mjyv4"]
-[ext_resource type="Resource" uid="uid://3k3e5jmprq7b" path="res://resources/upgrades/T3HealthBoost/health_boost1.tres" id="24_xa0dt"]
-[ext_resource type="Resource" uid="uid://b0px3lgh53e6i" path="res://resources/upgrades/T3LootBoost/loot_boost1.tres" id="25_odv28"]
-[ext_resource type="Resource" uid="uid://i0ejnoa2adp4" path="res://resources/upgrades/T1Charger/charger_shot1.tres" id="26_1o6e4"]
-[ext_resource type="Resource" uid="uid://c3sspgabsk31q" path="res://resources/upgrades/T1LongrangeShot/long_range1.tres" id="27_a04n2"]
 [ext_resource type="PackedScene" uid="uid://w1vikaa3bdxi" path="res://scenes/UI/HighScore/high_score.tscn" id="36_7ud7l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
@@ -519,7 +513,6 @@ arenaManager = NodePath("../ArenaManager")
 arenaManager = NodePath("../ArenaManager")
 
 [node name="UpgradeManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("13_kcudf")]
-upgradePool = [ExtResource("22_kit01"), ExtResource("23_mjyv4"), ExtResource("24_xa0dt"), ExtResource("25_odv28"), ExtResource("26_1o6e4"), ExtResource("27_a04n2")]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="TileMap" type="TileMap" parent="."]

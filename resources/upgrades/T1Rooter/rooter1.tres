@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://bhcfgyniwsybd"]
+
+[ext_resource type="PackedScene" uid="uid://d1tumo470taxs" path="res://scenes/ability/T1.3RooterTurret/t_1_1_rooter_turret_controller.tscn" id="1_wtli3"]
+[ext_resource type="Texture2D" uid="uid://igu4u5emf5w8" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_29-alt2.png" id="2_jgx0c"]
+[ext_resource type="Resource" uid="uid://bhktrcj6wswek" path="res://resources/upgrades/T1Rooter/rooter2.tres" id="3_fboeb"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_eonw0"]
+
+[resource]
+script = ExtResource("4_eonw0")
+Id = "Rooter1"
+Name = "Rooter Turret"
+Icon = ExtResource("2_jgx0c")
+Description = "Install a melee turret
+Damage: [color=Firebrick]8[/color] 
+AttackSpeed: [color=Springgreen ]0.6[/color]
+Range: [color=Cornflowerblue ]30[/color] 
+Effects: [color=Khaki]-[/color] 
+"
+Price = 15
+Tier = 1
+SupplyCost = 0
+UpgradesTo = ExtResource("3_fboeb")
+AbilityControllerScene = ExtResource("1_wtli3")

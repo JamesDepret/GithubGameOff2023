@@ -32,6 +32,12 @@ public partial class HealthComponent : Node
         Callable.From(CheckDeath).CallDeferred();
     }
 
+	public void HealDamage(float amount)
+	{
+        CurrentHealth = MathF.Max(CurrentHealth + amount, 0);
+        EmitSignal(SignalName.HealthChanged);
+	}
+
     public float GetHealthPercentage()
     {
         if (MaxHealth <= 0) return 0;

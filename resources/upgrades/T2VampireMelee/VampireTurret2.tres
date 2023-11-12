@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://bhgd82pja14u1"]
+
+[ext_resource type="PackedScene" uid="uid://dkfu3tsr6f7rw" path="res://scenes/ability/T2.3VampireTurret/t_2_2_vampire_turret_controller.tscn" id="1_uo6h0"]
+[ext_resource type="Texture2D" uid="uid://bf6moys46y8dw" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_92-alt2.png" id="2_qexd5"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_gmnsi"]
+
+[resource]
+script = ExtResource("4_gmnsi")
+Id = "VampireTurret2"
+Name = "Vampire Turret"
+Icon = ExtResource("2_qexd5")
+Description = "I^grade the cannon that absorbs parts to repair the ship.
+Damage: [color=Firebrick]100[/color] 
+AttackSpeed: [color=Springgreen ]0,66[/color]
+Range: [color=Cornflowerblue ]80[/color] 
+Effects: [color=Khaki]Heals 2 HP each hit[/color]"
+Price = 100
+Tier = 2
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_uo6h0")
