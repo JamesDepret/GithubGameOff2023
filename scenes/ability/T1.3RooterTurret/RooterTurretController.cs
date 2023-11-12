@@ -11,7 +11,7 @@ public partial class RooterTurretController : BulletAbilityController
 			for (int i = 0; i < bounces; i++){
 				if (i > enemies.Count) return;
 				VelocityComponent velocityComponent = enemies[i].GetNode<VelocityComponent>("VelocityComponent");
-				velocityComponent.AdjustSpeed(SpeedUpFactor);
+				velocityComponent.AdjustSpeed(-SpeedUpFactor);
 			}
 		}
 		

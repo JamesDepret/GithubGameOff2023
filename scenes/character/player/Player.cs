@@ -9,7 +9,7 @@ public partial class Player : CharacterBody2D
 	[Export] public bool IsMainPlayer { get; set; } = false;
 	[Export] public int PlayerPrio { get; set; } = 1;
 	[Export] private UpgradeManager upgradeManager;
-	private Node shipTurrets;
+	private Node shipTurrets_AbilitiesNode;
 	private HealthComponent healthComponent;
 	private ProgressBar healthBar;
 	private AnimationPlayer animationPlayer;
@@ -21,7 +21,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Ready()
 	{
-		shipTurrets = GetNode<Node>("Abilities");
+		shipTurrets_AbilitiesNode = GetNode<Node>("Abilities");
 		GameEvents.Instance.ShipUpgradeAdded += OnNewShipTurretAdded;
 
 		// Health

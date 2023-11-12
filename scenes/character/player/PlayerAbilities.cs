@@ -6,22 +6,10 @@ public partial class Player : CharacterBody2D
     void OnNewShipTurretAdded(BaseUpgrade upgrade, Godot.Collections.Array<BaseUpgrade> currentUpgrades)
     {
         if (upgrade.AbilityControllerScene == null) return;
-        if (upgrade.PreviousUpgradePointer != null) 
-        {
-            try
-            {
-                shipTurrets.RemoveChild(upgrade.PreviousUpgradePointer.ControllerPointer);
-            } 
-            catch (Exception e)
-            {
-                GD.Print(e, "Error removing child of " + shipTurrets.Name + " - child - " + upgrade.PreviousUpgradePointer.ControllerPointer.Name);
-                GD.PrintErr(e, "Error removing child of " + shipTurrets.Name + " - child - " + upgrade.PreviousUpgradePointer.ControllerPointer.Name);
-            }
-            
-        }
+        upgrade.PreviousUpgradePointer?.ControllerPointer.QueueFree();
         var controller = upgrade.AbilityControllerScene.Instantiate() as BaseAbilityController;
         controller.SubName = upgrade.Id;
-        shipTurrets.AddChild(controller);
+        shipTurrets_AbilitiesNode.AddChild(controller);
         controller.Init();
         upgrade.ControllerPointer = controller;
 

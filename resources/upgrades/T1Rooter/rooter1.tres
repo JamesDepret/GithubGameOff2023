@@ -12,12 +12,12 @@ Name = "Rooter Turret"
 Icon = ExtResource("2_jgx0c")
 Description = "Install a melee turret
 Damage: [color=Firebrick]8[/color] 
-AttackSpeed: [color=Springgreen ]0.6[/color]
+AttackSpeed: [color=Springgreen ]0.5[/color]
 Range: [color=Cornflowerblue ]30[/color] 
 Effects: [color=Khaki]-[/color] 
 "
 Price = 15
 Tier = 1
-SupplyCost = 0
+SupplyCost = 1
 UpgradesTo = ExtResource("3_fboeb")
 AbilityControllerScene = ExtResource("1_wtli3")

@@ -7,7 +7,7 @@
 script = ExtResource("1_dlxgg")
 bulletAbility = ExtResource("2_5mq8l")
 maxRange = 30.0
-baseWaitTime = 0.6
+baseWaitTime = 0.5
 instantHit = true
 damage = 8.0
 
