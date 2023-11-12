@@ -5,6 +5,7 @@ public partial class GameEvents : Node
 	[Signal] public delegate void PartsCollectedEventHandler (int number);
 	public int Parts { get; set; } = 0;
 	public float LootCritChance { get; set; } = 0f;
+	public int TotalScore { get; set; } = 0;
     
 	public void EmitPartsCollected(int number)
 	{
@@ -14,6 +15,9 @@ public partial class GameEvents : Node
 		{
 			number *= 2;
 		}
+		
+		if(number > 0) TotalScore += number * 10;
+
 		Parts += number;
 		EmitSignal(SignalName.PartsCollected, number);
 	}

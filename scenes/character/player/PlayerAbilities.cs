@@ -20,6 +20,7 @@ public partial class Player : CharacterBody2D
             
         }
         var controller = upgrade.AbilityControllerScene.Instantiate() as BaseAbilityController;
+        controller.SubName = upgrade.Id;
         shipTurrets.AddChild(controller);
         controller.Init();
         upgrade.ControllerPointer = controller;

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=40 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -35,6 +35,7 @@
 [ext_resource type="Resource" uid="uid://b0px3lgh53e6i" path="res://resources/upgrades/T3LootBoost/loot_boost1.tres" id="25_odv28"]
 [ext_resource type="Resource" uid="uid://i0ejnoa2adp4" path="res://resources/upgrades/T1Charger/charger_shot1.tres" id="26_1o6e4"]
 [ext_resource type="Resource" uid="uid://c3sspgabsk31q" path="res://resources/upgrades/T1LongrangeShot/long_range1.tres" id="27_a04n2"]
+[ext_resource type="PackedScene" uid="uid://w1vikaa3bdxi" path="res://scenes/UI/HighScore/high_score.tscn" id="36_7ud7l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
 texture = ExtResource("2_uyou6")
@@ -497,6 +498,12 @@ harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_vr4oo")]
 player = NodePath("../../Player")
+
+[node name="HighScore" parent="CanvasLayer" instance=ExtResource("36_7ud7l")]
+offset_left = 125.0
+offset_top = 5.0
+offset_right = 125.0
+offset_bottom = 5.0
 
 [node name="Managers" type="Node" parent="."]
 

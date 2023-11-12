@@ -89,6 +89,6 @@ public partial class BulletAbilityController : BaseAbilityController
 	{
 		double endLife = arenaManager.GetTimeElapsed();
 		double lifeTime = endLife - startLifeTime;
-		GD.Print($"BulletAbilityController ${Name} - damageDone: {damageDone} lifeTime: {lifeTime} DPS: {damageDone / lifeTime}");
+		GD.Print($"BulletAbilityController ${SubName} - damageDone: {damageDone} lifeTime: {lifeTime} DPS: {damageDone / lifeTime}");
 	}
 }

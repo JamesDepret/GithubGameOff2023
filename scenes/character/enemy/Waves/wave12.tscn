@@ -117,7 +117,7 @@ color_ramp = SubResource("Gradient_qgonr")
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_d5as1")
 autoplay = "default"
-frame_progress = 0.352622
+frame_progress = 0.120461
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

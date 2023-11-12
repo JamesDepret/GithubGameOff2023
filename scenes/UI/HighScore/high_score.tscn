@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://w1vikaa3bdxi"]
+
+[ext_resource type="Script" path="res://scenes/UI/HighScore/high_score.cs" id="1_34j26"]
+
+[node name="HighScore" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_34j26")
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 12.0
+theme_override_colors/font_shadow_color = Color(0, 0.576471, 0.211765, 1)
+text = "high score: 0"
