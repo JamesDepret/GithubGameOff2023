@@ -2,11 +2,13 @@ namespace Character;
 public partial class Enemy : CharacterBody2D
 {
 	[Export] public bool IsBiteBoss { get; set; } = false;
+	[Export] public bool IsBiteBossPhase2 { get; set; } = false;
 	public HurtboxComponent HurtboxComponent { get; set; }
 	Godot.Timer lifeTimer;
 	VelocityComponent velocityComponent;
 	CpuParticles2D particles;
 	bool isMoving = true;
+	private Node2D visuals;
 
     public override void _Ready()
     {
@@ -16,6 +18,7 @@ public partial class Enemy : CharacterBody2D
 		else velocityComponent = GetNode<VelocityComponent>("VelocityComponent");
 		HurtboxComponent = GetNode<HurtboxComponent>("HurtboxComponent");
 		particles = GetNode<CpuParticles2D>("Visuals/Particles");
+		visuals = GetNode<Node2D>("Visuals");
     }
 
 	public override void _Process(double delta)
@@ -26,6 +29,10 @@ public partial class Enemy : CharacterBody2D
 			velocityComponent.Move(this);
 			var dir = velocityComponent.Direction;
 			particles.Direction = new Vector2(dir.X * -(particles.GetParent() as Node2D).Scale.X, -dir.Y);
+			if(IsBiteBossPhase2)
+			{
+				visuals.Rotation = Mathf.Atan2(dir.Y, dir.X) - Mathf.Pi / 2;
+			}
 		}
 	}
 

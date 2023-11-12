@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_hxtnw"]
 [ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_g60br"]
 [ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_yt4da"]
-[ext_resource type="Texture2D" uid="uid://b0n7dd46fnmpi" path="res://assets/art/Own/boss/jamesd32 boss sheet.png" id="7_kwkgt"]
+[ext_resource type="Texture2D" uid="uid://dvbjys32rf8op" path="res://assets/art/Own/boss/jamesd32 boss sheetphase2.png" id="7_mxjw0"]
 [ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_h2pih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
@@ -22,57 +22,57 @@ interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_a5u5a"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_0llk6"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(0, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_af53s"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_acf0k"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(80, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqe63"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mf1y"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(160, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sadwm"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1vet"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(240, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0h5ta"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0c8b"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(320, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ms744"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueupl"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(400, 0, 80, 85)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6f58e"]
-atlas = ExtResource("7_kwkgt")
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fx16"]
+atlas = ExtResource("7_mxjw0")
 region = Rect2(480, 0, 80, 85)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_2absl"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_fou56"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_a5u5a")
+"texture": SubResource("AtlasTexture_0llk6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_af53s")
+"texture": SubResource("AtlasTexture_acf0k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gqe63")
+"texture": SubResource("AtlasTexture_2mf1y")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sadwm")
+"texture": SubResource("AtlasTexture_d1vet")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0h5ta")
+"texture": SubResource("AtlasTexture_c0c8b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ms744")
+"texture": SubResource("AtlasTexture_ueupl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6f58e")
+"texture": SubResource("AtlasTexture_4fx16")
 }],
 "loop": true,
 "name": &"default",
@@ -83,23 +83,20 @@ animations = [{
 radius = 28.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-modulate = Color(1, 0.988235, 0.988235, 1)
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_41qwt")
-IsBiteBoss = true
+IsBiteBossPhase2 = true
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_mlm3q")]
 MaxSpeed = 60.0
 Acceleration = 25.0
 visualsNode = NodePath("../Visuals")
-SpeedUpAmount = 15.0
-VelocityModifier = null
+SpeedUpAmount = 20.0
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_o7qsv")]
 MaxHealth = 3000.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
-HasShields = null
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_hxtnw")]
 Value = 65
@@ -142,11 +139,10 @@ color = Color(0.701961, 0.2, 0.172549, 1)
 color_ramp = SubResource("Gradient_qgonr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
-modulate = Color(1, 0.172549, 0.12549, 1)
 position = Vector2(0, -12)
-sprite_frames = SubResource("SpriteFrames_2absl")
+sprite_frames = SubResource("SpriteFrames_fou56")
 autoplay = "default"
-frame_progress = 0.226757
+frame_progress = 0.133604
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)

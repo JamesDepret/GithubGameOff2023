@@ -97,7 +97,6 @@ visualsNode = NodePath("../Visuals")
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_nhh4r")]
 MaxHealth = 2500.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
-HasShields = null
 
 [node name="PartsDropComponent" parent="." instance=ExtResource("4_a4tqw")]
 Value = 65

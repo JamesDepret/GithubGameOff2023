@@ -62,12 +62,9 @@ border_color = Color(0.140625, 0.148438, 0.148438, 1)
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
 script = ExtResource("1_2b8bi")
-MaxSpeed = null
-Acceleration = null
 RotationSpeed = 10.0
 RotationAngle = 20.0
 IsMainPlayer = true
-PlayerPrio = null
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_k8vcu")]
 MaxHealth = 100.0
