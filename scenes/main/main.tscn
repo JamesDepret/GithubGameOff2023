@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=35 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ctjewlg111dcn" path="res://scenes/character/enemy/Waves/wave3.tscn" id="6_hyb7s"]
 [ext_resource type="PackedScene" uid="uid://cqyfk3dx2qs7r" path="res://scenes/character/enemy/Waves/wave4.tscn" id="7_ecgxg"]
 [ext_resource type="PackedScene" uid="uid://canu23wetjigg" path="res://scenes/UI/HpBarTopScreen/main_health_bar.tscn" id="7_vr4oo"]
+[ext_resource type="PackedScene" uid="uid://d084o6mt8v3cx" path="res://scenes/UI/HpBarTopScreen/main_shield_bar.tscn" id="8_8dar3"]
 [ext_resource type="PackedScene" uid="uid://dcwka7nrfr8r1" path="res://scenes/manager/harvest/harvest_manager.tscn" id="9_0602n"]
 [ext_resource type="PackedScene" uid="uid://no4ylw3t6jrh" path="res://scenes/character/enemy/Waves/wave10.tscn" id="9_g5poj"]
 [ext_resource type="PackedScene" uid="uid://cggmxdcy3r3vh" path="res://scenes/character/enemy/Waves/wave5.tscn" id="12_lwoa5"]
@@ -491,12 +492,23 @@ offset_bottom = 358.0
 harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_vr4oo")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 100.0
+offset_bottom = 16.0
+player = NodePath("../../Player")
+
+[node name="MainShieldBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("8_8dar3")]
+offset_left = 0.0
+offset_top = 16.0
+offset_right = 100.0
+offset_bottom = 32.0
 player = NodePath("../../Player")
 
 [node name="HighScore" parent="CanvasLayer" instance=ExtResource("36_7ud7l")]
-offset_left = 125.0
+offset_left = 130.0
 offset_top = 5.0
-offset_right = 125.0
+offset_right = 130.0
 offset_bottom = 5.0
 
 [node name="Managers" type="Node" parent="."]

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://d0utp6vqq02hw"]
+
+[ext_resource type="PackedScene" uid="uid://cfnspmj4k26db" path="res://scenes/ability/T3.3ShieldBoost/t_3_2_shield_boost_controller.tscn" id="1_mik84"]
+[ext_resource type="Texture2D" uid="uid://creewxvlgixq0" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_16-alt2.png" id="2_8bdd4"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_4eie2"]
+
+[resource]
+script = ExtResource("4_4eie2")
+Id = "ShieldBoost2"
+Name = "Shield Boost"
+Icon = ExtResource("2_8bdd4")
+Description = "Upgrade a shield generator
+ShieldIncrease: [color=Cornflowerblue]40[/color] 
+Effects: [color=Khaki]Shield recover after each wave. Regenerate 1 shield every 5 seconds[/color]"
+Price = 75
+Tier = 3
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_mik84")

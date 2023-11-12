@@ -69,6 +69,7 @@ IsMainPlayer = true
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_k8vcu")]
 MaxHealth = 100.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
+HasShields = true
 
 [node name="Abilities" type="Node" parent="."]
 

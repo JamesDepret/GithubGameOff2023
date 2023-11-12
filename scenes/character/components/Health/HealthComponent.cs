@@ -6,14 +6,19 @@ public partial class HealthComponent : Node
 	[Export] public float MaxHealth { get; set; } = 10;
 	[Export] public AnimatedSprite2D sprite;
 	[Export] public ShaderMaterial shaderMaterial;
+	[Export] public bool HasShields { get; set; } = false;
 	public float CurrentHealth { get; set; }
 	private Tween hitFlashTween;
 	private bool hitFlashObjectsSet = false;
+	public int CurrentShields { get; set; } = 0;
+	public int MaxShields { get; set; } = 0;
+	public int ShieldRegenAmount { get; set; } = 0;
 		
 	public override void _Ready()
 	{
 		CurrentHealth = MaxHealth;
 		EmitSignal(SignalName.HealthChanged);
+		GameEvents.Instance.WaveCleared += ResetShields;
 		
 		ShaderMaterial shaderMat = new ShaderMaterial();
 		if(shaderMaterial != null && sprite != null) {
@@ -21,13 +26,19 @@ public partial class HealthComponent : Node
 			sprite.Material = shaderMat;
 		}
 		hitFlashObjectsSet = shaderMat != null && sprite != null;
-		
+
+		if(HasShields) SetupShieldRegenTimer();
 	}
 
 	public void TakeDamage(float amount)
     {
-        CurrentHealth = MathF.Max(CurrentHealth - amount, 0);
-		if (hitFlashObjectsSet) HitFlash();
+		float remainder = amount - CurrentShields;
+		CurrentShields = (int) MathF.Max(CurrentShields - (int) amount, 0);
+		if(remainder > 0)
+		{
+			CurrentHealth = MathF.Max(CurrentHealth - amount, 0);
+			if (hitFlashObjectsSet) HitFlash();
+		}
         EmitSignal(SignalName.HealthChanged);
         Callable.From(CheckDeath).CallDeferred();
     }
@@ -51,6 +62,26 @@ public partial class HealthComponent : Node
 		EmitSignal(SignalName.HealthChanged);
 	}
 
+	public void IncreaseMaxShields(int amount)
+	{
+		MaxShields += amount;
+		CurrentShields += amount;
+		EmitSignal(SignalName.HealthChanged);
+	}
+
+	public void HealShields(int amount)
+	{
+		if(CurrentShields >= MaxShields) return;
+		CurrentShields = (int) MathF.Min(CurrentShields + amount, MaxShields);
+		EmitSignal(SignalName.HealthChanged);
+	}
+	
+	private void ResetShields()
+	{
+		CurrentShields = MaxShields;
+		EmitSignal(SignalName.HealthChanged);
+	}
+
     private void CheckDeath()
     {
         if (CurrentHealth <= 0)
@@ -69,5 +100,22 @@ public partial class HealthComponent : Node
 		hitFlashTween.TweenProperty(sprite.Material, "shader_parameter/lerp_percent", 0.0f, 0.2f)
 					 .SetEase(Tween.EaseType.In)
 					 .SetTrans(Tween.TransitionType.Back);
+	}
+
+	private void SetupShieldRegenTimer()
+	{
+        var shieldRegenTimer = new Godot.Timer
+        {
+            OneShot = false,
+            WaitTime = 5f
+        };
+		AddChild(shieldRegenTimer);
+		shieldRegenTimer.Start();
+        shieldRegenTimer.Timeout += RegenerateShields;
+	}
+
+	private void RegenerateShields()
+	{
+		HealShields(ShieldRegenAmount);
 	}
 }

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfnspmj4k26db"]
+
+[ext_resource type="Script" path="res://scenes/ability/T3.3ShieldBoost/ShieldBoostController.cs" id="1_t152l"]
+
+[node name="T3_2_ShieldBoostController" type="Node"]
+script = ExtResource("1_t152l")
+shieldsRegen = 1
+maxShieldsIncrease = 40
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true

@@ -22,8 +22,7 @@ public partial class ArenaManager : Node
 	public void OnWaveCleared()
 	{
 		WaveNumber++;
-
-		// TODO: should start AFTER upgrades
+		GameEvents.Instance.EmitSignal(SignalName.WaveCleared);
 	    EmitSignal(SignalName.WaveCleared);
 	}
 	void OnTimerTimeout(){
@@ -33,5 +32,5 @@ public partial class ArenaManager : Node
 		// TODO: Add end screen
 		GD.Print("Timer timeout");
 	}
-
+	
 }
