@@ -598,7 +598,8 @@ lifetime = 10.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("upgradeManager") groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 170)
-PlayerPrio = null
+MaxSpeed = 125.0
+Acceleration = 25.0
 upgradeManager = NodePath("../Managers/UpgradeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]

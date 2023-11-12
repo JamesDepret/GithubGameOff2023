@@ -91,10 +91,8 @@ IsBiteBoss = true
 
 [node name="BiteBossComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_4aa4u")]
 MaxSpeed = 250.0
-Acceleration = null
+Acceleration = 25.0
 visualsNode = NodePath("../Visuals")
-SpeedUpAmount = 0.0
-VelocityModifier = null
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_nhh4r")]
 MaxHealth = 2500.0
