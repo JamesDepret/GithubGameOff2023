@@ -22,7 +22,7 @@ public partial class ArenaManager : Node
 	public void OnWaveCleared()
 	{
 		WaveNumber++;
-		GameEvents.Instance.EmitSignal(SignalName.WaveCleared);
+		GameEvents.Instance.EmitSignal(SignalName.WaveCleared, WaveNumber);
 	    EmitSignal(SignalName.WaveCleared);
 	}
 	void OnTimerTimeout(){
@@ -32,5 +32,5 @@ public partial class ArenaManager : Node
 		// TODO: Add end screen
 		GD.Print("Timer timeout");
 	}
-	
+
 }

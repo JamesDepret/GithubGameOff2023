@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MusicPlayer="*res://scenes/autoloads/musicplayer/music_player.tscn"
 GameEvents="*res://scenes/autoloads/gameevents/game_events.tscn"
+MusicPlayer="*res://scenes/autoloads/musicplayer/music_player.tscn"
 
 [display]
 

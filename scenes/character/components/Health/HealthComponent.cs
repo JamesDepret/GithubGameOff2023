@@ -18,7 +18,6 @@ public partial class HealthComponent : Node
 	{
 		CurrentHealth = MaxHealth;
 		EmitSignal(SignalName.HealthChanged);
-		GameEvents.Instance.WaveCleared += ResetShields;
 		
 		ShaderMaterial shaderMat = new ShaderMaterial();
 		if(shaderMaterial != null && sprite != null) {
@@ -27,7 +26,11 @@ public partial class HealthComponent : Node
 		}
 		hitFlashObjectsSet = shaderMat != null && sprite != null;
 
-		if(HasShields) SetupShieldRegenTimer();
+		if(HasShields) 
+		{
+			SetupShieldRegenTimer();
+			GameEvents.Instance.WaveCleared += ResetShields;
+		}
 	}
 
 	public void TakeDamage(float amount)
@@ -76,7 +79,7 @@ public partial class HealthComponent : Node
 		EmitSignal(SignalName.HealthChanged);
 	}
 	
-	private void ResetShields()
+	private void ResetShields(int waveNumber)
 	{
 		CurrentShields = MaxShields;
 		EmitSignal(SignalName.HealthChanged);

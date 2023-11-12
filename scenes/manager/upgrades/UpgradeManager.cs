@@ -28,12 +28,12 @@ public partial class UpgradeManager : Node
 		AddChild(currentUpgradeScreen);
 		var chosenUpgrades = PickRandomTurretPerTier();
 		currentUpgradeScreen.SetAbilityUpgrades(chosenUpgrades.ToArray());
-		currentUpgradeScreen.UpgradeSelected += OnUpgradeSelected;
+		currentUpgradeScreen.UpgradeSelected += OnUpgradeBought;
 		currentUpgradeScreen.SetTurrets(currentUpgrades.ToArray());
 		if(arenaManager.WaveNumber>=1) currentUpgradeScreen.HelpPanel.QueueFree();
 	}
 
-	void OnUpgradeSelected(BaseUpgrade upgrade)
+	void OnUpgradeBought(BaseUpgrade upgrade)
 	{
 		if (upgrade.PreviousUpgradePointer != null)
 		{

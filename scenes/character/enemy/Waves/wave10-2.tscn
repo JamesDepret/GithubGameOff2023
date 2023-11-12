@@ -1,13 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://no4ylw3t6jrh"]
+[gd_scene load_steps=21 format=3 uid="uid://7ke00prnjwif"]
 
-[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_eldnm"]
-[ext_resource type="PackedScene" uid="uid://bfbbnuyxnfile" path="res://scenes/character/components/BiteBoss/bite_boss_component.tscn" id="2_4aa4u"]
-[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_nhh4r"]
-[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_a4tqw"]
-[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_7txkb"]
-[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_i3nf7"]
-[ext_resource type="Texture2D" uid="uid://b0n7dd46fnmpi" path="res://assets/art/Own/boss/jamesd32 boss sheet.png" id="7_jxb18"]
-[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_h4r01"]
+[ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_41qwt"]
+[ext_resource type="PackedScene" uid="uid://dh3bdmk00vn3c" path="res://scenes/character/components/Velocity/velocity_component.tscn" id="2_mlm3q"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="3_o7qsv"]
+[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_hxtnw"]
+[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_g60br"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_yt4da"]
+[ext_resource type="Texture2D" uid="uid://b0n7dd46fnmpi" path="res://assets/art/Own/boss/jamesd32 boss sheet.png" id="7_kwkgt"]
+[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_h2pih"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
 radius = 14.0
@@ -23,31 +23,31 @@ offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a5u5a"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(0, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_af53s"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(80, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqe63"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(160, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sadwm"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(240, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h5ta"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(320, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ms744"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(400, 0, 80, 85)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f58e"]
-atlas = ExtResource("7_jxb18")
+atlas = ExtResource("7_kwkgt")
 region = Rect2(480, 0, 80, 85)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2absl"]
@@ -86,35 +86,35 @@ radius = 28.0
 modulate = Color(1, 0.988235, 0.988235, 1)
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("1_eldnm")
+script = ExtResource("1_41qwt")
 IsBiteBoss = true
 
-[node name="BiteBossComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_4aa4u")]
-MaxSpeed = 250.0
-Acceleration = null
+[node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_mlm3q")]
+MaxSpeed = 60.0
+Acceleration = 25.0
 visualsNode = NodePath("../Visuals")
-SpeedUpAmount = 0.0
+SpeedUpAmount = 15.0
 VelocityModifier = null
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_nhh4r")]
-MaxHealth = 2500.0
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_o7qsv")]
+MaxHealth = 3000.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 HasShields = null
 
-[node name="PartsDropComponent" parent="." instance=ExtResource("4_a4tqw")]
+[node name="PartsDropComponent" parent="." instance=ExtResource("4_hxtnw")]
 Value = 65
 DropPercentage = 1.0
 
-[node name="EnemyAttackComponent" parent="." instance=ExtResource("5_7txkb")]
+[node name="EnemyAttackComponent" parent="." instance=ExtResource("5_g60br")]
 Damage = 25.0
 AttackSpeed = 0.2
 AttackRange = 40.0
 
 [node name="Lifetime" type="Timer" parent="."]
-wait_time = 100.0
+wait_time = 2.5
 autostart = true
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_i3nf7")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_yt4da")]
 HealthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -142,6 +142,7 @@ color = Color(0.701961, 0.2, 0.172549, 1)
 color_ramp = SubResource("Gradient_qgonr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+modulate = Color(1, 0.172549, 0.12549, 1)
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_2absl")
 autoplay = "default"
@@ -151,6 +152,6 @@ frame_progress = 0.226757
 position = Vector2(0, -7)
 shape = SubResource("CircleShape2D_ix0ff")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("8_h4r01")]
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("8_h2pih")]
 healthComponent = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/AnimatedSprite2D")

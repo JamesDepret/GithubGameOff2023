@@ -12,6 +12,7 @@ public partial class CurrentTurret : TextureButton
 	{
 		if (Tower.UpgradesTo != null)
 		{
+			// tower seems to point to the seem turret for all of the same turrets
 			UpgradesScreen.SetSelectedUpgrade(Tower.UpgradesTo as BaseUpgrade, Tower);
 		}
 	}

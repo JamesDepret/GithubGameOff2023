@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=36 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://dnmsnuqjqsi3w" path="res://assets/art/MattWalkden/Space Background/as1.png" id="21_efwbo"]
 [ext_resource type="Texture2D" uid="uid://bc4lfbw2gculb" path="res://assets/art/MattWalkden/Space Background/as2.png" id="22_7caon"]
 [ext_resource type="PackedScene" uid="uid://cf3pn882jd28w" path="res://scenes/character/enemy/Waves/wave13.tscn" id="22_71kfr"]
+[ext_resource type="PackedScene" uid="uid://7ke00prnjwif" path="res://scenes/character/enemy/Waves/wave10-2.tscn" id="22_724jl"]
 [ext_resource type="PackedScene" uid="uid://b4fp2segjnfc7" path="res://scenes/character/enemy/Waves/wave14.tscn" id="23_e0rlf"]
 [ext_resource type="PackedScene" uid="uid://w1vikaa3bdxi" path="res://scenes/UI/HighScore/high_score.tscn" id="36_7ud7l"]
 
@@ -514,11 +515,12 @@ offset_bottom = 5.0
 [node name="Managers" type="Node" parent="."]
 
 [node name="ArenaManager" parent="Managers" instance=ExtResource("2_aas5s")]
+StartingParts = 5000
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
-EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1"), ExtResource("9_g5poj"), ExtResource("20_mg4op"), ExtResource("21_cqaip"), ExtResource("22_71kfr"), ExtResource("23_e0rlf")]
-EnemiesPerWave = [36, 45, 45, 36, 36, 36, 36, 30, 45, 5, 54, 45, 45, 24]
-EnemySpawnratePerWave = [1.5, 1.5, 1.3, 1.5, 1.4, 1.3, 1.2, 1.3, 1.5, 1.1, 1.1, 1.4, 1.3, 1.05]
+EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1"), ExtResource("9_g5poj"), ExtResource("22_724jl"), ExtResource("20_mg4op"), ExtResource("21_cqaip"), ExtResource("22_71kfr"), ExtResource("23_e0rlf")]
+EnemiesPerWave = [36, 45, 45, 36, 36, 36, 36, 30, 45, 5, 3, 54, 45, 45, 24]
+EnemySpawnratePerWave = [1.5, 1.5, 1.3, 1.5, 1.4, 1.3, 1.2, 1.3, 1.5, 1.1, 4.0, 1.1, 1.4, 1.3, 1.05]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="HarvestManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("9_0602n")]
@@ -596,6 +598,9 @@ lifetime = 10.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("upgradeManager") groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 170)
+MaxSpeed = null
+Acceleration = null
+PlayerPrio = null
 upgradeManager = NodePath("../Managers/UpgradeManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
