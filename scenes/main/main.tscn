@@ -598,8 +598,6 @@ lifetime = 10.0
 
 [node name="Player" parent="." node_paths=PackedStringArray("upgradeManager") groups=["player"] instance=ExtResource("1_dpqan")]
 position = Vector2(320, 170)
-MaxSpeed = null
-Acceleration = null
 PlayerPrio = null
 upgradeManager = NodePath("../Managers/UpgradeManager")
 
