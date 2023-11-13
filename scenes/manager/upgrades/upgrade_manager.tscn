@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbb2wvm6jxu0y"]
+[gd_scene load_steps=13 format=3 uid="uid://bbb2wvm6jxu0y"]
 
 [ext_resource type="Script" path="res://scenes/manager/upgrades/UpgradeManager.cs" id="1_drota"]
 [ext_resource type="Resource" uid="uid://xscu6ri3w5ol" path="res://resources/upgrades/T2bouncebullet/bounce_bullet1.tres" id="2_2gwc8"]
@@ -11,8 +11,9 @@
 [ext_resource type="Resource" uid="uid://bhcfgyniwsybd" path="res://resources/upgrades/T1Rooter/rooter1.tres" id="8_xlqob"]
 [ext_resource type="Resource" uid="uid://co1r0imi0gidn" path="res://resources/upgrades/T2VampireMelee/VampireTurret1.tres" id="9_gqtb8"]
 [ext_resource type="Resource" uid="uid://d26k658qbgcpk" path="res://resources/upgrades/T3ShieldBoost/shield_boost1.tres" id="10_5xate"]
+[ext_resource type="Resource" uid="uid://cgv4xq07v5vam" path="res://resources/upgrades/T4ExplodingTurret/Exploding_bullet1.tres" id="11_2il2j"]
 
 [node name="UpgradeManager" type="Node"]
 script = ExtResource("1_drota")
-upgradePool = [ExtResource("3_iqayh"), ExtResource("2_2gwc8"), ExtResource("4_4mkjd"), ExtResource("5_nrhc3"), ExtResource("6_w1gce"), ExtResource("7_i5n3k"), ExtResource("8_xlqob"), ExtResource("9_gqtb8"), ExtResource("10_5xate")]
+upgradePool = [ExtResource("3_iqayh"), ExtResource("2_2gwc8"), ExtResource("4_4mkjd"), ExtResource("5_nrhc3"), ExtResource("6_w1gce"), ExtResource("7_i5n3k"), ExtResource("8_xlqob"), ExtResource("9_gqtb8"), ExtResource("10_5xate"), ExtResource("11_2il2j")]
 upgradesScreen = ExtResource("2_sqe2i")

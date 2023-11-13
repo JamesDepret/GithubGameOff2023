@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://crarg8dv5aogb"]
+
+[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_mi3t4"]
+[ext_resource type="PackedScene" uid="uid://d4a405hgnoamu" path="res://scenes/ability/T4.1Exploding_Bullet/exploding_bullet_ability2.tscn" id="2_ynw65"]
+
+[node name="T4_2ExplodingBulletController" type="Node"]
+script = ExtResource("1_mi3t4")
+bulletAbility = ExtResource("2_ynw65")
+maxRange = 140.0
+baseWaitTime = 2.0
+bulletSpeed = 700.0
+damage = 280.0
+
+[node name="Timer" type="Timer" parent="."]

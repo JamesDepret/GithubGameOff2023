@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://do706crl1v4ch"]
+
+[ext_resource type="PackedScene" uid="uid://cxg3prtrl3abe" path="res://scenes/character/components/Hitbox/hitbox_component.tscn" id="2_hy1pi"]
+[ext_resource type="Texture2D" uid="uid://d1uk18y1blyuq" path="res://assets/art/MattWalkden/Effects/Explosion.png" id="3_8m1n6"]
+
+[sub_resource type="Animation" id="Animation_tup0q"]
+resource_name = "default"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogqpr"]
+_data = {
+"default": SubResource("Animation_tup0q")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qc5ka"]
+radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxucj"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tranq"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27lfs"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55rht"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ax5nn"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rduqk"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyl0q"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmnmb"]
+atlas = ExtResource("3_8m1n6")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vji42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hxucj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tranq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27lfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55rht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ax5nn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rduqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyl0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmnmb")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Explosion" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_ogqpr")
+}
+
+[node name="HitboxComponent" parent="." instance=ExtResource("2_hy1pi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CircleShape2D_qc5ka")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vji42")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0

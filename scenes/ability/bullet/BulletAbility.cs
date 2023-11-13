@@ -28,8 +28,9 @@ public partial class BulletAbility : Node2D
 		lifeTimeTimer.Timeout += OnLifeTimeTimerTimeout;
 	}
 
-	void OnLifeTimeTimerTimeout()
+	private void OnLifeTimeTimerTimeout()
 	{
 		QueueFree();
 	}
+
 }

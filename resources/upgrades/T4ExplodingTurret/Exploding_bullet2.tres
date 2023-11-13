@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://74b4r008tcly"]
+
+[ext_resource type="PackedScene" uid="uid://crarg8dv5aogb" path="res://scenes/ability/T4.1Exploding_Bullet/t_4_2_exploding_bullet_controller.tscn" id="1_so0hh"]
+[ext_resource type="Texture2D" uid="uid://b28tx6pa2cre7" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_21-alternative.png" id="2_8v8ra"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_lvfj1"]
+
+[resource]
+script = ExtResource("4_lvfj1")
+Id = "ExplodingBullet2"
+Name = "Exploding Bullet"
+Icon = ExtResource("2_8v8ra")
+Description = "Install a cannon with exploding bullets.
+Damage: [color=Firebrick]280[/color] 
+AttackSpeed: [color=Springgreen ]2[/color]
+Range: [color=Cornflowerblue ]120[/color] 
+Effects: [color=Khaki]Has an explosive bullet that deals 100 damage[/color]"
+Price = 25
+Tier = 4
+SupplyCost = 3
+AbilityControllerScene = ExtResource("1_so0hh")

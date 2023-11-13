@@ -16,11 +16,5 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 			Stream = bossMusicTracks;
 			Play();
 		}
-		if(waveNumber == 12)
-		{
-			Stop();
-			Stream = mainMusicTrack;
-			Play();
-		}
 	}
 }

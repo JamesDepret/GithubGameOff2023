@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=5 format=3 uid="uid://d26k658qbgcpk"]
 
 [ext_resource type="PackedScene" uid="uid://dlj1nah77mrbl" path="res://scenes/ability/T3.3ShieldBoost/t_3_1_shield_boost_controller.tscn" id="1_bd8nq"]
-[ext_resource type="Texture2D" uid="uid://bxfujkqd3adiq" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_38-Alternative.png" id="2_go3sw"]
+[ext_resource type="Texture2D" uid="uid://b66ycynblbl8b" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_16-alt1.png" id="2_r5j2h"]
 [ext_resource type="Resource" uid="uid://d0utp6vqq02hw" path="res://resources/upgrades/T3ShieldBoost/shield_boost2.tres" id="3_x0f7o"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_e53f4"]
 
@@ -9,7 +9,7 @@
 script = ExtResource("4_e53f4")
 Id = "ShieldBoost1"
 Name = "Shield Boost"
-Icon = ExtResource("2_go3sw")
+Icon = ExtResource("2_r5j2h")
 Description = "Install a shield generator
 ShieldIncrease: [color=Cornflowerblue]20[/color] 
 Effects: [color=Khaki]Shield recover after each wave.[/color]"

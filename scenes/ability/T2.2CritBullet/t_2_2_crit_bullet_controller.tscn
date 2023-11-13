@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_6yd3l"]
 [ext_resource type="PackedScene" uid="uid://wjqdniu2hqv" path="res://scenes/ability/bullet/bullet_ability.tscn" id="2_wpkea"]
 
-[node name="T2CritBulletController" type="Node"]
+[node name="T2_2CritBulletController" type="Node"]
 script = ExtResource("1_6yd3l")
 bulletAbility = ExtResource("2_wpkea")
 maxRange = 250.0
