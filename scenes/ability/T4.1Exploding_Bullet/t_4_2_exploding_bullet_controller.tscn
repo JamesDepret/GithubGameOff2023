@@ -1,14 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://crarg8dv5aogb"]
+[gd_scene load_steps=4 format=3 uid="uid://crarg8dv5aogb"]
 
-[ext_resource type="Script" path="res://scenes/ability/bullet/BulletAbilityController.cs" id="1_mi3t4"]
-[ext_resource type="PackedScene" uid="uid://d4a405hgnoamu" path="res://scenes/ability/T4.1Exploding_Bullet/exploding_bullet_ability2.tscn" id="2_ynw65"]
+[ext_resource type="Script" path="res://scenes/ability/T4.1Exploding_Bullet/ExplodingBulletController.cs" id="1_715rs"]
+[ext_resource type="PackedScene" uid="uid://do706crl1v4ch" path="res://scenes/ability/explosion/explosion.tscn" id="2_647bw"]
+[ext_resource type="PackedScene" uid="uid://wjqdniu2hqv" path="res://scenes/ability/bullet/bullet_ability.tscn" id="3_tklll"]
 
 [node name="T4_2ExplodingBulletController" type="Node"]
-script = ExtResource("1_mi3t4")
-bulletAbility = ExtResource("2_ynw65")
-maxRange = 140.0
+script = ExtResource("1_715rs")
+explosionScene = ExtResource("2_647bw")
+explodingDamage = 100
+bulletAbility = ExtResource("3_tklll")
+maxRange = 120.0
 baseWaitTime = 2.0
-bulletSpeed = 700.0
+instantHit = true
 damage = 280.0
 
 [node name="Timer" type="Timer" parent="."]

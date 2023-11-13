@@ -5,7 +5,7 @@ public partial class BulletAbilityController : BaseAbilityController
 	[Export] float maxRange = 150.0f;
 	[Export] protected double baseWaitTime = 1.5f;
 	[Export] float bulletSpeed = 300.0f;
-	[Export] bool instantHit = false;
+	[Export] protected bool instantHit = false;
 	[Export] float damage = 5f;
 	[Export] protected int bounces = 1;
 	[Export] float damageReductionOnBounce = 0f;
