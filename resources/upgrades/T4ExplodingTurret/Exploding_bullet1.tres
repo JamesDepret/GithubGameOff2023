@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://7e7jr6nl77g7" path="res://scenes/ability/T4.1Exploding_Bullet/t_4_1_exploding_bullet_controller.tscn" id="1_dn50x"]
 [ext_resource type="Resource" uid="uid://74b4r008tcly" path="res://resources/upgrades/T4ExplodingTurret/Exploding_bullet2.tres" id="2_8lp57"]
-[ext_resource type="Texture2D" uid="uid://b28tx6pa2cre7" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_21-alternative.png" id="2_kyjyw"]
+[ext_resource type="Texture2D" uid="uid://babpohuy0gq4n" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_84-alt1.png" id="2_l0e51"]
 [ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="4_okerj"]
 
 [resource]
 script = ExtResource("4_okerj")
 Id = "ExplodingBullet1"
 Name = "Exploding Bullet"
-Icon = ExtResource("2_kyjyw")
+Icon = ExtResource("2_l0e51")
 Description = "Install a cannon with exploding bullets.
 Damage: [color=Firebrick]40[/color] 
 AttackSpeed: [color=Springgreen ]0.6[/color]
