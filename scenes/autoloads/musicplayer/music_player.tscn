@@ -1,15 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://c63jsjj72j3g"]
+[gd_scene load_steps=5 format=3 uid="uid://c63jsjj72j3g"]
 
 [ext_resource type="AudioStream" uid="uid://dyws6itka48pn" path="res://assets/sound/ost/Intergalactic Odyssey.ogg" id="1_58b11"]
+[ext_resource type="AudioStream" uid="uid://dmslogwqjqapa" path="res://assets/sound/ost/Electronic Fantasy.ogg" id="1_ttdrk"]
 [ext_resource type="Script" path="res://scenes/autoloads/musicplayer/MusicPlayer.cs" id="2_gcvmt"]
 [ext_resource type="AudioStream" uid="uid://c4q8t7xs6bbmt" path="res://assets/sound/ost/Rey de Picas.ogg" id="3_8sadb"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D"]
 process_mode = 3
-stream = ExtResource("1_58b11")
+stream = ExtResource("1_ttdrk")
 volume_db = -20.0
 autoplay = true
 bus = &"music"
 script = ExtResource("2_gcvmt")
+mainScreenTrack = ExtResource("1_ttdrk")
 mainMusicTrack = ExtResource("1_58b11")
 bossMusicTracks = ExtResource("3_8sadb")

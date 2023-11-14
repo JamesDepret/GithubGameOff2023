@@ -43,8 +43,9 @@ size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0.639216, 0, 1)
 theme_override_font_sizes/font_size = 32
-text = "Scaling space and time"
+text = "Galactic Scales"
 
 [node name="PlayButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
