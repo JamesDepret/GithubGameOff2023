@@ -7,6 +7,10 @@ public partial class SupplyMeter : HBoxContainer
 		SupplyLabel = GetNode<Label>("SupplyLabel");
 		GameEvents.Instance.SupplyChanged += OnSupplyChanged;
 	}
+	public override void _ExitTree()
+    {
+		GameEvents.Instance.SupplyChanged -= OnSupplyChanged;
+    }
 
 	private void OnSupplyChanged()
 	{

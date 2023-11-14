@@ -31,6 +31,14 @@ public partial class BulletAbilityController : BaseAbilityController
 		arenaManager.WaveCleared += OnWaveCleared;
 	}
 
+    public override void _ExitTree()
+    {
+		arenaManager.WaveCleared -= OnWaveCleared;
+		cooldownTimer.Timeout -= OnCooldownTimerTimeout;
+    }
+
+    
+
 	public void AddSpeedModifier(SpeedModifier speedModifier)
 	{
 		speedModifiers.Add(speedModifier);

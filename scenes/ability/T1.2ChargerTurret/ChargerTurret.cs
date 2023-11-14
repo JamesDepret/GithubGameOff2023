@@ -23,6 +23,11 @@ public partial class ChargerTurret : BulletAbilityController
 		ChargeDownTime.Timeout += ChargedGunEffect;
 		ChargeDuration.Timeout += ChargedGunDowntime;
 	}
+	public override void _ExitTree()
+    {
+		ChargeDownTime.Timeout -= ChargedGunEffect;
+		ChargeDuration.Timeout -= ChargedGunDowntime;
+    }
 
 	private void ChargedGunDowntime()
 	{

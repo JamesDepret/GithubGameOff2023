@@ -18,7 +18,7 @@ public partial class Player : CharacterBody2D
 	private CpuParticles2D particles;
 	private float maxRotation;
 	private float currentRotation = 0f; 
-
+	private Area2D CollisionArea;
 
 	public override void _Ready()
 	{
@@ -33,7 +33,7 @@ public partial class Player : CharacterBody2D
 		UpdateHealthDisplay();
 
 		// Getting Damaged
-		var CollisionArea = GetNode<Area2D>("DamageArea");
+		CollisionArea = GetNode<Area2D>("DamageArea");
 		CollisionArea.AreaEntered += OnAreaEntered;
 
 		// Movement
@@ -44,6 +44,15 @@ public partial class Player : CharacterBody2D
 		
 		upgradeManager.InitFirstUpgrades();
 	}
+
+	
+	public override void _ExitTree()
+    {
+		GameEvents.Instance.ShipUpgradeAdded -= OnNewShipTurretAdded;
+		healthComponent.HealthChanged -= OnHealthChanged;
+		healthComponent.Died -= OnDied;
+		CollisionArea.AreaEntered -= OnAreaEntered;
+    }
 
 	
 	public override void _Process(double delta)

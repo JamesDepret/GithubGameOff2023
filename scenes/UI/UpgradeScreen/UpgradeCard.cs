@@ -19,6 +19,10 @@ public partial class UpgradeCard : PanelContainer
 		SetDisabledForPrice(false);
 		SetDisabledForSupply(false);
 	}
+	public override void _ExitTree()
+    {
+		GuiInput -= OnGuiInput;
+    }
 
 	public void SetupCard(int price, int supplyCost, BaseUpgrade upgrade, bool disabledByPrice, bool disabledBySupply)
 	{

@@ -26,4 +26,9 @@ public partial class ExplodingBulletAbility : BulletAbility
 		hitbox.HitsBeforeDestroyed = HitsBeforeDestroyed;
 		explosion.GlobalPosition = GlobalPosition;
 	}
+
+	public override void _ExitTree()
+    {
+		HitboxComponent.OnHitEffect -= OnHitEffect;
+    }
 }

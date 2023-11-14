@@ -7,6 +7,10 @@ public partial class high_score : Control
 		scoreLabel = GetNode<Label>("ScoreLabel");
 		GameEvents.Instance.PartsCollected += OnPartsCollected;
 	}
+	public override void _ExitTree()
+    {
+		GameEvents.Instance.PartsCollected -= OnPartsCollected;
+    }
 
 	private void OnPartsCollected(int number)
 	{

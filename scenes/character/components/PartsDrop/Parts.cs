@@ -7,19 +7,27 @@ public partial class Parts : Node2D
 	private AnimatedSprite2D sprite;
 	private Godot.Timer timer;
 	private Tween blinkTween;
+	private Area2D CollectionArea;
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		timer = GetNode<Godot.Timer>("Timer");
 		timer.WaitTime = MaxLifeTime;
 		timer.Timeout += OnTimeout;
-		var CollectionArea = GetNode<Area2D>("Area2D");
+		CollectionArea = GetNode<Area2D>("Area2D");
 		CollectionArea.AreaEntered += OnBodyEntered;
 
 		blinkTween = CreateTween();
 		var callable = Callable.From<float>(TweenBlink);
 		blinkTween.TweenMethod(callable,0f,1.0f,MaxLifeTime);
 	}
+
+	
+    public override void _ExitTree()
+    {
+		timer.Timeout -= OnTimeout;
+		CollectionArea.AreaEntered -= OnBodyEntered;
+    }
 
 
 

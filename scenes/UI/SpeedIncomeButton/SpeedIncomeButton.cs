@@ -8,6 +8,11 @@ public partial class SpeedIncomeButton : Button
 		Pressed += OnHarvestSpeedIncomeUpgraded;
 	}
 
+	public override void _ExitTree()
+    {
+		Pressed -= OnHarvestSpeedIncomeUpgraded;
+    }
+
 	public override void _Process(double delta)
 	{
 		if (Input.IsActionJustPressed("ui_harvest_speed_upgrade"))

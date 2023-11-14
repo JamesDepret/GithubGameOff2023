@@ -13,6 +13,11 @@ public partial class PartsDropComponent : Node
 		HealthComponent.Died += OnDied;
 	}
 
+    public override void _ExitTree()
+    {
+		HealthComponent.Died -= OnDied;
+    }
+
 	void OnDied(string name)
 	{
 		if (PartsScene == null 

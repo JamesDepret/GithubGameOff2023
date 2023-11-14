@@ -15,4 +15,6 @@ public partial class ShieldBoostController : BaseAbilityController
 		healthComponent.IncreaseMaxShields(maxShieldsIncrease);
 		healthComponent.ShieldRegenAmount += shieldsRegen;
 	}
+
+	
 }

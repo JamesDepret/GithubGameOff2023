@@ -11,6 +11,11 @@ public partial class UpgradeManager : Node
 	{
 		arenaManager.WaveCleared += OnWaveCleared;
 	}
+	public override void _ExitTree()
+    {
+		arenaManager.WaveCleared -= OnWaveCleared;
+		currentUpgradeScreen.UpgradeSelected -= OnUpgradeBought;
+    }
 
 	public void InitFirstUpgrades()
 	{

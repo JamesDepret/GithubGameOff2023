@@ -15,6 +15,11 @@ public partial class EnemyAttackComponent : Node
 		attackTimer.Timeout += AttackSpeedTimerTimeout;
 	}
 
+	public override void _ExitTree()
+    {
+		attackTimer.Timeout -= AttackSpeedTimerTimeout;
+    }
+
 	private void AttackSpeedTimerTimeout()
 	{		
         if (GetParent() is not Enemy enemy) return;

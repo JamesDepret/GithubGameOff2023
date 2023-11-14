@@ -21,6 +21,11 @@ public partial class Enemy : CharacterBody2D
 		visuals = GetNode<Node2D>("Visuals");
     }
 
+	public override void _ExitTree()
+    {
+		lifeTimer.Timeout -= OnSpeedUp;
+    }
+
 	public override void _Process(double delta)
 	{
 		if(velocityComponent != null) {

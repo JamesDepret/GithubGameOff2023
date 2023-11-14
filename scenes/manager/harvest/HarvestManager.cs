@@ -18,6 +18,12 @@ public partial class HarvestManager : Node
 		arenaManager.WaveCleared += OnWaveCleared;
 	}
 
+	public override void _ExitTree()
+    {
+		HarvestTimer.Timeout -= HarvestTimerTimeout;
+		arenaManager.WaveCleared -= OnWaveCleared;
+    }
+
 	public double GetHarvestTimePercentage()
 	{
 		return 1 - HarvestTimer.TimeLeft / HarvestTimer.WaitTime;

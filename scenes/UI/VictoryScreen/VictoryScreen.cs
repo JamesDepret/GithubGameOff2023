@@ -18,8 +18,8 @@ public partial class VictoryScreen : CanvasLayer
 	private void OnRestartButtonPressed()
 	{
 		GetTree().Paused = false;
-		GameEvents.Instance.Restart();
-		GetTree().ChangeSceneToFile("res://scenes/main/main.tscn");
+        GameEvents.Restart();
+		GetTree().ReloadCurrentScene();
 	}
 
 	private void OnQuitButtonPressed()

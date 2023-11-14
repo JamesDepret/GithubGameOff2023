@@ -7,6 +7,10 @@ public partial class HurtboxComponent : Area2D
 	{
 		AreaEntered += OnBodyEntered;
 	}
+    public override void _ExitTree()
+    {
+		AreaEntered -= OnBodyEntered;
+    }
 
 	void OnBodyEntered(Node2D body)
     {

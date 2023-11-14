@@ -25,4 +25,11 @@ public partial class HealthBoostController : BaseAbilityController
 		
 		healthComponent.IncreaseMaxHealth(maxHealthIncrease);
 	}
+
+	
+	public override void _ExitTree()
+    {
+		var WaveManager = GetNode<ArenaManager>("/root/Main/Managers/ArenaManager");
+		WaveManager.WaveCleared -= OnWaveCleared;
+    }
 }

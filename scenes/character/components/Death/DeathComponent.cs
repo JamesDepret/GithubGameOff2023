@@ -15,6 +15,10 @@ public partial class DeathComponent : Node2D
 
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 	}
+	public override void _ExitTree()
+    {
+		healthComponent.Died -= OnDied;
+    }
 
 	void OnDied(string name)
 	{

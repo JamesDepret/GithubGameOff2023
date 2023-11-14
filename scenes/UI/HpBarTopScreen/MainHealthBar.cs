@@ -11,6 +11,11 @@ public partial class MainHealthBar : ProgressBar
 		healthComponent.HealthChanged += OnHealthChanged;
 	}
 
+	public override void _ExitTree()
+    {
+		healthComponent.HealthChanged -= OnHealthChanged;
+    }
+
 	private void OnHealthChanged()
 	{
 		MaxValue = healthComponent.MaxHealth;

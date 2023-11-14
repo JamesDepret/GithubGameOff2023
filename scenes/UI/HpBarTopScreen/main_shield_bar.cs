@@ -11,6 +11,11 @@ public partial class main_shield_bar : ProgressBar
 		healthComponent.HealthChanged += OnHealthChanged;
 	}
 
+	public override void _ExitTree()
+    {
+		healthComponent.HealthChanged -= OnHealthChanged;
+    }
+
 	private void OnHealthChanged()
 	{
 		Visible = healthComponent.MaxShields > 0;

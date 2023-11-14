@@ -6,7 +6,12 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 	public override void _Ready()
 	{
 		GameEvents.Instance.WaveCleared += OnWaveCleared;
-	}
+	}	
+	
+	public override void _ExitTree()
+    {
+		GameEvents.Instance.WaveCleared -= OnWaveCleared;
+    }
 
 	private void OnWaveCleared(int waveNumber)
 	{

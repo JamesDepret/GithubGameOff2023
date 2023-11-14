@@ -1,5 +1,3 @@
-using System.Runtime.Serialization;
-
 namespace UI;
 public partial class ShipUpgradeCard : PanelContainer
 {
@@ -22,6 +20,12 @@ public partial class ShipUpgradeCard : PanelContainer
 		SetDisabledForPrice(false);
 		SetDisabledForSupply(false);
 	}
+
+	
+	public override void _ExitTree()
+    {
+		GuiInput -= OnGuiInput;
+    }
 
 	public void SetupCard(int price, int supplyCost, BaseUpgrade upgrade, bool disabledByPrice, bool disabledBySupply, Texture2D icon)
 	{

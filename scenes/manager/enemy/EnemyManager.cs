@@ -25,6 +25,13 @@ public partial class EnemyManager : Node
 		arenaManager.WaveCleared += OnStarNextLevel;
 	}
 
+	public override void _ExitTree()
+    {
+		timer.Timeout -= OnTimerTimeoutSpawnEnemy;
+		WaveCleared   -= arenaManager.OnWaveCleared;
+		arenaManager.WaveCleared -= OnStarNextLevel;
+    }
+
 	private void EnemyDied(string enemyName)
 	{
 		if(!currentWaveEnemies.Contains(enemyName)) return;
