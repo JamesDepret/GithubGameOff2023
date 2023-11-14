@@ -1,23 +1,24 @@
 namespace Ability;
 public partial class BulletAbilityController : BaseAbilityController
 {
+	[Export] protected double baseWaitTime = 1.5f;
+	[Export] protected int bounces = 1;
+	[Export] protected bool instantHit = false;
 	[Export] PackedScene bulletAbility;
 	[Export] float maxRange = 150.0f;
-	[Export] protected double baseWaitTime = 1.5f;
 	[Export] float bulletSpeed = 300.0f;
-	[Export] protected bool instantHit = false;
 	[Export] float damage = 5f;
-	[Export] protected int bounces = 1;
 	[Export] float damageReductionOnBounce = 0f;
 	[Export] float critChance = 0f;
+	[Export] int maxSpeedModifiers = 2;
 	protected Godot.Timer cooldownTimer;
-	float baseDamage = 5f;
-	float timerDeviation = 0.05f;
-	int damageDone = 0;
-	double startLifeTime = 0f;
-	ArenaManager arenaManager;
+	private float baseDamage = 5f;
+	private float timerDeviation = 0.05f;
+	private int damageDone = 0;
+	private double startLifeTime = 0f;
+	private ArenaManager arenaManager;
+	private List<SpeedModifier> speedModifiers = new();
 	
-
 	public override void _Ready()
 	{
 		cooldownTimer = GetNode<Godot.Timer>("Timer");
@@ -30,13 +31,29 @@ public partial class BulletAbilityController : BaseAbilityController
 		arenaManager.WaveCleared += OnWaveCleared;
 	}
 
+	public void AddSpeedModifier(SpeedModifier speedModifier)
+	{
+		speedModifiers.Add(speedModifier);
+		if(speedModifiers.Count > maxSpeedModifiers){
+			var lowestValue = speedModifiers.Min(speedModifier => speedModifier.ModifierValue);
+			speedModifiers.Remove(speedModifiers.Find(speedModifier => speedModifier.ModifierValue == lowestValue));
+		}
+	}
+
+	public void RemoveSpeedModifier(SpeedModifier speedModifier)
+	{
+		speedModifiers.Remove(speedModifier);
+	}
+
 	void OnCooldownTimerTimeout()
     {
         if (GetParent().GetParent() is not Player player) return;
 		
 		// random number between -1 and 1
 		var randomDeviation = (float) GD.RandRange(-1, 1) * timerDeviation;
-		cooldownTimer.WaitTime = baseWaitTime + randomDeviation;
+		var speedModifier = 1f + speedModifiers.Sum(speedModifier => -speedModifier.ModifierValue);
+		speedModifier = Mathf.Max(speedModifier, 0.1f);
+		cooldownTimer.WaitTime = (baseWaitTime + randomDeviation) * speedModifier;
 
         var enemies = GetTree().GetNodesInGroup("enemy")
                                .Where(enemy => FilterEnemyInRange(enemy, player))

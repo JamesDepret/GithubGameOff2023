@@ -10,8 +10,7 @@ public partial class ArenaManager : Node
 	public override void _Ready()
 	{
 		timer = GetNode<Godot.Timer>("Timer");
-		timer.Timeout += OnTimerTimeout;
-		GameEvents.Instance.EmitPartsCollected(StartingParts);
+		GameEvents.Instance.EmitPartsCollected(StartingParts, false);
 	}
 
 	public double GetTimeElapsed()
@@ -24,13 +23,12 @@ public partial class ArenaManager : Node
 		WaveNumber++;
 		GameEvents.Instance.EmitSignal(SignalName.WaveCleared, WaveNumber);
 	    EmitSignal(SignalName.WaveCleared);
+		if(WaveNumber > enemyManager.EnemyScenePool.Count) EndGame("Victory!");
 	}
-	void OnTimerTimeout(){
-		// var EndScreen = EndScreenScene.Instantiate() as VictoryScreen;
-		// AddChild(EndScreen);
-
-		// TODO: Add end screen
-		GD.Print("Timer timeout");
+	public void EndGame(string text){
+		var EndScreen = EndScreenScene.Instantiate() as VictoryScreen;
+		AddChild(EndScreen);
+		EndScreen.EndingLabel.Text = text;
 	}
 
 }

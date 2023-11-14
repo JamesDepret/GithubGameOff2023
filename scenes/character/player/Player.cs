@@ -9,6 +9,7 @@ public partial class Player : CharacterBody2D
 	[Export] public bool IsMainPlayer { get; set; } = false;
 	[Export] public int PlayerPrio { get; set; } = 1;
 	[Export] private UpgradeManager upgradeManager;
+	[Export] private ArenaManager arenaManager;
 	private Node shipTurrets_AbilitiesNode;
 	private HealthComponent healthComponent;
 	private ProgressBar healthBar;
@@ -28,6 +29,7 @@ public partial class Player : CharacterBody2D
 		healthComponent = GetNode<HealthComponent>("HealthComponent");
 		healthBar = GetNode<ProgressBar>("HealthBar");
 		healthComponent.HealthChanged += OnHealthChanged;
+		healthComponent.Died += OnDied;
 		UpdateHealthDisplay();
 
 		// Getting Damaged

@@ -23,9 +23,9 @@ offset_left = 20.0
 offset_top = -4.0
 offset_right = 120.0
 offset_bottom = 28.0
-theme_override_colors/font_color = Color(0, 0.521569, 0.866667, 1)
-theme_override_colors/font_shadow_color = Color(0.247059, 0.14902, 0.192157, 1)
-theme_override_colors/font_outline_color = Color(0.246094, 0.148438, 0.191406, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.521569, 0.866667, 1)
+theme_override_colors/font_outline_color = Color(0, 0.521569, 0.866667, 1)
 text = "700
 "
 vertical_alignment = 1

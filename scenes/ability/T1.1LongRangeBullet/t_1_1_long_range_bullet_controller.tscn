@@ -4,9 +4,9 @@
 
 [node name="T1_1LongRangeBullet" type="Node"]
 script = ExtResource("1_qoubc")
-maxRange = 200.0
 baseWaitTime = 0.33
 instantHit = true
+maxRange = 200.0
 damage = 4.0
 
 [node name="Timer" type="Timer" parent="."]

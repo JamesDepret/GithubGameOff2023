@@ -29,4 +29,9 @@ public partial class Player : CharacterBody2D
     {
         UpdateHealthDisplay();
     }
+
+    void OnDied(string name)
+    {
+        arenaManager.EndGame("You died!");
+    }
 }

@@ -15,4 +15,13 @@ public partial class GameEvents : Node
 		EmitSignal(SignalName.ShipUpgradeAdded, upgrade, currentUpgrades);
 		EmitSignal(SignalName.SupplyChanged);
 	}
+
+	public void Restart()
+	{
+		TotalScore = 0;
+		Parts = 0;
+		Supply = 0;
+		MaxSupply = 10;
+		LootCritChance = 0f;
+	}
 }

@@ -7,7 +7,7 @@ public partial class GameEvents : Node
 	public float LootCritChance { get; set; } = 0f;
 	public int TotalScore { get; set; } = 0;
     
-	public void EmitPartsCollected(int number)
+	public void EmitPartsCollected(int number, bool includeInScore = true)
 	{
 		// get random number between 0 and 1
 		float critRoll = (float) GD.RandRange(0, 100)/100;
@@ -16,7 +16,7 @@ public partial class GameEvents : Node
 			number *= 2;
 		}
 		
-		if(number > 0) TotalScore += number * 10;
+		if(number > 0 && includeInScore) TotalScore += number * 10;
 
 		Parts += number;
 		EmitSignal(SignalName.PartsCollected, number);

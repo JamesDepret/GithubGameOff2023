@@ -1,7 +1,6 @@
 namespace Ability;
 public partial class ExplodingBulletController : BulletAbilityController
 {
-	
 	[Export] private PackedScene explosionScene;
 	[Export] private int explodingDamage = 10;
 	[Export] private int HitsBeforeDestroyed = 10;
