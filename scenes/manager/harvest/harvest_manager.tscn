@@ -4,6 +4,7 @@
 
 [node name="HarvestManager" type="Node"]
 script = ExtResource("1_u7g7w")
+MaxIncome = 35
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
