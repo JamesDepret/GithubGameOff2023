@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=34 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cta87hhv0snsx" path="res://scenes/UI/CurrencyIndicator/currency_indicator.tscn" id="2_x2d57"]
 [ext_resource type="PackedScene" uid="uid://cwxo3oa7b1gmk" path="res://scenes/manager/enemy/enemy_manager.tscn" id="3_6guyt"]
 [ext_resource type="PackedScene" uid="uid://blpiu4q8gwvue" path="res://scenes/UI/HarvestProgressBar/harvest_progress_bar.tscn" id="3_6xedk"]
-[ext_resource type="PackedScene" uid="uid://bf2v7ks4yj10x" path="res://scenes/UI/AddIncomeButton/add_income_button.tscn" id="4_2dfoh"]
 [ext_resource type="PackedScene" uid="uid://pivx367kaaq2" path="res://scenes/UI/SupplyMeter/supply_meter.tscn" id="4_j0f60"]
 [ext_resource type="PackedScene" uid="uid://gf7fhj8tnvu" path="res://scenes/character/enemy/Waves/wave1.tscn" id="4_u61qj"]
-[ext_resource type="PackedScene" uid="uid://keujgm173fo5" path="res://scenes/UI/SpeedIncomeButton/speed_income_button.tscn" id="5_afcau"]
 [ext_resource type="PackedScene" uid="uid://0c14biewxocl" path="res://scenes/character/enemy/Waves/wave2.tscn" id="5_mr7vr"]
 [ext_resource type="PackedScene" uid="uid://ctjewlg111dcn" path="res://scenes/character/enemy/Waves/wave3.tscn" id="6_hyb7s"]
 [ext_resource type="PackedScene" uid="uid://cqyfk3dx2qs7r" path="res://scenes/character/enemy/Waves/wave4.tscn" id="7_ecgxg"]
@@ -477,22 +475,6 @@ offset_left = 566.0
 offset_top = 6.0
 offset_right = 626.0
 offset_bottom = 22.0
-
-[node name="AddIncomeButton" parent="CanvasLayer" node_paths=PackedStringArray("harvestManager") instance=ExtResource("4_2dfoh")]
-process_mode = 3
-offset_left = 587.0
-offset_top = 342.0
-offset_right = 638.0
-offset_bottom = 358.0
-harvestManager = NodePath("../../Managers/HarvestManager")
-
-[node name="SpeedIncomeButton" parent="CanvasLayer" node_paths=PackedStringArray("harvestManager") instance=ExtResource("5_afcau")]
-process_mode = 3
-offset_left = 518.0
-offset_top = 342.0
-offset_right = 579.0
-offset_bottom = 358.0
-harvestManager = NodePath("../../Managers/HarvestManager")
 
 [node name="HealthBar" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_vr4oo")]
 offset_left = 0.0

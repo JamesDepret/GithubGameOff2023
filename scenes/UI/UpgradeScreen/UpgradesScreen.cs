@@ -4,12 +4,17 @@ public partial class UpgradesScreen : CanvasLayer
 	[Signal] public delegate void UpgradeSelectedEventHandler(BaseUpgrade upgrade);
 	public List<BaseUpgrade> CurrentTurrets { get; set; }
 	[Export] PackedScene UpgradeCardScene;
+	[Export] PackedScene IncomeSpeedScene;
+	private HarvestManager harvestManager;
 	private ShipUpgradeCard selectedCard;
 	private BaseUpgrade selectedUpgrade;
-	private HBoxContainer CardContainer;
+	private HFlowContainer CardContainer;
 	private Button DoneButton;
 	private Button AddSupplyButton;
-	private Button BuyButton;
+	private Button NormalUpgradeBuyButton;
+	private Button IncomeSpeedBuyButton;
+	private Button IncomeAmountBuyButton;
+	private Button SupplyUpgradeBuyButton;
 	private BaseUpgrade[] availableUpgrades;
 	private HFlowContainer turretContainers;
 	private bool canAddSupply = true;
@@ -19,17 +24,29 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		HelpPanel = GetNode<Control>("HelpPanel");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
-		CardContainer = GetNode<HBoxContainer>("MarginContainer/CardContainer");
+		CardContainer = GetNode<HFlowContainer>("UpgradeContainer");
 		DoneButton = GetNode<Button>("DoneButton");
-		BuyButton = GetNode<Button>("BuyButton");
+		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
+
+		IncomeSpeedBuyButton = GetNode<Button>("SpeedIncomeBuyButton");
+		// IncomeAmountBuyButton = GetNode<Button>("IncomeAmountBuyButton");
+		// SupplyUpgradeBuyButton = GetNode<Button>("SupplyUpgradeBuyButton");
+
 		AddSupplyButton = GetNode<Button>("TextureRect/BuyRoom");
 		turretContainers = GetNode<HFlowContainer>("TurretContainers");
 		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
 
-		BuyButton.Pressed += OnUpgradeCardBought;
+		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
+
+		NormalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
+		IncomeSpeedBuyButton.Pressed += CleanUpBuyCard;
+		// IncomeAmountBuyButton.Pressed += CleanUpBuyCard;
+		// SupplyUpgradeBuyButton.Pressed += CleanUpBuyCard;
+
 		DoneButton.Pressed += OnDoneSelected;
 		AddSupplyButton.Pressed += OnAddSupply;
 		GetTree().Paused = true;
+		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 	}
 
 	public void SetAbilityUpgrades(BaseUpgrade[] upgrades)
@@ -37,8 +54,51 @@ public partial class UpgradesScreen : CanvasLayer
 		availableUpgrades = upgrades;
 		selectedUpgrade = null;
 		selectedCard.Visible = false;
-		BuyButton.Visible = false;
+		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 		SetupCards();
+	}
+
+	public void SetupSelectedIncomeUpgrade(int price, Texture2D icon, string name, string description, BuyButtonEnum button)
+    {
+		var parts = GameEvents.Instance.Parts;
+		selectedCard.Visible = true;
+		selectedCard.SetupCard(price, 0, null, parts < price, false, icon);
+		selectedCard.SetTexts(name, description);
+		BuyButtonSetup(button, parts < price);
+    }
+
+	public enum BuyButtonEnum
+	{
+		IncomeSpeed,
+		IncomeAmount,
+		SupplyUpgrade,
+		NormalUpgrade
+	}
+
+	public void BuyButtonSetup(BuyButtonEnum button, bool disabled = false)
+	{
+		NormalUpgradeBuyButton.Visible = false;
+		IncomeSpeedBuyButton.Visible = false;
+		// IncomeAmountBuyButton.Visible = false;
+		// SupplyUpgradeBuyButton.Visible = false;
+        bool canBuy;
+        switch (button)
+		{
+			case BuyButtonEnum.NormalUpgrade:
+				NormalUpgradeBuyButton.Visible = !disabled;
+				break;
+			case BuyButtonEnum.IncomeSpeed:
+				canBuy = harvestManager.HarvestTimeLevel < 5;
+				IncomeSpeedBuyButton.Visible = !disabled && canBuy;
+				break;
+			case BuyButtonEnum.IncomeAmount:
+				canBuy = harvestManager.BaseIncome < harvestManager.MaxIncome;
+				IncomeAmountBuyButton.Visible = !disabled && canBuy;
+				break;
+			case BuyButtonEnum.SupplyUpgrade:
+				SupplyUpgradeBuyButton.Visible = !disabled;
+				break;
+		}
 	}
 
 	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null)
@@ -75,10 +135,18 @@ public partial class UpgradesScreen : CanvasLayer
 			upgradeCard.SetupCard(upgrade.Price, upgrade.SupplyCost, upgrade, parts < upgrade.Price, currentSupply + upgrade.SupplyCost > maxSupply);
         }
 		
+		SetupIncomeCards();
 		if (selectedUpgrade != null) SetupSelectedCard();
 		AddSupplyButton.Visible = maxSupply < maxSupplyUpgraded;
 		canAddSupply = parts < GameEvents.Instance.SupplyUpgradePrice;
     }
+
+	private void SetupIncomeCards()
+	{
+		var speedCard = IncomeSpeedScene.Instantiate() as SpeedIncomeButton;
+		speedCard.UpgradesScreen = this;
+		CardContainer.AddChild(speedCard);
+	}
 
     private void SetupSelectedCard()
     {
@@ -91,12 +159,11 @@ public partial class UpgradesScreen : CanvasLayer
 							   parts < selectedUpgrade.Price, 
 							   currentSupply + selectedUpgrade.SupplyCost > maxSupply, 
 							   selectedUpgrade.Icon);
-        BuyButton.Visible = !(parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
+        BuyButtonSetup(BuyButtonEnum.NormalUpgrade, parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
     }
 
 	private void OnUpgradeCardBought()
 	{
-		
 		CurrentTurrets.Add(selectedUpgrade);
 		AddTurretIcon(selectedUpgrade);
 		GameEvents.Instance.EmitPartsCollected(-selectedUpgrade.Price);
@@ -107,10 +174,16 @@ public partial class UpgradesScreen : CanvasLayer
 		{
 			CurrentTurrets.Remove(selectedUpgrade.PreviousUpgradePointer);
 			selectedCard.Visible = false;
-			BuyButton.Visible = false;
+			BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 			SetTurrets(CurrentTurrets.ToArray());
 		}
+	}
 
+	private void CleanUpBuyCard()
+	{
+		selectedCard.Visible = false;
+		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
+		SetupCards();
 	}
 
 	private void AddTurretIcon(BaseUpgrade upgrade)

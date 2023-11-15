@@ -5,12 +5,12 @@
 
 [node name="T2_2CritBulletController" type="Node"]
 script = ExtResource("1_6yd3l")
+baseWaitTime = 0.65
+instantHit = true
 bulletAbility = ExtResource("2_wpkea")
 maxRange = 250.0
-baseWaitTime = 0.65
 bulletSpeed = 450.0
-instantHit = true
-damage = 50.0
+damage = 60.0
 critChance = 0.33
 
 [node name="Timer" type="Timer" parent="."]

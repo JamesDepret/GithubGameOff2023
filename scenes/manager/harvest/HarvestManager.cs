@@ -37,8 +37,9 @@ public partial class HarvestManager : Node
 		HarvestTimeLevel++;
 		harvestTime--;
 		HarvestTimer.WaitTime = harvestTime;
-		GameEvents.Instance.EmitPartsCollected(-HarvestSpeedUpgradeCost);
+		var currentCost = HarvestSpeedUpgradeCost;
 		HarvestSpeedUpgradeCost += 60;
+		GameEvents.Instance.EmitPartsCollected(-currentCost);
         return HarvestTimeLevel >=5;
     }
 

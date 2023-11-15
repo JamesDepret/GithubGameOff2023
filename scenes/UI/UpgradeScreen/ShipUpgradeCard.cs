@@ -4,18 +4,18 @@ public partial class ShipUpgradeCard : PanelContainer
 	[Signal] public delegate void SelectedEventHandler();
 	public bool DisabledByPrice { get; set; } = false;
 	public bool DisabledBySupply { get; set; } = false;
-	Label NameLabel;
+	RichTextLabel NameLabel;
 	RichTextLabel DescriptionLabel;
 	Label PriceLabel;
 	Label SupplyLabel;
-	TextureRect Background;
+	TextureRect Icon;
 	public override void _Ready()
 	{
-		NameLabel = GetNode<Label>("MarginContainer/VBoxContainer/NameLabel");
-		DescriptionLabel = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/DescriptionLabel");
-		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
-		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/SupplyLabel");
-		Background = GetNode<TextureRect>("Border/Background/Icon");
+		NameLabel = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/NameLabel");
+		DescriptionLabel = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/MarginContainer/DescriptionLabel");
+		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/PriceLabel");
+		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer/SupplyLabel");
+		Icon = GetNode<TextureRect>("MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer/Icon");
 		GuiInput += OnGuiInput;
 		SetDisabledForPrice(false);
 		SetDisabledForSupply(false);
@@ -27,11 +27,11 @@ public partial class ShipUpgradeCard : PanelContainer
 		GuiInput -= OnGuiInput;
     }
 
-	public void SetupCard(int price, int supplyCost, BaseUpgrade upgrade, bool disabledByPrice, bool disabledBySupply, Texture2D icon)
+	public void SetupCard(int price, int supplyCost, BaseUpgrade? upgrade, bool disabledByPrice, bool disabledBySupply, Texture2D icon)
 	{
 		SetPrice(price);
 		SetSupply(supplyCost);
-		SetAbilityUpgrade(upgrade);
+		if(upgrade != null) SetAbilityUpgrade(upgrade);
 		SetDisabledForPrice(disabledByPrice);
 		SetDisabledForSupply(disabledBySupply);
 		SetTexture(icon);
@@ -62,13 +62,20 @@ public partial class ShipUpgradeCard : PanelContainer
 	public void SetAbilityUpgrade(BaseUpgrade upgrade)
 	{
 		int level = upgrade.PreviousUpgradePointer == null ? 1 : 2;
-		NameLabel.Text = $"{upgrade.Name} - {level}";
+		string color = level == 1 ? "Coral" : "Gold";
+		NameLabel.Text = $"{upgrade.Name} -  [color={color}]{level}[/color]";
 		DescriptionLabel.Text = upgrade.Description;
+	}
+
+	public void SetTexts(string name, string description)
+	{
+		NameLabel.Text = name;
+		DescriptionLabel.Text = description;
 	}
 
 	public void SetTexture(Texture2D texture)
 	{
-		Background.Texture = texture;
+		Icon.Texture = texture;
 	}
 
 	public void OnGuiInput(InputEvent @event)

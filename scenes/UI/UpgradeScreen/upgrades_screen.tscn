@@ -1,12 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://un3og4gkln6e"]
+[gd_scene load_steps=19 format=3 uid="uid://un3og4gkln6e"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradesScreen.cs" id="1_wnyy3"]
 [ext_resource type="PackedScene" uid="uid://cgehttfnyxd5q" path="res://scenes/UI/UpgradeScreen/upgrade_icon_card.tscn" id="2_fl6q0"]
 [ext_resource type="PackedScene" uid="uid://cq7hgjfrujwww" path="res://scenes/UI/UpgradeScreen/ship_upgrade_card.tscn" id="2_mkmoo"]
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_dijd3"]
+[ext_resource type="PackedScene" uid="uid://bbqsekmljc7jn" path="res://scenes/UI/SpeedIncomeButton/speed_upgrade_icon_card.tscn" id="3_lki1b"]
 [ext_resource type="PackedScene" uid="uid://b5533pmosi5eq" path="res://scenes/UI/UpgradeScreen/current_turrets.tscn" id="5_ar7dc"]
 [ext_resource type="Texture2D" uid="uid://4l3ssrgw2wvm" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_1.png" id="5_fy80o"]
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/CloseHelp.cs" id="7_isbi8"]
+[ext_resource type="PackedScene" uid="uid://bf2v7ks4yj10x" path="res://scenes/UI/AddIncomeButton/add_income_button.tscn" id="8_oxna6"]
+[ext_resource type="PackedScene" uid="uid://keujgm173fo5" path="res://scenes/UI/SpeedIncomeButton/speed_income_buy_button.tscn" id="10_k21wf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
@@ -24,10 +27,16 @@ border_width_bottom = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hw8lb"]
 bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7pkb"]
+bg_color = Color(0.619608, 0.427451, 0.509804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxbic"]
+bg_color = Color(0.619608, 0.427451, 0.509804, 1)
 
 [sub_resource type="Gradient" id="Gradient_v8din"]
 offsets = PackedFloat32Array(1)
@@ -49,34 +58,28 @@ border_color = Color(1, 1, 1, 1)
 process_mode = 3
 script = ExtResource("1_wnyy3")
 UpgradeCardScene = ExtResource("2_fl6q0")
+IncomeSpeedScene = ExtResource("3_lki1b")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="UpgradeContainer" type="HFlowContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = -209.0
+offset_top = 25.0
+offset_bottom = -210.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CardContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="DoneButton" type="Button" parent="."]
-offset_left = 410.0
-offset_top = 320.0
-offset_right = 460.0
-offset_bottom = 340.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
-text = "Done"
+[node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
+offset_left = 197.0
+offset_top = 150.0
+offset_right = 497.0
+offset_bottom = 350.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 257.0
-offset_top = 322.0
-offset_right = 273.0
-offset_bottom = 338.0
+offset_left = 499.0
+offset_top = 28.0
+offset_right = 515.0
+offset_bottom = 44.0
 texture = ExtResource("3_dijd3")
 
 [node name="BuyRoom" type="Button" parent="TextureRect"]
@@ -90,16 +93,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = " Buy Room - 50 / 5 "
 
-[node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
-offset_left = 160.0
-offset_top = 150.0
-offset_right = 460.0
-offset_bottom = 310.0
-
 [node name="TurretContainers" type="HFlowContainer" parent="."]
-offset_top = 45.0
-offset_right = 160.0
-offset_bottom = 325.0
+offset_top = 149.0
+offset_right = 193.0
+offset_bottom = 360.0
 
 [node name="TextureRect" parent="TurretContainers" instance=ExtResource("5_ar7dc")]
 layout_mode = 2
@@ -133,14 +130,38 @@ layout_mode = 2
 texture = ExtResource("5_fy80o")
 
 [node name="BuyButton" type="Button" parent="."]
-offset_left = 160.0
-offset_top = 320.0
-offset_right = 240.0
-offset_bottom = 340.0
+offset_left = 410.0
+offset_top = 325.0
+offset_right = 490.0
+offset_bottom = 345.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hw8lb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_f7pkb")
 text = "Buy Item"
 
+[node name="SpeedIncomeBuyButton" parent="." instance=ExtResource("10_k21wf")]
+offset_left = 410.0
+offset_top = 325.0
+offset_right = 490.0
+offset_bottom = 345.0
+
+[node name="DoneButton" type="Button" parent="."]
+offset_left = 524.0
+offset_top = 333.0
+offset_right = 633.0
+offset_bottom = 353.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
+text = " Start next wave "
+
+[node name="AddIncomeButton" parent="." instance=ExtResource("8_oxna6")]
+offset_left = 508.0
+offset_top = 51.0
+offset_right = 640.0
+offset_bottom = 71.0
+theme_override_styles/hover = SubResource("StyleBoxFlat_oxbic")
+
 [node name="HelpPanel" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0

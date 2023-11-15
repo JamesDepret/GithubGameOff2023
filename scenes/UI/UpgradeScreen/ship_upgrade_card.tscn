@@ -20,9 +20,9 @@ colors = PackedColorArray(0.247059, 0.14902, 0.192157, 1)
 gradient = SubResource("Gradient_rhsra")
 
 [node name="ShipUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(300, 160)
-offset_right = 200.0
-offset_bottom = 160.0
+custom_minimum_size = Vector2(300, 200)
+offset_right = 300.0
+offset_bottom = 200.0
 script = ExtResource("1_8e58e")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -40,18 +40,9 @@ theme_override_constants/margin_bottom = 1
 layout_mode = 2
 texture = SubResource("GradientTexture1D_2apu2")
 
-[node name="Icon" type="TextureRect" parent="Border/Background"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-offset_left = 268.0
-offset_top = 4.0
-offset_right = 292.0
-offset_bottom = 28.0
-texture = ExtResource("2_tsma2")
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 2
+theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
@@ -59,38 +50,70 @@ theme_override_constants/margin_bottom = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 16)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("2_tsma2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(260, 16)
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
+bbcode_enabled = true
 text = "Test Name"
 
-[node name="PanelContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
+modulate = Color(0.811765, 0.811765, 0.811765, 1)
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("2_epxgp")
 
-[node name="PriceLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="PriceLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Price"
 
-[node name="Icon2" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="Icon2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 texture = ExtResource("3_1ordc")
 
-[node name="SupplyLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer"]
+[node name="SupplyLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/PanelContainer"]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 text = "Price"
 
-[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 2
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
 bbcode_enabled = true
 text = "description [color=purple]with BB code on[/color]"
 fit_content = true

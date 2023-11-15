@@ -11,7 +11,7 @@ Name = "Charger Cannon"
 Icon = ExtResource("2_gsqxr")
 Description = "Install a charger cannon.
 Damage: [color=Firebrick]44[/color] 
-AttackSpeed: [color=Springgreen ]1,40[/color]
+AttackSpeed: [color=Springgreen ]1,10[/color]
 Range: [color=Cornflowerblue ]120[/color] 
 Effects: [color=Khaki]Increases attackspeed by 10x every 10 seconds for 1 second.[/color] 
 "
