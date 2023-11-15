@@ -14,13 +14,6 @@ public partial class SpeedIncomeBuyButton : Button
 		Pressed -= OnHarvestSpeedIncomeUpgraded;
     }
 
-	public override void _Process(double delta)
-	{
-		if (Input.IsActionJustPressed("ui_harvest_speed_upgrade"))
-		{
-			OnHarvestSpeedIncomeUpgraded();
-		}
-	}
 
 	private void OnHarvestSpeedIncomeUpgraded()
 	{

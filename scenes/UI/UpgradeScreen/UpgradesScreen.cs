@@ -6,16 +6,16 @@ public partial class UpgradesScreen : CanvasLayer
 	[Export] PackedScene UpgradeCardScene;
 	[Export] PackedScene IncomeSpeedScene;
 	[Export] PackedScene IncomeAmountScene;
+	[Export] PackedScene SupplyScene;
 	private HarvestManager harvestManager;
 	private ShipUpgradeCard selectedCard;
 	private BaseUpgrade selectedUpgrade;
 	private HFlowContainer CardContainer;
-	private Button DoneButton;
-	private Button AddSupplyButton;
+	private Button StartWaveButton;
 	private Button NormalUpgradeBuyButton;
 	private Button IncomeSpeedBuyButton;
 	private Button IncomeAmountBuyButton;
-	private Button SupplyUpgradeBuyButton;
+	private Button RoomUpgradeBuyButton;
 	private BaseUpgrade[] availableUpgrades;
 	private HFlowContainer turretContainers;
 	private bool canAddSupply = true;
@@ -26,14 +26,13 @@ public partial class UpgradesScreen : CanvasLayer
 		HelpPanel = GetNode<Control>("HelpPanel");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HFlowContainer>("UpgradeContainer");
-		DoneButton = GetNode<Button>("DoneButton");
+		StartWaveButton = GetNode<Button>("StartWaveButton");
 		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
 
 		IncomeSpeedBuyButton = GetNode<Button>("SpeedIncomeBuyButton");
-		// IncomeAmountBuyButton = GetNode<Button>("IncomeAmountBuyButton");
-		// SupplyUpgradeBuyButton = GetNode<Button>("SupplyUpgradeBuyButton");
+		IncomeAmountBuyButton = GetNode<Button>("AddIncomeButton");
+		RoomUpgradeBuyButton = GetNode<Button>("RoomUpgradeBuyButton");
 
-		AddSupplyButton = GetNode<Button>("TextureRect/BuyRoom");
 		turretContainers = GetNode<HFlowContainer>("TurretContainers");
 		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
 
@@ -41,11 +40,10 @@ public partial class UpgradesScreen : CanvasLayer
 
 		NormalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
 		IncomeSpeedBuyButton.Pressed += CleanUpBuyCard;
-		// IncomeAmountBuyButton.Pressed += CleanUpBuyCard;
-		// SupplyUpgradeBuyButton.Pressed += CleanUpBuyCard;
+		IncomeAmountBuyButton.Pressed += CleanUpBuyCard;
+		RoomUpgradeBuyButton.Pressed += CleanUpBuyCard;
 
-		DoneButton.Pressed += OnDoneSelected;
-		AddSupplyButton.Pressed += OnAddSupply;
+		StartWaveButton.Pressed += OnNextWaveStartSelected;
 		GetTree().Paused = true;
 		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 	}
@@ -72,16 +70,17 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		IncomeSpeed,
 		IncomeAmount,
-		SupplyUpgrade,
+		RoomUpgrade,
 		NormalUpgrade
 	}
 
+	// We have multiple buy buttons, this method will show the correct one
 	public void BuyButtonSetup(BuyButtonEnum button, bool disabled = false)
 	{
 		NormalUpgradeBuyButton.Visible = false;
 		IncomeSpeedBuyButton.Visible = false;
-		// IncomeAmountBuyButton.Visible = false;
-		// SupplyUpgradeBuyButton.Visible = false;
+		IncomeAmountBuyButton.Visible = false;
+		RoomUpgradeBuyButton.Visible = false;
         bool canBuy;
         switch (button)
 		{
@@ -96,8 +95,8 @@ public partial class UpgradesScreen : CanvasLayer
 				canBuy = harvestManager.BaseIncome < harvestManager.MaxIncome;
 				IncomeAmountBuyButton.Visible = !disabled && canBuy;
 				break;
-			case BuyButtonEnum.SupplyUpgrade:
-				SupplyUpgradeBuyButton.Visible = !disabled;
+			case BuyButtonEnum.RoomUpgrade:
+				RoomUpgradeBuyButton.Visible = !disabled;
 				break;
 		}
 	}
@@ -138,19 +137,33 @@ public partial class UpgradesScreen : CanvasLayer
 		
 		SetupIncomeCards();
 		if (selectedUpgrade != null) SetupSelectedCard();
-		AddSupplyButton.Visible = maxSupply < maxSupplyUpgraded;
 		canAddSupply = parts < GameEvents.Instance.SupplyUpgradePrice;
     }
 
 	private void SetupIncomeCards()
 	{
-		var speedCard = IncomeSpeedScene.Instantiate() as SpeedIncomeButton;
-		speedCard.UpgradesScreen = this;
-		CardContainer.AddChild(speedCard);
 		
-		var amountCard = IncomeAmountScene.Instantiate() as IncomeUpgradeCard;
-		amountCard.UpgradesScreen = this;
-		CardContainer.AddChild(amountCard);
+		if(harvestManager.HarvestTimeLevel < 5)
+		{
+			var speedCard = IncomeSpeedScene.Instantiate() as SpeedIncomeButton;
+			speedCard.UpgradesScreen = this;
+			CardContainer.AddChild(speedCard);
+		}
+		
+		if(harvestManager.BaseIncome < harvestManager.MaxIncome)
+		{
+			var amountCard = IncomeAmountScene.Instantiate() as IncomeUpgradeCard;
+			amountCard.UpgradesScreen = this;
+			CardContainer.AddChild(amountCard);
+		}
+
+		var maxSupply = GameEvents.Instance.MaxSupply;
+		var maxSupplyUpgraded = GameEvents.Instance.MaxSupplyUpgraded;
+		if (maxSupply < maxSupplyUpgraded){
+			var supplyCard = SupplyScene.Instantiate() as RoomIncreaseCard;
+			supplyCard.UpgradesScreen = this;
+			CardContainer.AddChild(supplyCard);
+		}
 	}
 
     private void SetupSelectedCard()
@@ -205,16 +218,9 @@ public partial class UpgradesScreen : CanvasLayer
         turretContainers.AddChild(turretIcon);
 	}
 
-	private void OnDoneSelected()
+	private void OnNextWaveStartSelected()
 	{
 		GetTree().Paused = false;
 		QueueFree();
 	}
-
-	private void OnAddSupply()
-	{
-		GameEvents.Instance.BuySupply();
-		SetupCards();
-	}
-
 }
