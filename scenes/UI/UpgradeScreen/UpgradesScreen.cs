@@ -5,6 +5,7 @@ public partial class UpgradesScreen : CanvasLayer
 	public List<BaseUpgrade> CurrentTurrets { get; set; }
 	[Export] PackedScene UpgradeCardScene;
 	[Export] PackedScene IncomeSpeedScene;
+	[Export] PackedScene IncomeAmountScene;
 	private HarvestManager harvestManager;
 	private ShipUpgradeCard selectedCard;
 	private BaseUpgrade selectedUpgrade;
@@ -146,6 +147,10 @@ public partial class UpgradesScreen : CanvasLayer
 		var speedCard = IncomeSpeedScene.Instantiate() as SpeedIncomeButton;
 		speedCard.UpgradesScreen = this;
 		CardContainer.AddChild(speedCard);
+		
+		var amountCard = IncomeAmountScene.Instantiate() as IncomeUpgradeCard;
+		amountCard.UpgradesScreen = this;
+		CardContainer.AddChild(amountCard);
 	}
 
     private void SetupSelectedCard()
