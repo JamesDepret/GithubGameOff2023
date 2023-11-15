@@ -64,6 +64,7 @@ public partial class UpgradesScreen : CanvasLayer
 		selectedCard.SetupCard(price, 0, null, parts < price, false, icon);
 		selectedCard.SetTexts(name, description);
 		BuyButtonSetup(button, parts < price);
+		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
     }
 
 	public enum BuyButtonEnum
@@ -107,6 +108,7 @@ public partial class UpgradesScreen : CanvasLayer
 		selectedUpgrade = upgrade;
 		selectedCard.Visible = true;
 		SetupSelectedCard();
+		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
 	}
 
 	public void SetTurrets(BaseUpgrade[] turrets)

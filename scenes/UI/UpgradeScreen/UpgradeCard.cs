@@ -67,6 +67,7 @@ public partial class UpgradeCard : PanelContainer
 		if (@event.IsActionPressed("left_click"))
 		{
 			UpgradesScreen.SetSelectedUpgrade(currentUpgrade);
+			Modulate = new Color(1, 1, 1, 0.8f);
 		}
 	}
 }

@@ -71,14 +71,14 @@ grow_vertical = 2
 
 [node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
 offset_left = 197.0
-offset_top = 159.0
+offset_top = 170.0
 offset_right = 497.0
-offset_bottom = 359.0
+offset_bottom = 360.0
 
 [node name="TurretContainers" type="HFlowContainer" parent="."]
-offset_top = 158.0
+offset_top = 170.0
 offset_right = 193.0
-offset_bottom = 358.0
+offset_bottom = 360.0
 
 [node name="TextureRect" parent="TurretContainers" instance=ExtResource("5_ar7dc")]
 layout_mode = 2
@@ -140,10 +140,10 @@ offset_right = 491.0
 offset_bottom = 352.0
 
 [node name="StartWaveButton" type="Button" parent="."]
-offset_left = 524.0
-offset_top = 333.0
-offset_right = 635.0
-offset_bottom = 353.0
+offset_left = 523.0
+offset_top = 332.0
+offset_right = 634.0
+offset_bottom = 352.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
 theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = " Start next wave "

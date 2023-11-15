@@ -12,17 +12,17 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y21fw"]
 gradient = SubResource("Gradient_gkdmx")
 
-[sub_resource type="Gradient" id="Gradient_rhsra"]
+[sub_resource type="Gradient" id="Gradient_6o5fd"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.247059, 0.14902, 0.192157, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_2apu2"]
-gradient = SubResource("Gradient_rhsra")
+gradient = SubResource("Gradient_6o5fd")
 
 [node name="ShipUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(300, 200)
+custom_minimum_size = Vector2(300, 190)
 offset_right = 300.0
-offset_bottom = 200.0
+offset_bottom = 190.0
 script = ExtResource("1_8e58e")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

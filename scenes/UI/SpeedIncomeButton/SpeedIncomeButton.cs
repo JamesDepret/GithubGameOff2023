@@ -54,6 +54,7 @@ public partial class SpeedIncomeButton : PanelContainer
 				description: "Increase the speed at which the parts harvester ticks.\nEffects: [color=Khaki]Reduces the time it takes to get free parts by 1 second[/color]\n\nParts income is indicated by the progressbar in the top right corner, left from the total parts available.",
 				UpgradesScreen.BuyButtonEnum.IncomeSpeed
 			);
+			Modulate = new Color(1, 1, 1, 0.8f);
 		}
 	}
 }

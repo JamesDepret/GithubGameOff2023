@@ -51,6 +51,7 @@ public partial class RoomIncreaseCard : PanelContainer
 				description: "Increase the room for turrets so you can install more.\nEffects: [color=Khaki]Increases room amount by 5[/color]\n\nThe max amount of room is 50.",
 				UpgradesScreen.BuyButtonEnum.RoomUpgrade
 			);
+			Modulate = new Color(1, 1, 1, 0.8f);
 		}
 	}
 }
