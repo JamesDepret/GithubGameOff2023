@@ -47,7 +47,7 @@ public partial class IncomeUpgradeCard : PanelContainer
 	{
 		if (@event.IsActionPressed("left_click"))
 		{
-			UpgradesScreen.SetupSelectedIncomeUpgrade(
+			UpgradesScreen.SetupSelectedIncomeOrSupplyUpgrade(
 				harvestManager.HarvestIncomeUpgradeCost, 
 				icon,
 				name: "Income Amount",

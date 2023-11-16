@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5533pmosi5eq"]
 
 [ext_resource type="Texture2D" uid="uid://4l3ssrgw2wvm" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_1.png" id="1_4wc8d"]
-[ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/CurrentTurret.cs" id="2_eebr3"]
+[ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/turrets/CurrentTurret.cs" id="2_eebr3"]
 
 [node name="CurrentTurret" type="TextureButton"]
 texture_normal = ExtResource("1_4wc8d")

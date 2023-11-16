@@ -47,7 +47,7 @@ public partial class SpeedIncomeButton : PanelContainer
 	{
 		if (@event.IsActionPressed("left_click"))
 		{
-			UpgradesScreen.SetupSelectedIncomeUpgrade(
+			UpgradesScreen.SetupSelectedIncomeOrSupplyUpgrade(
 				harvestManager.HarvestSpeedUpgradeCost, 
 				icon,
 				name: "Income Speed",

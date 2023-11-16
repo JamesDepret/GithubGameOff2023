@@ -44,7 +44,7 @@ public partial class RoomIncreaseCard : PanelContainer
 	{
 		if (@event.IsActionPressed("left_click"))
 		{
-			UpgradesScreen.SetupSelectedIncomeUpgrade(
+			UpgradesScreen.SetupSelectedIncomeOrSupplyUpgrade(
 				GameEvents.Instance.SupplyUpgradePrice, 
 				icon,
 				name: "Increase Room Amount",

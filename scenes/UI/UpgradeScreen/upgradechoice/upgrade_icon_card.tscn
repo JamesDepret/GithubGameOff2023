@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cgehttfnyxd5q"]
 
 [ext_resource type="Texture2D" uid="uid://dli13gurwut5l" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_81.png" id="1_8m4u3"]
-[ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradeCard.cs" id="1_p4t82"]
+[ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/upgradechoice/UpgradeCard.cs" id="1_p4t82"]
 [ext_resource type="Texture2D" uid="uid://daeyo8so5o4r5" path="res://assets/art/Own/parts/experience_part.png" id="2_msa7c"]
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_lalqa"]
 
