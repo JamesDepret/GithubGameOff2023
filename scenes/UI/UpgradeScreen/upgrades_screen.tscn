@@ -78,9 +78,9 @@ offset_bottom = 201.0
 
 [node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
 offset_left = 197.0
-offset_top = 170.0
+offset_top = 166.0
 offset_right = 497.0
-offset_bottom = 360.0
+offset_bottom = 356.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(196, 0)
@@ -168,31 +168,31 @@ texture = ExtResource("5_fy80o")
 
 [node name="BuyButton" type="Button" parent="."]
 offset_left = 411.0
-offset_top = 332.0
+offset_top = 328.0
 offset_right = 491.0
-offset_bottom = 352.0
+offset_bottom = 348.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_hw8lb")
 theme_override_styles/hover = SubResource("StyleBoxFlat_f7pkb")
 text = "Buy Item"
 
 [node name="SpeedIncomeBuyButton" parent="." instance=ExtResource("10_k21wf")]
 offset_left = 411.0
-offset_top = 332.0
+offset_top = 328.0
 offset_right = 491.0
-offset_bottom = 352.0
+offset_bottom = 348.0
 
 [node name="AddIncomeButton" parent="." instance=ExtResource("8_oxna6")]
 offset_left = 411.0
-offset_top = 332.0
+offset_top = 328.0
 offset_right = 491.0
-offset_bottom = 352.0
+offset_bottom = 348.0
 theme_override_styles/hover = SubResource("StyleBoxFlat_oxbic")
 
 [node name="RoomUpgradeBuyButton" parent="." instance=ExtResource("10_bc5el")]
 offset_left = 411.0
-offset_top = 332.0
+offset_top = 328.0
 offset_right = 491.0
-offset_bottom = 352.0
+offset_bottom = 348.0
 
 [node name="StartWaveButton" type="Button" parent="."]
 offset_left = 523.0
@@ -204,7 +204,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = " Start next wave "
 
 [node name="HelpPanel" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
@@ -217,98 +216,23 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = SubResource("GradientTexture1D_mbko0")
 
-[node name="TextureRect3" type="TextureRect" parent="HelpPanel"]
-modulate = Color(1, 1, 1, 0.266667)
-layout_mode = 2
-offset_top = 45.0
-offset_right = 140.0
-offset_bottom = 325.0
-texture = SubResource("GradientTexture1D_mbko0")
-
-[node name="TextureRect4" type="TextureRect" parent="HelpPanel"]
-modulate = Color(1, 1, 1, 0.266667)
-layout_mode = 2
-offset_left = 161.0
-offset_top = 151.0
-offset_right = 459.0
-offset_bottom = 311.0
-texture = SubResource("GradientTexture1D_mbko0")
-
-[node name="Label" type="Label" parent="HelpPanel"]
-layout_mode = 2
-offset_top = 47.0
-offset_right = 131.0
-offset_bottom = 133.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-text = "When you buy turrets their icons come here.
-
-Turrets => can be clicked for buyable upgrades
-
-Red turrets are rank 1, blue turrets are rank 2"
-autowrap_mode = 2
-
-[node name="Label2" type="Label" parent="HelpPanel"]
-layout_mode = 2
-offset_left = 174.0
-offset_top = 211.0
-offset_right = 443.0
-offset_bottom = 264.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-text = "Details of what you're buying will come here once you click on the turret"
-autowrap_mode = 2
-
 [node name="Label3" type="Label" parent="HelpPanel"]
 layout_mode = 2
-offset_left = 252.0
-offset_top = 5.0
-offset_right = 383.0
-offset_bottom = 58.0
+offset_left = 4.0
+offset_top = 101.0
+offset_right = 368.0
+offset_bottom = 154.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
-text = "Turrets available:"
-autowrap_mode = 2
-
-[node name="Label4" type="Label" parent="HelpPanel"]
-layout_mode = 2
-offset_left = 460.0
-offset_top = 34.0
-offset_right = 642.0
-offset_bottom = 87.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-text = "Current money - automatic harvester time delay and room available"
-autowrap_mode = 2
-
-[node name="Label5" type="Label" parent="HelpPanel"]
-layout_mode = 2
-offset_left = 247.0
-offset_top = 293.0
-offset_right = 460.0
-offset_bottom = 346.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-text = "When clicking done the wave starts"
-autowrap_mode = 2
-
-[node name="Label6" type="Label" parent="HelpPanel"]
-layout_mode = 2
-offset_left = 506.0
-offset_top = 273.0
-offset_right = 639.0
-offset_bottom = 333.0
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 9
-text = "Harvester upgrades - increase parts per tick and speed of ticks; hotkey to upgrade - 1 and 2"
+text = "Turrets available - buy atleast one offensive turret in round one or you can't win."
 autowrap_mode = 2
 
 [node name="Button" type="Button" parent="HelpPanel"]
 layout_mode = 0
-offset_left = 467.0
-offset_top = 158.0
-offset_right = 627.0
-offset_bottom = 214.0
+offset_left = 263.0
+offset_top = 179.0
+offset_right = 423.0
+offset_bottom = 235.0
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_qah7m")
 text = "Click here to 

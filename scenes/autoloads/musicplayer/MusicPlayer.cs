@@ -22,6 +22,16 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 	{
 		GameEvents.Instance.WaveCleared -= OnWaveCleared;
 	}
+	private void OnWaveCleared(int waveNumber)
+	{
+		if(waveNumber == 9)
+		{
+			Tween soundTween = CreateTween();
+			var callable = Callable.From<float>(FadeOutMusic);
+			soundTween.TweenMethod(callable,0f,1.0f,fadeTime);
+			soundTween.TweenCallback(Callable.From(FadeInBossGameMusic));
+		}
+	}
 
 
 	public void StartGame()
@@ -42,7 +52,18 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 		soundTween.TweenMethod(callable,0f,1.0f,fadeTime);
 	}
 
-	
+	private void FadeInBossGameMusic()
+	{
+		Stop();
+		Stream = bossMusicTracks;
+		Play();
+		Tween soundTween = CreateTween();
+		var callable = Callable.From<float>(FadeInMusic);
+		soundTween.TweenMethod(callable,0f,1.0f,fadeTime);
+	}
+
+
+
 	void FadeOutMusic(float percent)
 	{
 		float value = volume_db -(60 * percent);
@@ -53,24 +74,5 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 	{
 		float value = ((80+volume_db) * percent) - 80;
 		VolumeDb = value;
-	}
-
-	private void FadeInBossGameMusic()
-	{
-		Stop();
-		Stream = bossMusicTracks;
-		Play();
-		Tween soundTween = CreateTween();
-		soundTween.TweenProperty(this, "volume_db", -20, fadeTime);
-	}
-
-	private void OnWaveCleared(int waveNumber)
-	{
-		if(waveNumber == 10)
-		{
-			Tween soundTween = CreateTween();
-			soundTween.TweenProperty(this, "volume_db", -80, fadeTime);
-			soundTween.TweenCallback(Callable.From(FadeInBossGameMusic));
-		}
 	}
 }
