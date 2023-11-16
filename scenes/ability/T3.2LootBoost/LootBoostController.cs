@@ -12,6 +12,6 @@ public partial class LootBoostController : BaseAbilityController
 
 	public override void DoEffect()
 	{
-		GameEvents.Instance.LootCritChance -= doublePartsChance;
+		GameEvents.Instance.LootCritChance += doublePartsChance;
 	}
 }

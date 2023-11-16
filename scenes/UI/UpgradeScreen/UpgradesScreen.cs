@@ -110,12 +110,16 @@ public partial class UpgradesScreen : CanvasLayer
 		SetupSelectedCard();
 		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
 	}
-
-	public void SetTurrets(BaseUpgrade[] turrets)
+	public void InitTurretList(BaseUpgrade[] turrets)
 	{
 		CurrentTurrets = new(turrets);
-		
+		SetTurrets();
+	}
+	public void SetTurrets()
+	{
 		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
+		// sort the turrets by their level
+		var turrets = CurrentTurrets.ToArray().OrderBy(turret => turret.PreviousUpgradePointer!= null).ToArray();
 		foreach (var item in turrets)
 		{
 			AddTurretIcon(item);
@@ -195,8 +199,8 @@ public partial class UpgradesScreen : CanvasLayer
 			CurrentTurrets.Remove(selectedUpgrade.PreviousUpgradePointer);
 			selectedCard.Visible = false;
 			BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
-			SetTurrets(CurrentTurrets.ToArray());
 		}
+		SetTurrets();
 	}
 
 	private void CleanUpBuyCard()

@@ -34,7 +34,7 @@ public partial class UpgradeManager : Node
 		var chosenUpgrades = PickRandomTurretPerTier();
 		currentUpgradeScreen.SetAbilityUpgrades(chosenUpgrades.ToArray());
 		currentUpgradeScreen.UpgradeSelected += OnUpgradeBought;
-		currentUpgradeScreen.SetTurrets(currentUpgrades.ToArray());
+		currentUpgradeScreen.InitTurretList(currentUpgrades.ToArray());
 		if(arenaManager.WaveNumber>=1) currentUpgradeScreen.HelpPanel.QueueFree();
 	}
 
