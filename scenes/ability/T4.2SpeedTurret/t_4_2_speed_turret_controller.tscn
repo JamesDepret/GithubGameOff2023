@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://br5b2vumtaf"]
+
+[ext_resource type="Script" path="res://scenes/ability/T4.2SpeedTurret/SpeedTurretController.cs" id="1_v5y8p"]
+
+[node name="t_4_2_SpeedTurretController" type="Node"]
+script = ExtResource("1_v5y8p")
+speedModifier = 0.15
+baseWaitTime = 1.0
+instantHit = true
+maxRange = 180.0
+damage = 90.0
+
+[node name="Timer" type="Timer" parent="."]

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://dohscxx436lp2"]
+
+[ext_resource type="Texture2D" uid="uid://de2158sq405f1" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_24-alt2.png" id="1_0i2c5"]
+[ext_resource type="PackedScene" uid="uid://br5b2vumtaf" path="res://scenes/ability/T4.2SpeedTurret/t_4_2_speed_turret_controller.tscn" id="1_ho5oa"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="2_qutk6"]
+
+[resource]
+script = ExtResource("2_qutk6")
+Id = "SpeedTurret2"
+Name = "Speed Turret"
+Icon = ExtResource("1_0i2c5")
+Description = "Install a speed boosting turret.
+Damage: [color=Firebrick]90[/color] 
+AttackSpeed: [color=Springgreen ]1[/color]
+Range: [color=Cornflowerblue ]180[/color] 
+Effects: [color=Khaki]Boosts the attack speed of all turrets by 15% (max 2 boosts)[/color]"
+Price = 150
+Tier = 4
+SupplyCost = 1
+AbilityControllerScene = ExtResource("1_ho5oa")

@@ -10,7 +10,7 @@ public partial class BulletAbilityController : BaseAbilityController
 	[Export] float damage = 5f;
 	[Export] float damageReductionOnBounce = 0f;
 	[Export] float critChance = 0f;
-	[Export] int maxSpeedModifiers = 2;
+	private int maxSpeedModifiers = 2;
 	protected Godot.Timer cooldownTimer;
 	private float baseDamage = 5f;
 	private float timerDeviation = 0.05f;
@@ -58,7 +58,7 @@ public partial class BulletAbilityController : BaseAbilityController
         if (GetParent().GetParent() is not Player player) return;
 		
 		// random number between -1 and 1
-		var randomDeviation = (float) GD.RandRange(-1, 1) * timerDeviation;
+		var randomDeviation = (float) GD.RandRange(-100, 100) / 100 * timerDeviation;
 		var speedModifier = 1f + speedModifiers.Sum(speedModifier => -speedModifier.ModifierValue);
 		speedModifier = Mathf.Max(speedModifier, 0.1f);
 		cooldownTimer.WaitTime = (baseWaitTime + randomDeviation) * speedModifier;
