@@ -26,20 +26,23 @@ public partial class UpgradesScreen : CanvasLayer
     }
 
     private void SetupIncomeCards()
-	{
-		
+	{		
+		PermaCardsContainer.GetChildren().ToList().ForEach(child => child.QueueFree());
+        Label label = new();
+        label.Text = "Permanent\nUpgrades";
+        PermaCardsContainer.AddChild(label);
 		if(harvestManager.HarvestTimeLevel < 5)
 		{
 			var speedCard = IncomeSpeedScene.Instantiate() as SpeedIncomeButton;
 			speedCard.UpgradesScreen = this;
-			CardContainer.AddChild(speedCard);
+			PermaCardsContainer.AddChild(speedCard);
 		}
 		
 		if(harvestManager.BaseIncome < harvestManager.MaxIncome)
 		{
 			var amountCard = IncomeAmountScene.Instantiate() as IncomeUpgradeCard;
 			amountCard.UpgradesScreen = this;
-			CardContainer.AddChild(amountCard);
+			PermaCardsContainer.AddChild(amountCard);
 		}
 
 		var maxSupply = GameEvents.Instance.MaxSupply;
@@ -47,7 +50,7 @@ public partial class UpgradesScreen : CanvasLayer
 		if (maxSupply < maxSupplyUpgraded){
 			var supplyCard = SupplyScene.Instantiate() as RoomIncreaseCard;
 			supplyCard.UpgradesScreen = this;
-			CardContainer.AddChild(supplyCard);
+			PermaCardsContainer.AddChild(supplyCard);
 		}
 	}
 }

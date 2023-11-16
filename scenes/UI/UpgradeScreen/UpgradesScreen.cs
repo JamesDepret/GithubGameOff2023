@@ -8,6 +8,7 @@ public partial class UpgradesScreen : CanvasLayer
 	private ShipUpgradeCard selectedCard;
 	private BaseUpgrade selectedUpgrade;
 	private HFlowContainer CardContainer;
+	private VBoxContainer PermaCardsContainer;
 	private Button StartWaveButton;
 	private BaseUpgrade[] availableUpgrades;
 	private HFlowContainer turretContainersLevel1;
@@ -19,6 +20,7 @@ public partial class UpgradesScreen : CanvasLayer
 		HelpPanel = GetNode<Control>("HelpPanel");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HFlowContainer>("UpgradeContainer");
+		PermaCardsContainer = GetNode<VBoxContainer>("PermanentUpgrades");
 		StartWaveButton = GetNode<Button>("StartWaveButton");
 		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
 

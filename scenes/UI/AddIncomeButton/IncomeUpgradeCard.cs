@@ -39,7 +39,7 @@ public partial class IncomeUpgradeCard : PanelContainer
 	private void ResetLabels(int number = 0)
 	{
 		priceLabel.Text = $"{harvestManager.HarvestIncomeUpgradeCost}";
-		name.Text = $"Income Amount [color=Coral]{harvestManager.BaseIncome + 1}[/color]";
+		name.Text = $"Income\nAmount [color=Coral]{harvestManager.BaseIncome + 1}[/color]";
 		SetDisabledForPrice(harvestManager.HarvestIncomeUpgradeCost > GameEvents.Instance.Parts);
 	}
 

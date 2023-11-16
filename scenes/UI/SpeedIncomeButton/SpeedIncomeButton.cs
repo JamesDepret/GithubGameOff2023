@@ -39,7 +39,7 @@ public partial class SpeedIncomeButton : PanelContainer
 	private void ResetLabels(int number = 0)
 	{
 		priceLabel.Text = $"{harvestManager.HarvestSpeedUpgradeCost}";
-		name.Text = $"Income Speed [color=Coral]{harvestManager.HarvestTimeLevel + 1}[/color]";
+		name.Text = $"Income\nSpeed [color=Coral]{harvestManager.HarvestTimeLevel + 1}[/color]";
 		SetDisabledForPrice(harvestManager.HarvestSpeedUpgradeCost > GameEvents.Instance.Parts);
 	}
 

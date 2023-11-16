@@ -69,6 +69,13 @@ offset_bottom = -200.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PermanentUpgrades" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(50, 150)
+offset_left = 523.0
+offset_top = 51.0
+offset_right = 573.0
+offset_bottom = 201.0
+
 [node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
 offset_left = 197.0
 offset_top = 170.0

@@ -27,7 +27,6 @@ public partial class MainMenu : CanvasLayer
 	{
 		GetTree().Paused = false;
         GameEvents.Restart();
-		MusicPlayer.Instance.StartGame();
 		GetTree().ChangeSceneToFile("res://scenes/main/main.tscn");
 	}
 
