@@ -8,15 +8,23 @@ public partial class UpgradesScreen : CanvasLayer
 	}
 	public void SetTurrets()
 	{
-		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
+		turretContainersLevel1.GetChildren().ToList().ForEach(child => child.QueueFree());
+		turretContainersLevel2.GetChildren().ToList().ForEach(child => child.QueueFree());
 		// sort the turrets by their level
 		var turrets = CurrentTurrets.ToArray().OrderBy(turret => turret.Id).OrderBy(turret => turret.PreviousUpgradePointer!= null).ToArray();
 		foreach (var item in turrets)
 		{
-			AddTurretIcon(item);
+            if ( item.PreviousUpgradePointer != null)
+            {
+			    AddTurretIcon(item, 2);
+            }
+            else
+            {
+			    AddTurretIcon(item, 1);
+            }
 		}
 	}
-    private void AddTurretIcon(BaseUpgrade upgrade)
+    private void AddTurretIcon(BaseUpgrade upgrade, int level)
 	{
         CurrentTurret turretIcon = new()
         {
@@ -27,6 +35,7 @@ public partial class UpgradesScreen : CanvasLayer
             Tower = upgrade,
             UpgradesScreen = this
         };
-        turretContainers.AddChild(turretIcon);
+        if(level == 1) turretContainersLevel1.AddChild(turretIcon);
+        else if(level == 2) turretContainersLevel2.AddChild(turretIcon);
 	}
 }

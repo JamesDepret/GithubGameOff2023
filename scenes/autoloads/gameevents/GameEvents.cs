@@ -18,6 +18,9 @@ public partial class GameEvents : Node
 
 	public static void Restart()
 	{
+		MusicPlayer.Instance.DisconnectFromSignals();
 		Instance = new GameEvents();
+		MusicPlayer.Instance.ConnectToSignals();
+		MusicPlayer.Instance.StartGame();
 	}
 }

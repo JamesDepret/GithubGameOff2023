@@ -75,39 +75,87 @@ offset_top = 170.0
 offset_right = 497.0
 offset_bottom = 360.0
 
-[node name="TurretContainers" type="HFlowContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(196, 0)
 offset_top = 170.0
-offset_right = 193.0
+offset_right = 196.0
 offset_bottom = 360.0
 
-[node name="TextureRect" parent="TurretContainers" instance=ExtResource("5_ar7dc")]
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 1 (click to upgrade)"
+
+[node name="TurretContainers" type="HFlowContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(196, 0)
 layout_mode = 2
 
-[node name="TextureRect7" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect" parent="VBoxContainer/TurretContainers" instance=ExtResource("5_ar7dc")]
 layout_mode = 2
-texture = ExtResource("5_fy80o")
 
-[node name="TextureRect8" type="TextureRect" parent="TurretContainers"]
-layout_mode = 2
-texture = ExtResource("5_fy80o")
-
-[node name="TextureRect3" type="TextureRect" parent="TurretContainers"]
-layout_mode = 2
-texture = ExtResource("5_fy80o")
-
-[node name="TextureRect4" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer/TurretContainers"]
 layout_mode = 2
 texture = ExtResource("5_fy80o")
 
-[node name="TextureRect5" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect8" type="TextureRect" parent="VBoxContainer/TurretContainers"]
 layout_mode = 2
 texture = ExtResource("5_fy80o")
 
-[node name="TextureRect6" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/TurretContainers"]
 layout_mode = 2
 texture = ExtResource("5_fy80o")
 
-[node name="TextureRect2" type="TextureRect" parent="TurretContainers"]
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/TurretContainers"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/TurretContainers"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer/TurretContainers"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TurretContainers"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 2"
+
+[node name="TurretContainers2" type="HFlowContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+
+[node name="TextureRect" parent="VBoxContainer/TurretContainers2" instance=ExtResource("5_ar7dc")]
+layout_mode = 2
+
+[node name="TextureRect7" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect8" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect5" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect6" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
+layout_mode = 2
+texture = ExtResource("5_fy80o")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TurretContainers2"]
 layout_mode = 2
 texture = ExtResource("5_fy80o")
 

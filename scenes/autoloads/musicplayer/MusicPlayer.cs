@@ -10,13 +10,18 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 	public override void _Ready()
 	{
 		Instance = this;
-		GameEvents.Instance.WaveCleared += OnWaveCleared;
 	}	
-	
-	public override void _ExitTree()
-    {
+
+	public void ConnectToSignals()
+	{
+		GameEvents.Instance.WaveCleared += OnWaveCleared;
+	}
+
+	public void DisconnectFromSignals()
+	{
 		GameEvents.Instance.WaveCleared -= OnWaveCleared;
-    }
+	}
+
 
 	public void StartGame()
 	{
@@ -44,7 +49,7 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 
 	private void OnWaveCleared(int waveNumber)
 	{
-		if(waveNumber == 2)
+		if(waveNumber == 10)
 		{
 			Tween soundTween = CreateTween();
 			soundTween.TweenProperty(this, "volume_db", -80, fadeTime);

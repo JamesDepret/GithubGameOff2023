@@ -10,7 +10,8 @@ public partial class UpgradesScreen : CanvasLayer
 	private HFlowContainer CardContainer;
 	private Button StartWaveButton;
 	private BaseUpgrade[] availableUpgrades;
-	private HFlowContainer turretContainers;
+	private HFlowContainer turretContainersLevel1;
+	private HFlowContainer turretContainersLevel2;
 	private bool canAddSupply = true;
 	private BaseUpgrade? previousUpgradePointer = null;
 	public override void _Ready()
@@ -25,8 +26,10 @@ public partial class UpgradesScreen : CanvasLayer
 		IncomeAmountBuyButton = GetNode<Button>("AddIncomeButton");
 		RoomUpgradeBuyButton = GetNode<Button>("RoomUpgradeBuyButton");
 
-		turretContainers = GetNode<HFlowContainer>("TurretContainers");
-		turretContainers.GetChildren().ToList().ForEach(child => child.QueueFree());
+		turretContainersLevel1 = GetNode<HFlowContainer>("VBoxContainer/TurretContainers");
+		turretContainersLevel2 = GetNode<HFlowContainer>("VBoxContainer/TurretContainers2");
+		turretContainersLevel1.GetChildren().ToList().ForEach(child => child.QueueFree());
+		turretContainersLevel2.GetChildren().ToList().ForEach(child => child.QueueFree());
 
 		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
 

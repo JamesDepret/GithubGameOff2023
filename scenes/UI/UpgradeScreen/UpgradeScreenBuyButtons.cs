@@ -45,7 +45,6 @@ public partial class UpgradesScreen : CanvasLayer
     private void OnUpgradeCardBought()
 	{
 		CurrentTurrets.Add(selectedUpgrade);
-		AddTurretIcon(selectedUpgrade);
 		GameEvents.Instance.EmitPartsCollected(-selectedUpgrade.Price);
 		EmitSignal(SignalName.UpgradeSelected, selectedUpgrade);
 		SetupCards();
