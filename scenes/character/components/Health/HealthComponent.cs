@@ -48,7 +48,7 @@ public partial class HealthComponent : Node
 
 	public void HealDamage(float amount)
 	{
-        CurrentHealth = MathF.Max(CurrentHealth + amount, 0);
+        CurrentHealth = MathF.Max(CurrentHealth + amount, MaxHealth);
         EmitSignal(SignalName.HealthChanged);
 	}
 
