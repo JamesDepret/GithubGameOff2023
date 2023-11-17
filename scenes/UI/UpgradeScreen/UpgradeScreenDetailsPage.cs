@@ -9,6 +9,7 @@ public partial class UpgradesScreen : CanvasLayer
 		selectedCard.Visible = true;
 		SetupSelectedCard();
 		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
+		PermaCardsContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
 	}
 
 	public void SetupSelectedIncomeOrSupplyUpgrade(int price, Texture2D icon, string name, string description, BuyButtonEnum button)
@@ -19,6 +20,7 @@ public partial class UpgradesScreen : CanvasLayer
 		selectedCard.SetTexts(name, description);
 		BuyButtonSetup(button, parts < price);
 		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
+		PermaCardsContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
     }
 
     private void SetupSelectedCard()

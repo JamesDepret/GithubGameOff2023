@@ -11,7 +11,7 @@ public partial class UpgradeCard : PanelContainer
 	Label SupplyLabel;
 	public override void _Ready()
 	{
-		Icon = GetNode<TextureRect>("Border/Background/VBoxContainer/Icon");
+		Icon = GetNode<TextureRect>("MarginContainer/VBoxContainer/VBoxContainer/Icon");
 		NameLabel = GetNode<Label>("MarginContainer/VBoxContainer/NameLabel");
 		PriceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
 		SupplyLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/SupplyLabel");
@@ -67,7 +67,7 @@ public partial class UpgradeCard : PanelContainer
 		if (@event.IsActionPressed("left_click"))
 		{
 			UpgradesScreen.SetSelectedUpgrade(currentUpgrade);
-			Modulate = new Color(1, 1, 1, 0.8f);
+			Modulate = new Color(1, 1, 1, 0.5f);
 		}
 	}
 }

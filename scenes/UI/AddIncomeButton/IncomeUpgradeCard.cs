@@ -12,7 +12,7 @@ public partial class IncomeUpgradeCard : PanelContainer
 		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
 		priceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
 		name = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/NameLabel");
-		icon = GetNode<TextureRect>("Border/Background/VBoxContainer/Icon").Texture;
+		icon = GetNode<TextureRect>("MarginContainer/VBoxContainer/CenterContainer/Icon").Texture;
 		GuiInput += OnGuiInput;
 		ResetLabels();
 		GameEvents.Instance.PartsCollected += ResetLabels;
@@ -54,7 +54,7 @@ public partial class IncomeUpgradeCard : PanelContainer
 				description: "Increase the amount for which the parts harvester ticks.\nEffects: [color=Khaki]Increases tick amount by 1[/color]\n\nParts income is indicated by the progressbar in the top right corner, left from the total parts available.",
 				UpgradesScreen.BuyButtonEnum.IncomeAmount
 			);
-			Modulate = new Color(1, 1, 1, 0.8f);
+			Modulate = new Color(1, 1, 1, 0.5f);
 		}
 	}
 }

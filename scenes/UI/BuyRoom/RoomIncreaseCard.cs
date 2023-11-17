@@ -10,7 +10,7 @@ public partial class RoomIncreaseCard : PanelContainer
 	{
 		priceLabel = GetNode<Label>("MarginContainer/VBoxContainer/PanelContainer/PriceLabel");
 		name = GetNode<RichTextLabel>("MarginContainer/VBoxContainer/NameLabel");
-		icon = GetNode<TextureRect>("Border/Background/VBoxContainer/Icon").Texture;
+		icon = GetNode<TextureRect>("MarginContainer/VBoxContainer/VBoxContainer/Icon").Texture;
 		GuiInput += OnGuiInput;
 		ResetLabels();
 		GameEvents.Instance.PartsCollected += ResetLabels;
@@ -51,7 +51,7 @@ public partial class RoomIncreaseCard : PanelContainer
 				description: "Increase the room for turrets so you can install more.\nEffects: [color=Khaki]Increases room amount by 5[/color]\n\nThe max amount of room is 50.",
 				UpgradesScreen.BuyButtonEnum.RoomUpgrade
 			);
-			Modulate = new Color(1, 1, 1, 0.8f);
+			Modulate = new Color(1, 1, 1, 0.5f);
 		}
 	}
 }

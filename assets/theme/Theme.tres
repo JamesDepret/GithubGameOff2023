@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://borrj7vh5h1it"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://borrj7vh5h1it"]
 
+[ext_resource type="Texture2D" uid="uid://jwjr0sa3u26q" path="res://assets/art/Own/ui/ui.png" id="1_44pfp"]
 [ext_resource type="FontFile" uid="uid://dccmleufsy02y" path="res://assets/theme/MMXSNES.ttf" id="1_l1sl4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0fgf"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 4.0
+texture_margin_top = 6.0
+texture_margin_right = 4.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(0, 0, 16, 16)
 
 [resource]
 default_font = ExtResource("1_l1sl4")
 default_font_size = 16
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_o0fgf")

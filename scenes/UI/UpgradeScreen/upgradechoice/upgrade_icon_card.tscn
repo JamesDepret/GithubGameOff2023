@@ -1,70 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgehttfnyxd5q"]
+[gd_scene load_steps=5 format=3 uid="uid://cgehttfnyxd5q"]
 
 [ext_resource type="Texture2D" uid="uid://dli13gurwut5l" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_81.png" id="1_8m4u3"]
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/upgradechoice/UpgradeCard.cs" id="1_p4t82"]
 [ext_resource type="Texture2D" uid="uid://daeyo8so5o4r5" path="res://assets/art/Own/parts/experience_part.png" id="2_msa7c"]
 [ext_resource type="Texture2D" uid="uid://cnhvagsvs0vwg" path="res://assets/art/kenney/tiny/Tiles/tile_0056.png" id="3_lalqa"]
 
-[sub_resource type="Gradient" id="Gradient_gkdmx"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_y4h7o"]
-gradient = SubResource("Gradient_gkdmx")
-
-[sub_resource type="Gradient" id="Gradient_rhsra"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0.247059, 0.14902, 0.192157, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_6li6w"]
-gradient = SubResource("Gradient_rhsra")
-
 [node name="UpgradeCard" type="PanelContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -530.0
-offset_bottom = -295.0
+offset_right = -522.0
+offset_bottom = -290.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_p4t82")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 2
-texture = SubResource("GradientTexture1D_y4h7o")
-
-[node name="Border" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 1
-theme_override_constants/margin_top = 1
-theme_override_constants/margin_right = 1
-theme_override_constants/margin_bottom = 1
-
-[node name="Background" type="NinePatchRect" parent="Border"]
-layout_mode = 2
-texture = SubResource("GradientTexture1D_6li6w")
-
-[node name="VBoxContainer" type="CenterContainer" parent="Border/Background"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 29.0
-grow_horizontal = 2
-
-[node name="Icon" type="TextureRect" parent="Border/Background/VBoxContainer"]
-custom_minimum_size = Vector2(24, 24)
-layout_mode = 2
-texture = ExtResource("1_8m4u3")
-
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
 theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="VBoxContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("1_8m4u3")
 
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
