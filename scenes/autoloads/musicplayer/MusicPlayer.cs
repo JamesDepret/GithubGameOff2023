@@ -66,13 +66,11 @@ public partial class MusicPlayer : AudioStreamPlayer2D
 
 	void FadeOutMusic(float percent)
 	{
-		float value = volume_db -(60 * percent);
-		VolumeDb = value;
+		VolumeDb = Mathf.LinearToDb(1-percent) +volume_db;
 	}
 
 	void FadeInMusic(float percent)
 	{
-		float value = ((80+volume_db) * percent) - 80;
-		VolumeDb = value;
+		VolumeDb = Mathf.LinearToDb(percent)+volume_db;
 	}
 }

@@ -1,6 +1,7 @@
 namespace UI;
 public partial class MainMenu : CanvasLayer
 {
+	[Export] private PackedScene optionsMenu;
 
 	public override void _Ready()
 	{
@@ -37,5 +38,7 @@ public partial class MainMenu : CanvasLayer
 
 	private void OnOptionsButtonPressed()
 	{
+		var optionsMenuInstance = optionsMenu.Instantiate() as OptionsMenu;
+		AddChild(optionsMenuInstance);
 	}
 }
