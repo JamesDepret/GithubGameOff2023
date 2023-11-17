@@ -1,22 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://beug8aciosgw0"]
+[gd_scene load_steps=2 format=3 uid="uid://beug8aciosgw0"]
 
 [ext_resource type="Script" path="res://scenes/UI/BuyRoom/BuyRoomButton.cs" id="1_0n68d"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us267"]
-bg_color = Color(0.619608, 0.427451, 0.509804, 1)
 
 [node name="BuyRoom" type="Button"]
 offset_right = 80.0
 offset_bottom = 20.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = "Buy item"
 script = ExtResource("1_0n68d")

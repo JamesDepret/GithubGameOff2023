@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c14ueue7cjw2o"]
-
-[ext_resource type="FontFile" uid="uid://dccmleufsy02y" path="res://assets/theme/MMXSNES.ttf" id="1_spesn"]
-
-[resource]
-default_font = ExtResource("1_spesn")
-default_font_size = 16

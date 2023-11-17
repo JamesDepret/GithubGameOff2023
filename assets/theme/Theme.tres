@@ -1,7 +1,47 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://borrj7vh5h1it"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://borrj7vh5h1it"]
 
 [ext_resource type="Texture2D" uid="uid://jwjr0sa3u26q" path="res://assets/art/Own/ui/ui.png" id="1_44pfp"]
 [ext_resource type="FontFile" uid="uid://dccmleufsy02y" path="res://assets/theme/MMXSNES.ttf" id="1_l1sl4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5cb7m"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 1.0
+texture_margin_top = 1.0
+texture_margin_right = 1.0
+texture_margin_bottom = 1.0
+region_rect = Rect2(18, 2, 12, 12)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qrlcx"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u3kkf"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rb1hb"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 3.0
+texture_margin_top = 5.0
+texture_margin_right = 3.0
+texture_margin_bottom = 5.0
+region_rect = Rect2(4, 20, 8, 8)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bn6it"]
+texture = ExtResource("1_44pfp")
+texture_margin_left = 3.0
+texture_margin_top = 3.0
+texture_margin_right = 3.0
+texture_margin_bottom = 3.0
+region_rect = Rect2(20, 20, 8, 8)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o0fgf"]
 texture = ExtResource("1_44pfp")
@@ -14,4 +54,12 @@ region_rect = Rect2(0, 0, 16, 16)
 [resource]
 default_font = ExtResource("1_l1sl4")
 default_font_size = 16
+AlternativePanelContainer/base_type = &"PanelContainer"
+AlternativePanelContainer/styles/panel = SubResource("StyleBoxTexture_5cb7m")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/styles/focus = SubResource("StyleBoxTexture_qrlcx")
+Button/styles/hover = SubResource("StyleBoxTexture_u3kkf")
+Button/styles/normal = SubResource("StyleBoxTexture_rb1hb")
+Button/styles/pressed = SubResource("StyleBoxTexture_bn6it")
+Label/constants/line_spacing = 0
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_o0fgf")

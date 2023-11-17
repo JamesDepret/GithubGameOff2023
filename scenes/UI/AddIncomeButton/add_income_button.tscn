@@ -1,22 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf2v7ks4yj10x"]
+[gd_scene load_steps=2 format=3 uid="uid://bf2v7ks4yj10x"]
 
 [ext_resource type="Script" path="res://scenes/UI/AddIncomeButton/AddIncomeButton.cs" id="1_22jrt"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8xin"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_naiuk"]
-bg_color = Color(0.619608, 0.427451, 0.509804, 1)
 
 [node name="AddIncomeButton" type="Button"]
 custom_minimum_size = Vector2(80, 20)
 offset_right = 80.0
 offset_bottom = 20.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_m8xin")
-theme_override_styles/hover = SubResource("StyleBoxFlat_naiuk")
 text = " Buy item "
 script = ExtResource("1_22jrt")

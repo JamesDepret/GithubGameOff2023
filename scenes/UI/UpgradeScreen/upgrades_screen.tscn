@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://un3og4gkln6e"]
+[gd_scene load_steps=16 format=3 uid="uid://un3og4gkln6e"]
 
 [ext_resource type="Script" path="res://scenes/UI/UpgradeScreen/UpgradesScreen.cs" id="1_wnyy3"]
 [ext_resource type="PackedScene" uid="uid://cgehttfnyxd5q" path="res://scenes/UI/UpgradeScreen/upgradechoice/upgrade_icon_card.tscn" id="2_fl6q0"]
@@ -13,27 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://beug8aciosgw0" path="res://scenes/UI/BuyRoom/buy_room.tscn" id="10_bc5el"]
 [ext_resource type="PackedScene" uid="uid://keujgm173fo5" path="res://scenes/UI/SpeedIncomeButton/speed_income_buy_button.tscn" id="10_k21wf"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hw8lb"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7pkb"]
-bg_color = Color(0.619608, 0.427451, 0.509804, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxbic"]
-bg_color = Color(0.619608, 0.427451, 0.509804, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sel3"]
-bg_color = Color(0.247059, 0.14902, 0.192157, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_us267"]
 bg_color = Color(0.619608, 0.427451, 0.509804, 1)
 
 [sub_resource type="Gradient" id="Gradient_v8din"]
@@ -43,14 +23,6 @@ colors = PackedColorArray(1, 1, 1, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mbko0"]
 gradient = SubResource("Gradient_v8din")
 width = 80
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qah7m"]
-bg_color = Color(0.333333, 0.203922, 0.203922, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
 
 [node name="UpgradesScreen" type="CanvasLayer"]
 process_mode = 3
@@ -171,8 +143,6 @@ offset_left = 411.0
 offset_top = 328.0
 offset_right = 491.0
 offset_bottom = 348.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_hw8lb")
-theme_override_styles/hover = SubResource("StyleBoxFlat_f7pkb")
 text = "Buy Item"
 
 [node name="SpeedIncomeBuyButton" parent="." instance=ExtResource("10_k21wf")]
@@ -199,8 +169,6 @@ offset_left = 523.0
 offset_top = 332.0
 offset_right = 634.0
 offset_bottom = 352.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_4sel3")
-theme_override_styles/hover = SubResource("StyleBoxFlat_us267")
 text = " Start next wave "
 
 [node name="HelpPanel" type="Control" parent="."]
@@ -229,12 +197,10 @@ autowrap_mode = 2
 
 [node name="Button" type="Button" parent="HelpPanel"]
 layout_mode = 0
-offset_left = 263.0
-offset_top = 179.0
-offset_right = 423.0
-offset_bottom = 235.0
+offset_left = 200.0
+offset_top = 190.0
+offset_right = 500.0
+offset_bottom = 224.0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_qah7m")
-text = "Click here to 
-Start Game"
+text = "Click here to start game"
 script = ExtResource("7_isbi8")
