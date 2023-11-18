@@ -9,3 +9,4 @@ global using Ability;
 global using UI;
 global using Manager;
 global using Upgrades;
+global using BaseRewards;

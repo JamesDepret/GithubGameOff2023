@@ -46,9 +46,14 @@ public partial class HealthComponent : Node
         Callable.From(CheckDeath).CallDeferred();
     }
 
+	public void HealPercentage(float amount)
+	{
+		HealDamage(MaxHealth * amount);
+	}
+
 	public void HealDamage(float amount)
 	{
-        CurrentHealth = MathF.Max(CurrentHealth + amount, 0);
+        CurrentHealth = MathF.Max(CurrentHealth + (int) amount, 0);
 		if(CurrentHealth > MaxHealth) CurrentHealth = MaxHealth;
         EmitSignal(SignalName.HealthChanged);
 	}

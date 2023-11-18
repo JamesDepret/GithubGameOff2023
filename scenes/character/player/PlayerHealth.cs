@@ -14,6 +14,15 @@ public partial class Player : CharacterBody2D
         }
     }
 
+    public void HealPercentage(float amount)
+    {
+        healthComponent.HealPercentage(amount);
+    }
+
+    public void HealDamage(int amount)
+    {
+        healthComponent.HealDamage(amount);
+    }
 
     public void DealDamage(int amount)
     {

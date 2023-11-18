@@ -37,7 +37,8 @@ public partial class HurtboxComponent : Area2D
         var critroll = (float) GD.RandRange(0, 100)/100;
         if (critroll < CritChance) damage *= 2;
 
-        HealthComponent.TakeDamage(damage);
+        if(damage > 0) HealthComponent.TakeDamage(damage);
+        else HealthComponent.HealDamage(-damage);
 
         var floatingText = FloatingTextScene.Instantiate() as FloatingText;
         GetTree().GetFirstNodeInGroup("foreground_layer").AddChild(floatingText);
