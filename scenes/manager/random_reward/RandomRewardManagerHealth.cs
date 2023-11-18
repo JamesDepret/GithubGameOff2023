@@ -11,7 +11,6 @@ public partial class RandomRewardManager : Node
 
     private float HealthDropChance()
     {
-        return 1f;
         if (healthPercentage > 0.75f) return 0f;
         if (healthPercentage > 0.25f) return 0.025f;
         if (healthPercentage > 0.1f) return 0.1f;
