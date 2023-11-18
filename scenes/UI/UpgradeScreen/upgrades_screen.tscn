@@ -184,12 +184,21 @@ offset_right = 640.0
 offset_bottom = 360.0
 texture = SubResource("GradientTexture1D_mbko0")
 
-[node name="Label3" type="Label" parent="HelpPanel"]
+[node name="PanelContainer" type="PanelContainer" parent="HelpPanel"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
+offset_left = 73.0
+offset_top = 97.0
+offset_right = 273.0
+offset_bottom = 142.0
+theme_type_variation = &"AlternativePanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="HelpPanel/PanelContainer"]
 layout_mode = 2
-offset_left = 4.0
-offset_top = 101.0
-offset_right = 368.0
-offset_bottom = 154.0
+theme_override_constants/margin_left = 4
+
+[node name="Label3" type="Label" parent="HelpPanel/PanelContainer/MarginContainer"]
+layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 9
 text = "Turrets available - buy atleast one offensive turret in round one or you can't win."

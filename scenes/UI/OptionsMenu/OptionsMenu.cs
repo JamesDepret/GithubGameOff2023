@@ -33,8 +33,8 @@ public partial class OptionsMenu : CanvasLayer
 
 	private void OnBackButtonPressed()
 	{
-		GetTree().Paused = false;
 		QueueFree();
+		GameEvents.Instance.OnOptionsBackPressed();
 	}
 
 	private float GetBusVolumePercent(string busname)
