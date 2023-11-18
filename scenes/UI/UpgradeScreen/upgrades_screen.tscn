@@ -165,10 +165,10 @@ offset_right = 491.0
 offset_bottom = 348.0
 
 [node name="StartWaveButton" type="Button" parent="."]
-offset_left = 523.0
+offset_left = 512.0
 offset_top = 332.0
 offset_right = 634.0
-offset_bottom = 352.0
+offset_bottom = 356.0
 text = " Start next wave "
 
 [node name="HelpPanel" type="Control" parent="."]
@@ -206,10 +206,10 @@ autowrap_mode = 2
 
 [node name="Button" type="Button" parent="HelpPanel"]
 layout_mode = 0
-offset_left = 200.0
+offset_left = 169.0
 offset_top = 190.0
-offset_right = 500.0
-offset_bottom = 224.0
+offset_right = 509.0
+offset_bottom = 228.0
 theme_override_font_sizes/font_size = 32
 text = "Click here to start game"
 script = ExtResource("7_isbi8")

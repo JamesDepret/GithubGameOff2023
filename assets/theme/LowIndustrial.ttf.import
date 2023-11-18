@@ -1,0 +1,38 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://0yd7mppdgahw"
+path="res://.godot/imported/LowIndustrial.ttf-fc9a9ce30556561884e9299f6d11cb5d.fontdata"
+
+[deps]
+
+source_file="res://assets/theme/LowIndustrial.ttf"
+dest_files=["res://.godot/imported/LowIndustrial.ttf-fc9a9ce30556561884e9299f6d11cb5d.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=0
+subpixel_positioning=0
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0)
+}]
+language_support={}
+script_support={}
+opentype_features={}

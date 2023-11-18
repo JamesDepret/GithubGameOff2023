@@ -86,7 +86,7 @@ layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 bbcode_enabled = true
-text = "description [color=purple]with BB code on[/color]"
+text = "description [color=purple]with BB code on[/color]  [s]strikethrough text[/s]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2

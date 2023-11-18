@@ -4,7 +4,7 @@
 
 [node name="t_4_2_SpeedTurretController" type="Node"]
 script = ExtResource("1_v5y8p")
-speedModifier = 0.15
+speedModifier = 0.1
 baseWaitTime = 1.0
 instantHit = true
 maxRange = 180.0
