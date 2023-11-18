@@ -8,6 +8,7 @@ public partial class Parts : Node2D
 	private Godot.Timer timer;
 	private Tween blinkTween;
 	private Area2D CollectionArea;
+	private Player player;
 	public override void _Ready()
 	{
 		sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -20,6 +21,7 @@ public partial class Parts : Node2D
 		blinkTween = CreateTween();
 		var callable = Callable.From<float>(TweenBlink);
 		blinkTween.TweenMethod(callable,0f,1.0f,MaxLifeTime);
+
 	}
 
 	
@@ -50,10 +52,12 @@ public partial class Parts : Node2D
 	void TweenCollect(float percent)
 	{
         if (GetTree().GetFirstNodeInGroup("player") is not Player player) return;
-
+		
         if (startPosition == Vector2.Zero) startPosition = GlobalPosition;
 				
 		GlobalPosition = startPosition.Lerp(player.GlobalPosition, percent);
+		
+		if(percent > 0.98f) sprite.Visible = false;
 	}
 
 	void Collect()

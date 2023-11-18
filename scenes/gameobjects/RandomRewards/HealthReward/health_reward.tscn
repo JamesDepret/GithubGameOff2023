@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck8c18pcth2er"]
+
+[ext_resource type="Script" path="res://scenes/gameobjects/RandomRewards/HealthReward/HealthReward.cs" id="1_xf7s2"]
+[ext_resource type="Texture2D" uid="uid://chtbqkrgcawiv" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_38-Alternative-3.png" id="2_fbn3w"]
+
+[sub_resource type="Animation" id="Animation_83ssx"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fik2s"]
+_data = {
+"default": SubResource("Animation_83ssx")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iokbr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fbn3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d064"]
+radius = 16.0
+
+[node name="HealthReward" type="Node2D"]
+script = ExtResource("1_xf7s2")
+Speed = 100.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_fik2s")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = 0.949681
+sprite_frames = SubResource("SpriteFrames_iokbr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2d064")
+
+[node name="Timer" type="Timer" parent="."]

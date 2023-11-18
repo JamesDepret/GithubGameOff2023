@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bklcci0bo4h20"]
+[gd_scene load_steps=35 format=3 uid="uid://bklcci0bo4h20"]
 
 [ext_resource type="PackedScene" uid="uid://dmus44u2gxmt8" path="res://scenes/UI/ArenaWave/arena_wave_ui.tscn" id="1_3hwic"]
 [ext_resource type="PackedScene" uid="uid://dhgf1ytkmb8vn" path="res://scenes/character/player/player.tscn" id="1_dpqan"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://cf3pn882jd28w" path="res://scenes/character/enemy/Waves/wave13.tscn" id="22_71kfr"]
 [ext_resource type="PackedScene" uid="uid://7ke00prnjwif" path="res://scenes/character/enemy/Waves/wave10-2.tscn" id="22_724jl"]
 [ext_resource type="PackedScene" uid="uid://b4fp2segjnfc7" path="res://scenes/character/enemy/Waves/wave14.tscn" id="23_e0rlf"]
+[ext_resource type="PackedScene" uid="uid://dotmwx6fqf7iy" path="res://scenes/manager/random_reward/random_reward_manager.tscn" id="27_tyq8f"]
 [ext_resource type="PackedScene" uid="uid://w1vikaa3bdxi" path="res://scenes/UI/HighScore/high_score.tscn" id="36_7ud7l"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_a27ay"]
@@ -510,6 +511,9 @@ arenaManager = NodePath("../ArenaManager")
 
 [node name="UpgradeManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("13_kcudf")]
 arenaManager = NodePath("../ArenaManager")
+
+[node name="RandomRewardManager" parent="Managers" node_paths=PackedStringArray("player") instance=ExtResource("27_tyq8f")]
+player = NodePath("../../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 process_mode = 3
