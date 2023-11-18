@@ -7,10 +7,10 @@
 [node name="T4_1ExplodingBulletController" type="Node"]
 script = ExtResource("1_fjnh5")
 explosionScene = ExtResource("2_q8ly2")
-baseWaitTime = 0.6
+baseWaitTime = 0.5
 instantHit = true
 bulletAbility = ExtResource("3_qfxsp")
 maxRange = 120.0
-damage = 40.0
+damage = 35.0
 
 [node name="Timer" type="Timer" parent="."]

@@ -10,7 +10,7 @@ Id = "LootBoost2"
 Name = "Magnet Boost"
 Icon = ExtResource("2_mejwk")
 Description = "Install an even better parts magnet
-Effects: [color=Khaki]Increases loot range by 50% and has a 10% chance to double  parts found[/color]"
+Effects: [color=Khaki]Increases loot range by another 50% and has a 10% chance to double  parts found[/color][color=Gold] (+10%)[/color]"
 Price = 30
 Tier = 3
 SupplyCost = 1

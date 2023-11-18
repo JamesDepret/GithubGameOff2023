@@ -5,11 +5,11 @@
 
 [node name="T2BouncingBulletController" type="Node"]
 script = ExtResource("1_nej1u")
-bulletAbility = ExtResource("2_gjecp")
-baseWaitTime = 1.0
-bulletSpeed = 450.0
-damage = 48.0
+baseWaitTime = 0.8
 bounces = 3
+bulletAbility = ExtResource("2_gjecp")
+bulletSpeed = 450.0
+damage = 60.0
 damageReductionOnBounce = 0.5
 
 [node name="Timer" type="Timer" parent="."]

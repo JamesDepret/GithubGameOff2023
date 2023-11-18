@@ -5,8 +5,8 @@
 
 [node name="T2_1_VampireTurretController" type="Node"]
 script = ExtResource("1_qekbg")
-HealthGainedPerHit = 2
-baseWaitTime = 0.66
+HealthGainedPerHit = 3
+baseWaitTime = 1.0
 instantHit = true
 bulletAbility = ExtResource("2_qqa8v")
 maxRange = 80.0

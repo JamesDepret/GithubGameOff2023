@@ -10,8 +10,8 @@ Id = "CritBullet2"
 Name = "Crit Bullet"
 Icon = ExtResource("2_08fru")
 Description = "Upgrade the cannon with critical precision.
-Damage: [color=Firebrick]60[/color] 
-AttackSpeed: [color=Springgreen ]0.65[/color]
+Damage: [color=Firebrick]60[/color][color=Gold] (+41)[/color]
+AttackSpeed: [color=Springgreen ]0.65[/color][color=Gold] (-0,25)[/color]
 Range: [color=Cornflowerblue ]250[/color] 
 Effects: [color=Khaki]Has a 33% crit chance[/color]"
 Price = 115

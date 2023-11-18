@@ -10,8 +10,8 @@ Id = "HealthBoost2"
 Name = "Health Boost"
 Icon = ExtResource("1_rpy10")
 Description = "Install a health armor
-HealthIncrease: [color=Firebrick]50[/color]
-Effects: [color=Khaki]Adds 10 health each waveclear[/color]"
+HealthIncrease: [color=Firebrick]50[/color][color=Gold] (+50)[/color]
+Effects: [color=Khaki]Adds 10 health each waveclear[/color][color=Gold] (+10)[/color]"
 Price = 50
 Tier = 3
 SupplyCost = 1

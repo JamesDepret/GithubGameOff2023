@@ -10,8 +10,8 @@ Id = "ShieldBoost2"
 Name = "Shield Boost"
 Icon = ExtResource("2_aeq8w")
 Description = "Upgrade a shield generator
-ShieldIncrease: [color=Cornflowerblue]40[/color] 
-Effects: [color=Khaki]Shield recover after each wave. Regenerate 1 shield every 5 seconds[/color]"
+ShieldIncrease: [color=Cornflowerblue]40[/color] [color=Gold] (+40)[/color]
+Effects: [color=Khaki]Shield recover after each wave. Regenerate 1 shield every 5 seconds[/color] [color=Gold] (+1)[/color]"
 Price = 75
 Tier = 3
 SupplyCost = 1

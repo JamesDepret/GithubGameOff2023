@@ -5,11 +5,11 @@
 
 [node name="RooterTurretController" type="Node"]
 script = ExtResource("1_oufb1")
-SpeedUpFactor = 20
+SpeedUpFactor = 10
+baseWaitTime = 0.5
+instantHit = true
 bulletAbility = ExtResource("2_bxejj")
 maxRange = 30.0
-baseWaitTime = 1.0
-instantHit = true
-damage = 105.0
+damage = 55.0
 
 [node name="Timer" type="Timer" parent="."]

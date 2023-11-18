@@ -10,10 +10,10 @@ Id = "ExplodingBullet2"
 Name = "Exploding Bullet"
 Icon = ExtResource("2_4p02s")
 Description = "Install a cannon with exploding bullets.
-Damage: [color=Firebrick]280[/color] 
-AttackSpeed: [color=Springgreen ]2[/color]
+Damage: [color=Firebrick]280[/color] [color=Gold] (+240)[/color]
+AttackSpeed: [color=Springgreen ]2[/color][color=Crimson] (+1,5)[/color]
 Range: [color=Cornflowerblue ]120[/color] 
-Effects: [color=Khaki]Has an explosive bullet that deals 100 damage[/color]"
+Effects: [color=Khaki]Has an explosive bullet that deals 100 damage[/color][color=Gold] (+90)[/color]"
 Price = 250
 Tier = 4
 SupplyCost = 3

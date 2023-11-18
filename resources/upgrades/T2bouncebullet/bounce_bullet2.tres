@@ -10,10 +10,10 @@ Id = "BounceBullet2"
 Name = "Piercing Bullet"
 Icon = ExtResource("2_gqqva")
 Description = "Upgrade the cannon that shoots a piercing bullet.
-Damage: [color=Firebrick]48[/color] 
-AttackSpeed: [color=Springgreen ]1[/color]
+Damage: [color=Firebrick]60[/color] [color=Gold](+36)[/color] 
+AttackSpeed: [color=Springgreen ]0.8[/color]
 Range: [color=Cornflowerblue ]150[/color] 
-Effects: [color=Khaki]Pierces 2 times, 50% damage reduction per hit[/color] "
+Effects: [color=Khaki]Pierces 2 [/color][color=Gold](+1)[/color][color=Khaki] times, 50% damage reduction per hit[/color] "
 Price = 100
 Tier = 2
 SupplyCost = 1

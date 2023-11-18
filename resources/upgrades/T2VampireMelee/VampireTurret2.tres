@@ -10,10 +10,10 @@ Id = "VampireTurret2"
 Name = "Vampire Turret"
 Icon = ExtResource("2_qexd5")
 Description = "Ipgrade the cannon that absorbs parts to repair the ship.
-Damage: [color=Firebrick]70[/color] 
-AttackSpeed: [color=Springgreen ]0,66[/color]
+Damage: [color=Firebrick]70[/color][color=Gold] (+47)[/color]
+AttackSpeed: [color=Springgreen ]1[/color]
 Range: [color=Cornflowerblue ]80[/color] 
-Effects: [color=Khaki]Heals 2 HP each hit[/color]"
+Effects: [color=Khaki]Heals 3 HP each hit[/color][color=Gold] (+2)[/color]"
 Price = 100
 Tier = 2
 SupplyCost = 1

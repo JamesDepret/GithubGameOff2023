@@ -10,10 +10,10 @@ Id = "SpeedTurret2"
 Name = "Speed Turret"
 Icon = ExtResource("1_0i2c5")
 Description = "Install a speed boosting turret.
-Damage: [color=Firebrick]90[/color] 
+Damage: [color=Firebrick]90[/color] [color=Gold] (+30)[/color]
 AttackSpeed: [color=Springgreen ]1[/color]
 Range: [color=Cornflowerblue ]180[/color] 
-Effects: [color=Khaki]Boosts the attack speed of all turrets by 10% (max 2 boosts)[/color]"
+Effects: [color=Khaki]Boosts the attack speed of all turrets by 10% (max 2 boosts)[/color] [color=Gold] (+5%)[/color]"
 Price = 150
 Tier = 4
 SupplyCost = 1

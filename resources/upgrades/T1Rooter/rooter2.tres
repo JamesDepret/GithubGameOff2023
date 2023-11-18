@@ -10,10 +10,10 @@ Id = "Rooter2"
 Name = "Rooter Turret"
 Icon = ExtResource("2_ainus")
 Description = "Upgrade the melee turret adding a slowing unit.
-Damage: [color=Firebrick]105[/color] 
-AttackSpeed: [color=Springgreen ]1[/color]
+Damage: [color=Firebrick]55[/color]  [color=Gold](+47)[/color] 
+AttackSpeed: [color=Springgreen ]0,5[/color]
 Range: [color=Cornflowerblue ]30[/color] 
-Effects: [color=Khaki]Slows the movement of the target by 20 per hit[/color] 
+Effects: [color=Khaki]Slows the movement of the target by 10 per hit[/color]  [color=Gold](+10)[/color] 
 "
 Price = 105
 Tier = 1

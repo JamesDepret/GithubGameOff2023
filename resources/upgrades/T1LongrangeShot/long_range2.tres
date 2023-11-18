@@ -10,7 +10,7 @@ Id = "LongRange2"
 Name = "Long Range Cannon"
 Icon = ExtResource("2_tkue0")
 Description = "Upgrade a long range cannon
-Damage: [color=Firebrick]24[/color] 
+Damage: [color=Firebrick]24 [/color] [color=Gold](+20)[/color] 
 AttackSpeed: [color=Springgreen ]0.33[/color]
 Range: [color=Cornflowerblue ]200[/color] 
 Effects: [color=Khaki]-[/color] "

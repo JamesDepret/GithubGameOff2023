@@ -10,10 +10,10 @@ Id = "ChargerCannon2"
 Name = "Charger Cannon"
 Icon = ExtResource("2_gsqxr")
 Description = "Install a charger cannon.
-Damage: [color=Firebrick]44[/color] 
-AttackSpeed: [color=Springgreen ]1,10[/color]
+Damage: [color=Firebrick]44 [/color] [color=Gold](+33)[/color] 
+AttackSpeed: [color=Springgreen ]1,10 [/color] [color=Gold](-0,3)[/color]
 Range: [color=Cornflowerblue ]120[/color] 
-Effects: [color=Khaki]Increases attackspeed by 10x every 10 seconds for 1 second.[/color] 
+Effects: [color=Khaki]Increases attackspeed by 10x [color=Gold](+3x)[/color][color=Khaki] every 10 seconds for 1 second.[/color] 
 "
 Price = 90
 Tier = 1
