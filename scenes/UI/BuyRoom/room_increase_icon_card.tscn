@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://daeyo8so5o4r5" path="res://assets/art/Own/parts/experience_part.png" id="2_05hjp"]
 
 [node name="RoomIncreaseCard" type="PanelContainer"]
-custom_minimum_size = Vector2(75, 60)
+custom_minimum_size = Vector2(90, 60)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -565.0
+offset_right = -550.0
 offset_bottom = -297.0
 grow_horizontal = 2
 grow_vertical = 2

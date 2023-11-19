@@ -15,8 +15,10 @@ public partial class UpgradesScreen : CanvasLayer
 	private HFlowContainer turretContainersLevel2;
 	private bool canAddSupply = true;
 	private BaseUpgrade? previousUpgradePointer = null;
+	private RichTextLabel waveInfo;
 	public override void _Ready()
 	{
+		waveInfo = GetNode<RichTextLabel>("WaveInfoPanel/MarginContainer/WaveInfo");
 		HelpPanel = GetNode<Control>("HelpPanel");
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HFlowContainer>("UpgradeContainer");
@@ -43,6 +45,17 @@ public partial class UpgradesScreen : CanvasLayer
 		StartWaveButton.Pressed += OnNextWaveStartSelected;
 		GetTree().Paused = true;
 		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
+		var enemyManager = GetNode<EnemyManager>("/root/Main/Managers/EnemyManager");
+		NextWaveInfo(enemyManager.GetWaveInfo());
+	}
+
+	public override void _ExitTree()
+	{
+		NormalUpgradeBuyButton.Pressed -= OnUpgradeCardBought;
+		IncomeSpeedBuyButton.Pressed -= CleanUpDetailsCard;
+		IncomeAmountBuyButton.Pressed -= CleanUpDetailsCard;
+		RoomUpgradeBuyButton.Pressed -= CleanUpDetailsCard;
+		StartWaveButton.Pressed -= OnNextWaveStartSelected;
 	}
 
 	public void SetAbilityUpgrades(BaseUpgrade[] upgrades)
@@ -58,5 +71,10 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		GetTree().Paused = false;
 		QueueFree();
+	}
+
+	private void NextWaveInfo(string info)
+	{
+		waveInfo.Text = $"Next: [color=\"Steelblue\"]{info}[/color]";
 	}
 }

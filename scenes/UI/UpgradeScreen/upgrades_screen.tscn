@@ -43,10 +43,10 @@ grow_vertical = 2
 
 [node name="PermanentUpgrades" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(50, 150)
-offset_left = 523.0
-offset_top = 44.0
-offset_right = 573.0
-offset_bottom = 194.0
+offset_left = 501.0
+offset_top = 35.0
+offset_right = 551.0
+offset_bottom = 185.0
 
 [node name="ShipUpgradeCard" parent="." instance=ExtResource("2_mkmoo")]
 offset_left = 197.0
@@ -143,7 +143,7 @@ offset_left = 411.0
 offset_top = 328.0
 offset_right = 491.0
 offset_bottom = 348.0
-text = "Buy Item"
+text = "Buy item"
 
 [node name="SpeedIncomeBuyButton" parent="." instance=ExtResource("10_k21wf")]
 offset_left = 411.0
@@ -165,11 +165,31 @@ offset_right = 491.0
 offset_bottom = 348.0
 
 [node name="StartWaveButton" type="Button" parent="."]
-offset_left = 512.0
+offset_left = 501.0
 offset_top = 332.0
-offset_right = 634.0
+offset_right = 638.0
 offset_bottom = 356.0
 text = " Start next wave "
+
+[node name="WaveInfoPanel" type="PanelContainer" parent="."]
+offset_left = 501.0
+offset_top = 313.0
+offset_right = 638.0
+offset_bottom = 331.0
+theme_type_variation = &"AlternativePanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="WaveInfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="WaveInfo" type="RichTextLabel" parent="WaveInfoPanel/MarginContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "Next: [color=\"Steelblue\"]Melee - fast[/color]"
+fit_content = true
 
 [node name="HelpPanel" type="Control" parent="."]
 layout_mode = 3
@@ -206,10 +226,11 @@ autowrap_mode = 2
 
 [node name="Button" type="Button" parent="HelpPanel"]
 layout_mode = 0
-offset_left = 169.0
+offset_left = 220.0
 offset_top = 190.0
-offset_right = 509.0
-offset_bottom = 228.0
+offset_right = 484.0
+offset_bottom = 256.0
 theme_override_font_sizes/font_size = 32
-text = "Click here to start game"
+text = "Click here to 
+start game"
 script = ExtResource("7_isbi8")

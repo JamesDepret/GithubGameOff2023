@@ -40,6 +40,7 @@ public partial class UpgradesScreen : CanvasLayer
 	private void CleanUpDetailsCard()
 	{
 		selectedCard.Visible = false;
+		selectedUpgrade = null;
 		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 		SetupCards();
 	}

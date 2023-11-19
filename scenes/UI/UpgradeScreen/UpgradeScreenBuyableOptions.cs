@@ -21,7 +21,7 @@ public partial class UpgradesScreen : CanvasLayer
         }
 		
 		SetupIncomeCards();
-		if (selectedUpgrade != null) SetupSelectedCard();
+		if (selectedUpgrade != null ) SetupSelectedCard();
 		canAddSupply = parts < GameEvents.Instance.SupplyUpgradePrice;
     }
 

@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck8c18pcth2er"]
+[gd_scene load_steps=6 format=3 uid="uid://beve32yhg1r5u"]
 
-[ext_resource type="Script" path="res://scenes/gameobjects/RandomRewards/HealthReward/HealthReward.cs" id="1_xf7s2"]
-[ext_resource type="Texture2D" uid="uid://covdmy8dt2qjb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_38-Alternative-4.png" id="2_g5v74"]
+[ext_resource type="Texture2D" uid="uid://covdmy8dt2qjb" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_38-Alternative-4.png" id="2_hfcun"]
 
 [sub_resource type="Animation" id="Animation_83ssx"]
 resource_name = "default"
@@ -29,7 +28,7 @@ _data = {
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_g5v74")
+"texture": ExtResource("2_hfcun")
 }],
 "loop": true,
 "name": &"default",
@@ -39,9 +38,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_2d064"]
 radius = 16.0
 
-[node name="HealthReward" type="Node2D"]
-script = ExtResource("1_xf7s2")
-Speed = 65.0
+[node name="UpgradeReward" type="Node2D"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
@@ -50,7 +47,6 @@ libraries = {
 }
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-rotation = 6.05566
 sprite_frames = SubResource("SpriteFrames_iokbr")
 frame_progress = 0.643891
 

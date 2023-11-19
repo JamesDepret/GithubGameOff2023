@@ -504,6 +504,7 @@ offset_bottom = 5.0
 EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1"), ExtResource("9_g5poj"), ExtResource("22_724jl"), ExtResource("20_mg4op"), ExtResource("21_cqaip"), ExtResource("22_71kfr"), ExtResource("23_e0rlf")]
 EnemiesPerWave = [36, 45, 45, 36, 36, 36, 36, 30, 45, 5, 3, 54, 45, 45, 24]
 EnemySpawnratePerWave = [1.5, 1.5, 1.3, 1.5, 1.4, 1.3, 1.2, 1.3, 1.5, 1.1, 4.0, 1.1, 1.4, 1.3, 1.05]
+WaveInfo = ["Melee", "Melee", "Melee - fast", "Ranged", "Melee", "Melee", "Melee", "Ranged", "Melee", "Boss phase 1", "Boss phase 2", "Melee - many", "Ranged", "Melee - fast", "Melee - high hp"]
 arenaManager = NodePath("../ArenaManager")
 
 [node name="HarvestManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("9_0602n")]

@@ -21,9 +21,6 @@ public  abstract partial class BaseReward : Node2D
 		CollectionArea = GetNode<Area2D>("Area2D");
 		CollectionArea.AreaEntered += OnBodyEntered;
 
-		CollectionArea = GetNode<Area2D>("Area2D");
-		CollectionArea.AreaEntered += OnBodyEntered;
-
         SetRandomLocation();
     }
 

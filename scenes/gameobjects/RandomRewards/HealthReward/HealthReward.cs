@@ -2,7 +2,7 @@ namespace BaseRewards;
 
 public partial class HealthReward : BaseReward
 {
-    public int HealthPercentage { get; set; } = 10;
+    [Export] public float HealthPercentage { get; set; } = .1f;
 
     protected override void Collect()
     {

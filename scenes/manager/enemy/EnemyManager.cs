@@ -5,6 +5,7 @@ public partial class EnemyManager : Node
 	[Export] public Godot.Collections.Array<PackedScene> EnemyScenePool = new();
 	[Export] public Godot.Collections.Array<int> EnemiesPerWave = new();
 	[Export] public Godot.Collections.Array<float> EnemySpawnratePerWave = new();
+	[Export] public Godot.Collections.Array<string> WaveInfo = new();
 	[Export] public ArenaManager arenaManager;
 	private List<string> currentWaveEnemies = new();
 	private int spawnRadius = 0;
@@ -31,6 +32,11 @@ public partial class EnemyManager : Node
 		WaveCleared   -= arenaManager.OnWaveCleared;
 		arenaManager.WaveCleared -= OnStarNextLevel;
     }
+
+	public string GetWaveInfo()
+	{
+		return WaveInfo[arenaManager.WaveNumber];
+	}
 
 	private void EnemyDied(string enemyName)
 	{

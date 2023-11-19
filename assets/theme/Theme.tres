@@ -111,3 +111,5 @@ Label/constants/line_spacing = 0
 LabelGreenShadow/base_type = &"Label"
 LabelGreenShadow/colors/font_shadow_color = Color(0, 0.639216, 0, 1)
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_o0fgf")
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/constants/outline_size = 4
