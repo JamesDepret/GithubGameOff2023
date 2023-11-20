@@ -5,6 +5,7 @@
 [node name="T_4_1_MovementTurretController" type="Node"]
 script = ExtResource("1_d5lpu")
 movementBoostChance = 0.2
+movementBoost = 10
 baseWaitTime = 1.2
 maxRange = 200.0
 damage = 120.0
