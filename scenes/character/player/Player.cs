@@ -8,6 +8,7 @@ public partial class Player : CharacterBody2D
     [Export] public float RotationAngle { get; set; } = 45f; 
 	[Export] public bool IsMainPlayer { get; set; } = false;
 	[Export] public int PlayerPrio { get; set; } = 1;
+    [Export] public Timer BoostTimer { get; set; }
 	[Export] private UpgradeManager upgradeManager;
 	[Export] private ArenaManager arenaManager;
 	private Node shipTurrets_AbilitiesNode;
@@ -41,6 +42,8 @@ public partial class Player : CharacterBody2D
 		visuals = GetNode<Node2D>("Visuals");
 		particles = visuals.GetNode<CpuParticles2D>("Particles");
 		maxRotation = Mathf.DegToRad(RotationAngle);
+		BoostTimer = GetNode<Timer>("BoostTimer");
+		BoostTimer.Timeout += OnBoostTimerTimeout;
 		
 		upgradeManager.InitFirstUpgrades();
 	}
@@ -52,6 +55,7 @@ public partial class Player : CharacterBody2D
 		healthComponent.HealthChanged -= OnHealthChanged;
 		healthComponent.Died -= OnDied;
 		CollisionArea.AreaEntered -= OnAreaEntered;
+		BoostTimer.Timeout -= OnBoostTimerTimeout;
     }
 
 	

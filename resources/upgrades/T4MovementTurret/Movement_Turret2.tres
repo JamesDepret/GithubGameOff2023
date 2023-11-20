@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ogw5dmcideie"]
+
+[ext_resource type="Texture2D" uid="uid://c33eitns78fbc" path="res://assets/art/frosty-rabbid/single/release_v1.2-single_99.png" id="1_ioedp"]
+[ext_resource type="PackedScene" uid="uid://cdqfemhrh0dac" path="res://scenes/ability/T4.3MovementTurret/t_4_2_movement_turret_controller.tscn" id="1_np2mn"]
+[ext_resource type="Script" path="res://resources/upgrades/BaseUpgrade.cs" id="2_r3rqr"]
+
+[resource]
+script = ExtResource("2_r3rqr")
+Id = "MovementTurret2"
+Name = "Movement Turret"
+Icon = ExtResource("1_ioedp")
+Description = "Upgrade a cannon with bullets that can increase movement speed.
+Damage: [color=Firebrick]360[/color] [color=Gold] (+240)[/color]
+AttackSpeed: [color=Springgreen ]1,2[/color]
+Range: [color=Cornflowerblue ]200[/color] 
+Effects: [color=Khaki]Gain 20 movement  [/color][color=Gold](+10)[/color][color=Khaki] if the turret makes a kill for 3 seconds (20% chance)[/color]"
+Price = 200
+Tier = 4
+SupplyCost = 2
+AbilityControllerScene = ExtResource("1_np2mn")

@@ -28,8 +28,10 @@ public partial class UpgradesScreen : CanvasLayer
     private void SetupIncomeCards()
 	{		
 		PermaCardsContainer.GetChildren().ToList().ForEach(child => child.QueueFree());
-        Label label = new();
-        label.Text = "Permanent\nUpgrades";
+        Label label = new()
+        {
+            Text = "Permanent\nUpgrades"
+        };
         PermaCardsContainer.AddChild(label);
 		if(harvestManager.HarvestTimeLevel < 5)
 		{

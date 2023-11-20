@@ -16,5 +16,5 @@ Range: [color=Cornflowerblue ]120[/color]
 Effects: [color=Khaki]Has an explosive bullet that deals 100 damage[/color][color=Gold] (+90)[/color]"
 Price = 250
 Tier = 4
-SupplyCost = 3
+SupplyCost = 2
 AbilityControllerScene = ExtResource("1_so0hh")

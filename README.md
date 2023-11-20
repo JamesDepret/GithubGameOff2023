@@ -11,6 +11,5 @@ Free asset contributors:
 - Font: https://nimblebeastscollective.itch.io/nb-pixel-font-bundle
 
 
-
 Paid asset contributors:
 - Art: Bosses - gandalfhardcore => https://pro.fiverr.com/freelancers/gandalfhardcore?source=order_page_user_message_link

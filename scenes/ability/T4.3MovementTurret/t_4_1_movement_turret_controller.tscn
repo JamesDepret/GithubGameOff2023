@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://p4lodojya44v"]
+
+[ext_resource type="Script" path="res://scenes/ability/T4.3MovementTurret/MovementTurretController.cs" id="1_d5lpu"]
+
+[node name="T_4_1_MovementTurretController" type="Node"]
+script = ExtResource("1_d5lpu")
+movementBoostChance = 0.2
+baseWaitTime = 1.2
+maxRange = 200.0
+damage = 120.0
+
+[node name="Timer" type="Timer" parent="."]

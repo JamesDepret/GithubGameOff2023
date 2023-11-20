@@ -17,6 +17,6 @@ Range: [color=Cornflowerblue ]180[/color]
 Effects: [color=Khaki]Boosts the attack speed of all turrets by 5% (max 2 boosts)[/color]"
 Price = 125
 Tier = 4
-SupplyCost = 1
+SupplyCost = 2
 UpgradesTo = ExtResource("2_h4la7")
 AbilityControllerScene = ExtResource("1_ii2ht")

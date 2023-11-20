@@ -1,9 +1,16 @@
-using System.Numerics;
-
 namespace Character;
 
 public partial class Player : CharacterBody2D
 {
+    public int MovementBoost { get; set; } = 0;
+
+    public void AddMovementBoost(int boost)
+    {
+        MovementBoost += boost;
+        BoostTimer.Start();
+        GD.Print("MovementBoost: " + MovementBoost + " BoostTimer: " + BoostTimer.TimeLeft);
+    }
+
 	Godot.Vector2 GetMovementVector()
     {
         var xMovement = Input.GetActionStrength("move_right") - Input.GetActionStrength("move_left");
@@ -15,7 +22,7 @@ public partial class Player : CharacterBody2D
     {
         var movementVector = GetMovementVector();
         var direction = movementVector.Normalized();
-        var targetVelocity = direction * MaxSpeed;
+        var targetVelocity = direction * (MaxSpeed + MovementBoost);
 
         RotatePlayer(delta, direction);
 
@@ -39,5 +46,11 @@ public partial class Player : CharacterBody2D
         float targetRotation = maxRotation * direction.X;
         currentRotation = (float) Mathf.Lerp(currentRotation, targetRotation, RotationSpeed * delta);
         visuals.Rotation = currentRotation;
+    }
+
+    void OnBoostTimerTimeout()
+    {
+        MovementBoost = 0;
+        BoostTimer.Stop();
     }
 }

@@ -7,7 +7,7 @@ public partial class BulletAbilityController : BaseAbilityController
 	[Export] PackedScene bulletAbility;
 	[Export] float maxRange = 150.0f;
 	[Export] float bulletSpeed = 300.0f;
-	[Export] float damage = 5f;
+	[Export] protected float damage = 5f;
 	[Export] float damageReductionOnBounce = 0f;
 	[Export] float critChance = 0f;
 	private int maxSpeedModifiers = 2;

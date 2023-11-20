@@ -23,26 +23,25 @@ public partial class UpgradesScreen : CanvasLayer
 		selectedCard = GetNode<ShipUpgradeCard>("ShipUpgradeCard");
 		CardContainer = GetNode<HFlowContainer>("UpgradeContainer");
 		PermaCardsContainer = GetNode<VBoxContainer>("PermanentUpgrades");
-		StartWaveButton = GetNode<Button>("StartWaveButton");
-		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
+		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
 
+		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
 		IncomeSpeedBuyButton = GetNode<Button>("SpeedIncomeBuyButton");
 		IncomeAmountBuyButton = GetNode<Button>("AddIncomeButton");
 		RoomUpgradeBuyButton = GetNode<Button>("RoomUpgradeBuyButton");
+		StartWaveButton = GetNode<Button>("StartWaveButton");
+
+		NormalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
+		IncomeSpeedBuyButton.Pressed += CleanUpDetailsCard;
+		IncomeAmountBuyButton.Pressed += CleanUpDetailsCard;
+		RoomUpgradeBuyButton.Pressed += CleanUpDetailsCard;
+		StartWaveButton.Pressed += OnNextWaveStartSelected;
 
 		turretContainersLevel1 = GetNode<HFlowContainer>("VBoxContainer/TurretContainers");
 		turretContainersLevel2 = GetNode<HFlowContainer>("VBoxContainer/TurretContainers2");
 		turretContainersLevel1.GetChildren().ToList().ForEach(child => child.QueueFree());
 		turretContainersLevel2.GetChildren().ToList().ForEach(child => child.QueueFree());
 
-		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
-
-		NormalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
-		IncomeSpeedBuyButton.Pressed += CleanUpDetailsCard;
-		IncomeAmountBuyButton.Pressed += CleanUpDetailsCard;
-		RoomUpgradeBuyButton.Pressed += CleanUpDetailsCard;
-
-		StartWaveButton.Pressed += OnNextWaveStartSelected;
 		GetTree().Paused = true;
 		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 		var enemyManager = GetNode<EnemyManager>("/root/Main/Managers/EnemyManager");
