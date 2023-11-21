@@ -1,13 +1,15 @@
 namespace UI;
 public partial class UpgradesScreen : CanvasLayer
 {
+	private int salvagePrice = 0;
 
-	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null)
+	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null, int refundPrice = 0, bool disableBuyButton = false)
 	{
 		if (previousUpgrade != null) upgrade.PreviousUpgradePointer = previousUpgrade;
 		selectedUpgrade = upgrade;
 		selectedCard.Visible = true;
-		SetupSelectedCard();
+		salvagePrice = refundPrice;
+		SetupSelectedCard(previousUpgrade != null, disableBuyButton);
 		CardContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
 		PermaCardsContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
 	}
@@ -23,7 +25,7 @@ public partial class UpgradesScreen : CanvasLayer
 		PermaCardsContainer.GetChildren().ToList().ForEach(child => (child as Control).Modulate = new Color(1, 1, 1, 1));
     }
 
-    private void SetupSelectedCard()
+    private void SetupSelectedCard(bool rankTwo = false, bool disableBuyButton = false)
     {
 		var parts = GameEvents.Instance.Parts;
 		var currentSupply = GameEvents.Instance.Supply;
@@ -34,7 +36,11 @@ public partial class UpgradesScreen : CanvasLayer
 							   parts < selectedUpgrade.Price, 
 							   currentSupply + selectedUpgrade.SupplyCost > maxSupply, 
 							   selectedUpgrade.Icon);
-        BuyButtonSetup(BuyButtonEnum.NormalUpgrade, parts < selectedUpgrade.Price || currentSupply + selectedUpgrade.SupplyCost > maxSupply);
+        BuyButtonSetup(button: BuyButtonEnum.NormalUpgrade, 
+					   disabled: parts < selectedUpgrade.Price 
+								|| currentSupply + selectedUpgrade.SupplyCost > maxSupply 
+								|| disableBuyButton, 
+					   rankTwo: rankTwo);
     }
     
 	private void CleanUpDetailsCard()

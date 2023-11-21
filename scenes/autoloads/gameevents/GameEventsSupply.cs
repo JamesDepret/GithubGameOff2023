@@ -18,4 +18,10 @@ public partial class GameEvents : Node
 			EmitSignal(SignalName.SupplyChanged);
 		}
 	}
+
+	public void SalvageSupply(int amount)
+	{
+		Supply -= amount;
+		EmitSignal(SignalName.SupplyChanged);
+	}
 }

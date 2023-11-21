@@ -25,16 +25,20 @@ public partial class UpgradesScreen : CanvasLayer
 		PermaCardsContainer = GetNode<VBoxContainer>("PermanentUpgrades");
 		harvestManager = GetNode<HarvestManager>("/root/Main/Managers/HarvestManager");
 
-		NormalUpgradeBuyButton = GetNode<Button>("BuyButton");
-		IncomeSpeedBuyButton = GetNode<Button>("SpeedIncomeBuyButton");
-		IncomeAmountBuyButton = GetNode<Button>("AddIncomeButton");
-		RoomUpgradeBuyButton = GetNode<Button>("RoomUpgradeBuyButton");
+		normalUpgradeBuyButton = GetNode<Button>("BuyButton");
+		incomeSpeedBuyButton = GetNode<Button>("SpeedIncomeBuyButton");
+		incomeAmountBuyButton = GetNode<Button>("AddIncomeButton");
+		roomUpgradeBuyButton = GetNode<Button>("RoomUpgradeBuyButton");
+		salvageButton = GetNode<Button>("SalvageButton");
+		confirmSalvageButton = GetNode<Button>("ConfirmSalvageButton");
 		StartWaveButton = GetNode<Button>("StartWaveButton");
 
-		NormalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
-		IncomeSpeedBuyButton.Pressed += CleanUpDetailsCard;
-		IncomeAmountBuyButton.Pressed += CleanUpDetailsCard;
-		RoomUpgradeBuyButton.Pressed += CleanUpDetailsCard;
+		normalUpgradeBuyButton.Pressed += OnUpgradeCardBought;
+		incomeSpeedBuyButton.Pressed += CleanUpDetailsCard;
+		incomeAmountBuyButton.Pressed += CleanUpDetailsCard;
+		roomUpgradeBuyButton.Pressed += CleanUpDetailsCard;
+		salvageButton.Pressed += Salvage;
+		confirmSalvageButton.Pressed += ConfirmSalvage;
 		StartWaveButton.Pressed += OnNextWaveStartSelected;
 
 		turretContainersLevel1 = GetNode<HFlowContainer>("VBoxContainer/TurretContainers");
@@ -50,10 +54,12 @@ public partial class UpgradesScreen : CanvasLayer
 
 	public override void _ExitTree()
 	{
-		NormalUpgradeBuyButton.Pressed -= OnUpgradeCardBought;
-		IncomeSpeedBuyButton.Pressed -= CleanUpDetailsCard;
-		IncomeAmountBuyButton.Pressed -= CleanUpDetailsCard;
-		RoomUpgradeBuyButton.Pressed -= CleanUpDetailsCard;
+		normalUpgradeBuyButton.Pressed -= OnUpgradeCardBought;
+		incomeSpeedBuyButton.Pressed -= CleanUpDetailsCard;
+		incomeAmountBuyButton.Pressed -= CleanUpDetailsCard;
+		roomUpgradeBuyButton.Pressed -= CleanUpDetailsCard;
+		salvageButton.Pressed -= Salvage;
+		confirmSalvageButton.Pressed -= ConfirmSalvage;
 		StartWaveButton.Pressed -= OnNextWaveStartSelected;
 	}
 

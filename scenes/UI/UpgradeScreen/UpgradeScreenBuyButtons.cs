@@ -2,10 +2,13 @@ namespace UI;
 public partial class UpgradesScreen : CanvasLayer
 {
     
-	private Button NormalUpgradeBuyButton;
-	private Button IncomeSpeedBuyButton;
-	private Button IncomeAmountBuyButton;
-	private Button RoomUpgradeBuyButton;
+	public float SalvagePercentage {get;set;} = 0.5f;
+	private Button normalUpgradeBuyButton;
+	private Button incomeSpeedBuyButton;
+	private Button incomeAmountBuyButton;
+	private Button roomUpgradeBuyButton;
+	private Button salvageButton;
+	private Button confirmSalvageButton;
 	public enum BuyButtonEnum
 	{
 		IncomeSpeed,
@@ -15,28 +18,32 @@ public partial class UpgradesScreen : CanvasLayer
 	}
 
 	// We have multiple buy buttons, this method will show the correct one
-	public void BuyButtonSetup(BuyButtonEnum button, bool disabled = false)
+	public void BuyButtonSetup(BuyButtonEnum button, bool disabled = false, bool rankTwo = false)
 	{
-		NormalUpgradeBuyButton.Visible = false;
-		IncomeSpeedBuyButton.Visible = false;
-		IncomeAmountBuyButton.Visible = false;
-		RoomUpgradeBuyButton.Visible = false;
+		normalUpgradeBuyButton.Visible = false;
+		incomeSpeedBuyButton.Visible = false;
+		incomeAmountBuyButton.Visible = false;
+		roomUpgradeBuyButton.Visible = false;
+		salvageButton.Visible = false;
+		confirmSalvageButton.Visible = false;
         bool canBuy;
         switch (button)
 		{
 			case BuyButtonEnum.NormalUpgrade:
-				NormalUpgradeBuyButton.Visible = !disabled;
+				normalUpgradeBuyButton.Visible = !disabled;
+				salvageButton.Visible = rankTwo;
+				if(rankTwo && selectedUpgrade != null) salvageButton.Text = "Salvage for " + salvagePrice;
 				break;
 			case BuyButtonEnum.IncomeSpeed:
 				canBuy = harvestManager.HarvestTimeLevel < 5;
-				IncomeSpeedBuyButton.Visible = !disabled && canBuy;
+				incomeSpeedBuyButton.Visible = !disabled && canBuy;
 				break;
 			case BuyButtonEnum.IncomeAmount:
 				canBuy = harvestManager.BaseIncome < harvestManager.MaxIncome;
-				IncomeAmountBuyButton.Visible = !disabled && canBuy;
+				incomeAmountBuyButton.Visible = !disabled && canBuy;
 				break;
 			case BuyButtonEnum.RoomUpgrade:
-				RoomUpgradeBuyButton.Visible = !disabled;
+				roomUpgradeBuyButton.Visible = !disabled;
 				break;
 		}
 	}
@@ -55,6 +62,32 @@ public partial class UpgradesScreen : CanvasLayer
 			selectedCard.Visible = false;
 			BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 		}
+		SetTurrets();
+	}
+
+	private void Salvage()
+	{
+		confirmSalvageButton.Visible = true;
+	}
+
+	private void ConfirmSalvage()
+	{
+		var refundableUpgrade = selectedUpgrade.PreviousUpgradePointer;
+		GameEvents.Instance.EmitPartsCollected((int)(refundableUpgrade.Price * SalvagePercentage), false, false);
+		GameEvents.Instance.SalvageSupply(refundableUpgrade.SupplyCost);
+		var playerNodes = GetTree().GetNodesInGroup("player");
+        if (playerNodes.Count > 0)
+        {
+            var player = playerNodes[0] as Player;
+			player.RemoveTurretController(refundableUpgrade);
+		}
+		else
+		{
+			GD.PrintErr("No player found to remove turret controller from");
+			throw new Exception("No player found to remove turret controller from");
+		}
+		CurrentTurrets.Remove(refundableUpgrade);
+		CleanUpDetailsCard();
 		SetTurrets();
 	}
 }

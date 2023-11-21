@@ -13,14 +13,10 @@ public partial class Player : CharacterBody2D
         {
             supply += upgrade.PreviousUpgradePointer.SupplyCost;
             price += upgrade.PreviousUpgradePointer.Price;
+            // reference "ObjectDisposedException"
             // all the upgrades point to the same resource so when they get get upgraded, the next upgrade would throw
             // a disposed error because we deleted it's pointer. So we just find one controller to delete instead
-            var upg = shipTurrets_Abilities.Find(x => x.SubName == upgrade.PreviousUpgradePointer?.Id);
-            if (upg != null)
-            {
-                upg.QueueFree();
-                shipTurrets_Abilities.Remove(upg);
-            }
+            RemoveTurretController(upgrade);
         }
         var controller = upgrade.AbilityControllerScene.Instantiate() as BaseAbilityController;
         controller.SubName = upgrade.Id;
@@ -32,6 +28,16 @@ public partial class Player : CharacterBody2D
         upgrade.ControllerPointer = controller;
         shipTurrets_Abilities.Add(controller);
         HandleSpeedModifiers(controller);
+    }
+
+    public void RemoveTurretController(BaseUpgrade upgrade)
+    {
+        var upg = shipTurrets_Abilities.Find(x => x.SubName == upgrade.PreviousUpgradePointer?.Id);
+        if (upg != null)
+        {
+            upg.QueueFree();
+            shipTurrets_Abilities.Remove(upg);
+        }
     }
 
     private void HandleSpeedModifiers(BaseAbilityController controller)
