@@ -66,7 +66,7 @@ collision_mask = 8
 script = ExtResource("1_alqy6")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("2_nxju8")]
-MaxHealth = 640.0
+MaxHealth = 650.0
 sprite = NodePath("../Visuals/AnimatedSprite2D")
 
 [node name="VelocityComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("3_t2wxj")]
