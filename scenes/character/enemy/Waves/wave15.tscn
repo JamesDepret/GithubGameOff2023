@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dhqcaba3dh8ln"]
+[gd_scene load_steps=18 format=3 uid="uid://dhqcaba3dh8ln"]
 
 [ext_resource type="Script" path="res://scenes/character/enemy/Enemy.cs" id="1_lved6"]
 [ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="2_5qxxn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_1qouj"]
 [ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_r4wro"]
 [ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_hhbi3"]
+[ext_resource type="Texture2D" uid="uid://bvdk3hrtuup0m" path="res://assets/art/kenney/monstermaker/wave15/creature-sheet (5).png" id="7_v4c7i"]
 [ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_44ngd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
@@ -20,6 +21,42 @@ point_count = 2
 interpolation_mode = 2
 offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csxqe"]
+atlas = ExtResource("7_v4c7i")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox6q3"]
+atlas = ExtResource("7_v4c7i")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2ejb"]
+atlas = ExtResource("7_v4c7i")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysb5c"]
+atlas = ExtResource("7_v4c7i")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ul7n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csxqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox6q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2ejb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysb5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
 
@@ -80,7 +117,9 @@ color_ramp = SubResource("Gradient_qgonr")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
 position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_8ul7n")
 autoplay = "default"
+frame_progress = 0.713403
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -7)
