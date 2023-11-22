@@ -32,11 +32,15 @@ public partial class Player : CharacterBody2D
 
     public void RemoveTurretController(BaseUpgrade upgrade)
     {
-        var upg = shipTurrets_Abilities.Find(x => x.SubName == upgrade.PreviousUpgradePointer?.Id);
+        var upg = shipTurrets_Abilities.Find(x => x.SubName == upgrade.PreviousUpgradePointer?.Id) ?? shipTurrets_Abilities.Find(x => x.SubName == upgrade.Id);
         if (upg != null)
         {
             upg.QueueFree();
             shipTurrets_Abilities.Remove(upg);
+        }
+        else
+        {
+            GD.PrintErr("Could not find turret controller to remove");
         }
     }
 

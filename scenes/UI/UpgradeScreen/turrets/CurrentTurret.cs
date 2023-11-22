@@ -17,7 +17,7 @@ public partial class CurrentTurret : TextureButton
 		}
 		else
 		{
-			UpgradesScreen.SetSelectedUpgrade(Tower, Tower.PreviousUpgradePointer, (int)((Tower.Price + Tower.PreviousUpgradePointer.Price) * UpgradesScreen.SalvagePercentage), true);
+			UpgradesScreen.SetSelectedUpgrade(Tower, Tower.PreviousUpgradePointer, (int)((Tower.Price + Tower.PreviousUpgradePointer.Price) * UpgradesScreen.SalvagePercentage), true, true);
 		}
 	}
 }

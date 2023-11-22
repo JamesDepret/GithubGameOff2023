@@ -72,7 +72,7 @@ public partial class UpgradesScreen : CanvasLayer
 
 	private void ConfirmSalvage()
 	{
-		var refundableUpgrade = selectedUpgrade.PreviousUpgradePointer;
+		var refundableUpgrade = isRankTwo ? selectedUpgrade : selectedUpgrade.PreviousUpgradePointer;
 		GameEvents.Instance.EmitPartsCollected((int)(refundableUpgrade.Price * SalvagePercentage), false, false);
 		GameEvents.Instance.SalvageSupply(refundableUpgrade.SupplyCost);
 		var playerNodes = GetTree().GetNodesInGroup("player");

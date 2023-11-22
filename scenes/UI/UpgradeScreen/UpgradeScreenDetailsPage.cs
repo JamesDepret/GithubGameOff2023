@@ -2,10 +2,12 @@ namespace UI;
 public partial class UpgradesScreen : CanvasLayer
 {
 	private int salvagePrice = 0;
+	private bool isRankTwo = false;
 
-	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null, int refundPrice = 0, bool disableBuyButton = false)
+	public void SetSelectedUpgrade(BaseUpgrade upgrade, BaseUpgrade? previousUpgrade = null, int refundPrice = 0, bool disableBuyButton = false, bool rankTwo = false)
 	{
 		if (previousUpgrade != null) upgrade.PreviousUpgradePointer = previousUpgrade;
+		isRankTwo = rankTwo;
 		selectedUpgrade = upgrade;
 		selectedCard.Visible = true;
 		salvagePrice = refundPrice;
@@ -47,6 +49,7 @@ public partial class UpgradesScreen : CanvasLayer
 	{
 		selectedCard.Visible = false;
 		selectedUpgrade = null;
+		isRankTwo = false;
 		BuyButtonSetup(BuyButtonEnum.NormalUpgrade, true);
 		SetupCards();
 	}

@@ -504,6 +504,7 @@ offset_bottom = 5.0
 [node name="Managers" type="Node" parent="."]
 
 [node name="ArenaManager" parent="Managers" instance=ExtResource("2_aas5s")]
+StartingParts = 10000
 
 [node name="EnemyManager" parent="Managers" node_paths=PackedStringArray("arenaManager") instance=ExtResource("3_6guyt")]
 EnemyScenePool = [ExtResource("4_u61qj"), ExtResource("5_mr7vr"), ExtResource("6_hyb7s"), ExtResource("7_ecgxg"), ExtResource("12_lwoa5"), ExtResource("13_d5bbg"), ExtResource("14_b33bq"), ExtResource("15_xop7n"), ExtResource("16_2xgx1"), ExtResource("9_g5poj"), ExtResource("22_724jl"), ExtResource("20_mg4op"), ExtResource("21_cqaip"), ExtResource("22_71kfr"), ExtResource("23_e0rlf"), ExtResource("25_dnvom"), ExtResource("26_07mxs"), ExtResource("27_gh3ve"), ExtResource("28_d5krk"), ExtResource("29_b4w6w")]
