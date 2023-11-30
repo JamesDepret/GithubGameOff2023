@@ -56,7 +56,7 @@ public partial class ArenaManager : Node
 		WaveNumber++;
 		GameEvents.Instance.EmitSignal(SignalName.WaveCleared, WaveNumber);
 	    EmitSignal(SignalName.WaveCleared);
-		if(WaveNumber > enemyManager.EnemyScenePool.Count) EndGame("Victory!");
+		if(WaveNumber >= enemyManager.EnemyScenePool.Count) EndGame("Victory!");
 	}
 
 	public void EndGame(string text){

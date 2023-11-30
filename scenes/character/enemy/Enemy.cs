@@ -4,11 +4,11 @@ public partial class Enemy : CharacterBody2D
 	[Export] public bool IsBiteBoss { get; set; } = false;
 	[Export] public bool IsBiteBossPhase2 { get; set; } = false;
 	public HurtboxComponent HurtboxComponent { get; set; }
-	Godot.Timer lifeTimer;
-	VelocityComponent velocityComponent;
-	CpuParticles2D particles;
-	bool isMoving = true;
-	private Node2D visuals;
+	protected Godot.Timer lifeTimer;
+	protected VelocityComponent velocityComponent;
+	protected CpuParticles2D particles;
+	protected bool isMoving = true;
+	protected Node2D visuals;
 
     public override void _Ready()
     {
@@ -46,7 +46,7 @@ public partial class Enemy : CharacterBody2D
 		isMoving = moving;
 	}
 
-	private void OnSpeedUp()
+	protected void OnSpeedUp()
 	{
 		velocityComponent.SpeedUp();
 	}

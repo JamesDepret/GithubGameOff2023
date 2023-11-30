@@ -1,0 +1,155 @@
+[gd_scene load_steps=21 format=3 uid="uid://c6btrful5slbd"]
+
+[ext_resource type="Script" path="res://scenes/character/enemy/FireballBoss.cs" id="1_6htxm"]
+[ext_resource type="PackedScene" uid="uid://b2e0wrb01v87p" path="res://scenes/character/components/FireballBoss/fireball_boss_component.tscn" id="2_6xllw"]
+[ext_resource type="PackedScene" uid="uid://bh4kxugrwth7k" path="res://scenes/character/components/Health/health_component.tscn" id="3_2ef6e"]
+[ext_resource type="PackedScene" uid="uid://bvu75mvd3601" path="res://scenes/character/components/PartsDrop/parts_drop_component.tscn" id="4_m1xxf"]
+[ext_resource type="PackedScene" uid="uid://c5vtgfuahiiij" path="res://scenes/character/components/EnemyAttack/enemy_attack_component.tscn" id="5_rld43"]
+[ext_resource type="PackedScene" uid="uid://cpkp5p3jgx7dn" path="res://scenes/character/components/Hurtbox/hurtbox_component.tscn" id="6_xmhc1"]
+[ext_resource type="Texture2D" uid="uid://bg7ae7l0n7fa3" path="res://assets/art/Own/boss/jamesd32 boss sheetphase3.png" id="7_cdt7p"]
+[ext_resource type="PackedScene" uid="uid://cqeg6j1he3sk8" path="res://scenes/character/components/Death/death_component.tscn" id="8_aau7e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_olxl2"]
+radius = 14.0
+
+[sub_resource type="Curve" id="Curve_xq1dc"]
+max_value = 3.0
+_data = [Vector2(0, 0.0526315), 0.0, 0.0, 0, 0, Vector2(0.984456, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qgonr"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.101408, 0.769014, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.084507, 0.084507, 0.084507, 1, 0.65564, 0.65564, 0.65564, 1, 1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by5cr"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(0, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnd7o"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(80, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf1u3"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(160, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wius"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(240, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x4ixg"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(320, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xfev"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(400, 0, 80, 85)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmw7y"]
+atlas = ExtResource("7_cdt7p")
+region = Rect2(480, 0, 80, 85)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vujab"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by5cr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnd7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf1u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wius")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x4ixg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xfev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmw7y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix0ff"]
+radius = 28.0
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+modulate = Color(1, 0.988235, 0.988235, 1)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_6htxm")
+
+[node name="FireballBossComponent" parent="." node_paths=PackedStringArray("visualsNode") instance=ExtResource("2_6xllw")]
+rotationSpeed = 0.05
+radius = 100.0
+MaxSpeed = 100.0
+Acceleration = 10.0
+visualsNode = NodePath("../Visuals")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("3_2ef6e")]
+MaxHealth = 7500.0
+sprite = NodePath("../Visuals/AnimatedSprite2D")
+
+[node name="PartsDropComponent" parent="." instance=ExtResource("4_m1xxf")]
+Value = 50
+DropPercentage = 1.0
+
+[node name="EnemyAttackComponent" parent="." instance=ExtResource("5_rld43")]
+Damage = 12.0
+AttackSpeed = 0.2
+AttackRange = 260.0
+BulletSpeed = 300.0
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 100.0
+autostart = true
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("HealthComponent") instance=ExtResource("6_xmhc1")]
+HealthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_olxl2")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Particles" type="CPUParticles2D" parent="Visuals"]
+position = Vector2(0, -7)
+amount = 40
+speed_scale = 1.6
+randomness = 0.5
+lifetime_randomness = 0.74
+emission_shape = 1
+emission_sphere_radius = 18.0
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_max = 100.0
+angle_max = 360.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_xq1dc")
+color = Color(0.14902, 0.368627, 0.819608, 1)
+color_ramp = SubResource("Gradient_qgonr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_vujab")
+autoplay = "default"
+frame_progress = 0.973543
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ix0ff")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("healthComponent", "sprite") instance=ExtResource("8_aau7e")]
+healthComponent = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/AnimatedSprite2D")
